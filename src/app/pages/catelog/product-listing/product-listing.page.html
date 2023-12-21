@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-icon name="chevron-back-outline" id="back"></ion-icon>
+      <ion-title>{{'productDetails' | language : 'Product Details'}}</ion-title>
+      <ion-icon name="add-circle" id="add"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="selectTabs" scrollable="true" mode="md">
+    <ion-segment-button value="Fruits">
+      <ion-label>{{'fruits' | language : 'Fruits'}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Vegetables">
+      <ion-label>{{'vegetables' | language : 'Vegetables'}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Groceries">
+      <ion-label>{{'groceries' | language : 'Groceries'}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Fish">
+      <ion-label>{{'fishes' | language : 'Fishes'}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div *ngIf="selectTabs === 'Fruits'">
+    <div class="slide">
+      <div class="heading1">
+        <p>{{'viewall' | language : 'View all'}}</p>
+      </div>
+      <div class="block">
+        <div class="content" *ngFor="let fruit of fruits">
+          <img src="assets/images/fruit.jpg" alt="Fruits" />
+          <p class="name">{{fruit.p}}</p>
+          <div class="icon info">
+            <ion-icon name="trash-outline"></ion-icon>
+            <div class="btn">
+              <p class="price">{{'price' | language : 'Price'}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="heading">
+        <h4>{{'tropicalfruit7' | language : 'Tropical Fruit (7)'}}</h4>
+        <p>{{'viewall' | language : 'View all'}}</p>
+      </div>
+      <div class="block">
+        <div class="content" *ngFor="let tropical of tropicals">
+          <img src="assets/images/fruit.jpg" alt="Fruits" />
+          <div class="info">
+            <p class="name">{{tropical.p}}</p>
+            <div>
+              <p class="price">{{'inr' | language : 'INR'}} {{tropical.pr}} {{tropical.t}}</p>
+              <div class="btn">
+                <p class="edit">{{'viewedit' | language : 'View/Edit'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="heading">
+        <h4>{{'drupefruit10' | language : 'Drupe Fruit (10)'}}</h4>
+        <p>{{'viewall' | language : 'View all'}}</p>
+      </div>
+      <div class="block">
+        <div class="content" *ngFor="let drupe of drupes">
+          <img src="assets/images/fruit.jpg" alt="Fruits" />
+          <div class="info">
+            <p class="name">{{drupe.p}}</p>
+            <div>
+              <p class="price">{{'inr' | language : 'INR'}} {{drupe.pr}} {{drupe.t}}</p>
+              <div class="btn">
+                <p class="edit">{{'viewedit' | language : 'View/Edit'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectTabs === 'Vegetables'"></div>
+  <div *ngIf="selectTabs === 'Groceries'"></div>
+  <div *ngIf="selectTabs === 'Fish'"></div>
+</ion-content>
+
+

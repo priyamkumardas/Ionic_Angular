@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/referal/my-referal">
+        <ion-icon class="gift" name="gift-outline"></ion-icon>
+        <ion-label> {{"MyRewards " | language: "My Rewards "}}</ion-label>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openHelpVideo()">
+        <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar type="indeterminate" mode="ios" *ngIf="commonservice.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content style="--background: var(--ion-color-primary-tint)">
+  <div class="container">
+    <div class="header">
+      <div class="gift-img">
+        <div class="ion-text-center">
+          <qrcode [qrdata]="profileUrl" [imageSrc]="'./assets/images/homeImg/logoSarvm.svg'" [allowEmptyString]="true"
+            [colorDark]="'#000000ff'" [colorLight]="'#10BAB2'" [width]="256" [title]="'A custom title attribute'"
+            [errorCorrectionLevel]="'H'">
+          </qrcode>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <ion-row class="ion-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-buttons class="ion-justify-content-center">
+          <ion-button (click)="shareQr()" color="primary" fill="outline" mode="md" shape="round" size="small">
+            <ion-icon slot="start" name="share-social"></ion-icon>
+            {{'share'|language:'Share '}}</ion-button>
+          <ion-button (click)="downloadQr()" color="primary" fill="outline" mode="md" shape="round">
+            <ion-icon slot="start" name="cloud-download"></ion-icon>
+            {{'Download'|language:'Download'}}</ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+    <p id="txt">
+      {{ "Getcashrewardsupto " | language: "Get Cash Rewards Upto " }}
+    </p>
+    <p id="rupee">₹ {{ maxReward | language: maxReward }}</p>
+
+    <ion-button  routerLink="/referal/invite-referal" class="inviteBtn" mode="ios" expand="block" color="primary" shape="round">{{"Invite " | language: "Invite"}}</ion-button>
+    <div class="rfl-stat">
+      <div>
+        <p>{{ 'Referralstatus '| language: 'Referral Status ' }}</p>
+      </div>
+      <!-- <div>
+              <p>{{ "TotalReferal" | language: "Total Referal" }}</p>
+          </div> -->
+    </div>
+    <div class="card">
+      <div class="item">
+        <!-- <p>{{ "Referralstatus" | language: "Referral Status" }}</p> -->
+        <ion-progress-bar value="{{ referred }}" color="primary"></ion-progress-bar>
+      </div>
+
+      <!-- <div class="item">
+          <p>Total Referrals</p>
+          <ion-progress-bar
+            value="{{ acknowledged }}"
+            color="medium"
+          ></ion-progress-bar>
+          <br />
+          <p>{{ "Signup" | language: "Sign Up" }}</p>
+          <ion-progress-bar
+            value="{{ signedUp }}"
+            color="primary"
+          ></ion-progress-bar>
+          <br />
+          <p>{{ "Order" | language: "Order" }}</p>
+          <ion-progress-bar
+            value="{{ order }}"
+            color="secondary"
+          ></ion-progress-bar>
+          <br />
+          <p>{{ "ProfileComplete" | language: "Profile Complete" }}</p>
+          <ion-progress-bar
+            value="{{ profileComplete }}"
+            color="tertiary"
+          ></ion-progress-bar>
+        </div> -->
+    </div>
+  </div>
+</ion-content>

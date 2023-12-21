@@ -1,0 +1,12 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{formattedstring}} {{day}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-datetime #datetime presentation="time" [showDefaultButtons]="true" (ionChange)="timeChange(datetime.value)">
+        <!-- <ion-button class="cancel"></ion-button> -->
+    </ion-datetime>
+
+</ion-content>

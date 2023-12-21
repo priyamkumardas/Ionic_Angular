@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" color="primary" defaultHref="/profile" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-label>
+      <ion-title class="ion-no-padding">{{'bankDetails' | language : 'Bank Details'}}</ion-title>
+    </ion-label>
+  </ion-toolbar>
+  <ion-progress-bar mode="ios" color="primary" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment class="ionSegment" mode="md" value="UpiId" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="UpiId">
+      <ion-label>{{'UPIID' | language:'UPI ID'}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="BandAccount" [disabled]="true">
+      <ion-label>{{'BankAccount' | language:'Bank Account'}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <form [formGroup]="bankForm" (ngSubmit)="submitForm()" novalidate>
+    <div [hidden]="segment === 'UpiId' " class="segment">
+      <div class="docInput" (click)="chooseImage()">
+        <img src="assets/images/upload.svg" alt="Upload the Document" />
+        <ion-icon slot="start" name="add" id="add"></ion-icon>
+        <div class="panInput">
+          <input type="file" formControlName="passbookphoto" id="pan" class="fileInput" />
+          <label for="pan">{{'uploadPassbookPhoto' | language : 'Upload Passbook Photo'}}</label>
+        </div>
+        <span class="error" *ngIf="isSubmitted && errorControl.passbookphoto.errors?.required">
+          {{'passbookphotoisrequired' | language : 'Passbook Photo is required.'}}
+        </span>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" formControlName="beneficiaryname" id="beneficiary-name" />
+        <label for="name">{{'BeneficiaryName' | language : 'Beneficiary Name'}}</label>
+        <span class="error" *ngIf="isSubmitted && errorControl.beneficiaryname.errors?.required">
+          {{'beneficiarynameisrequired' | language : 'Beneficiary Name is required.'}}
+        </span>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" formControlName="bankname" id="bank-name" />
+        <label for="father-name">{{'bankName' | language : 'Bank Name'}}</label>
+        <span class="error" *ngIf="isSubmitted && errorControl.bankname.errors?.required">
+          {{'banknameisrequired' | language : 'Bank Name is required.'}}
+        </span>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" formControlName="accountno" id="dob" />
+        <label for="dob">{{'accountNo' | language : 'Account No.'}}</label>
+        <span class="error" *ngIf="isSubmitted && errorControl.accountno.errors?.required">
+          {{'accountnumberisrequired' | language : 'Account Number is required.'}}
+        </span>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" formControlName="reaccountno" id="dob" />
+        <label for="dob">{{'reEnterAccountNo' | language : 'Re-enter Account No.'}}</label>
+        <span class="error" *ngIf="isSubmitted && errorControl.reaccountno.errors?.required">
+          {{'re-enteraccountnumberisrequired' | language : 'Re-enter Account Number is required.'}}
+        </span>
+        <span class="error" *ngIf="isSubmitted && bankForm.hasError('accountnoNotMatch')">
+          {{'accountnumberandre-accountnumberfieldsshouldmatch' | language : 'Account number and Re-account number fields should match'}}
+        </span>
+      </div>
+      <div class="inputBox">
+        <input type="text" formControlName="ifsc" id="dob" />
+        <label for="dob">{{'ifsc' | language : 'IFSC'}}</label>
+        <span class="error" *ngIf="isSubmitted && errorControl.ifsc.errors?.required">
+          {{'ifsc' | language : 'IFSC'}}
+          {{'' | language : 'is Required'}}
+        </span>
+      </div>
+      <div class="btns">
+        <div class="skip btn">
+          <ion-button fill="clear">{{'skip' | language : 'Skip'}}</ion-button>
+        </div>
+        <div class="save btn">
+          <ion-button fill="clear" type="submit">{{'save&Continue' | language : 'Save & Continue'}}</ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div [hidden]="segment === 'BandAccount' " class="segment">
+      <ion-card class="card" *ngFor="let paymentInfo of userPaymentInfo; let i = index" (click)="gotToQrScanPage(i)">
+        <ion-row>
+          <ion-col size="2" class="ion-align-self-center">
+            <img src="assets/banking/{{paymentInfo.app}}.png" alt="">
+          </ion-col>
+          <ion-col size="8" class="ion-align-self-center">
+            <span class="IdBranch">
+              <h5 class="UpiId">{{paymentInfo.app}}</h5>
+              <!-- <img class="pngImage" src="assets/banking/{{paymentInfo.app}}.png" alt=""> 
+              <span style="margin-left: 5px;">{{paymentInfo.app}}</span> -->
+            </span>
+          </ion-col>
+          <ion-col size="2" class="ion-align-self-center">
+            <div class="checkbox">
+              <span *ngIf="paymentInfo.active == true">{{'Active'|language:'Active'}}</span>
+              <span *ngIf="paymentInfo.active == false">{{'InActive'|language:'InActive'}}</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+  </form>
+  <div class="btns2" [hidden]="segment === 'BandAccount' ">
+    <button routerLink="/select-upi-app" class="addbtn">{{'add'|language:'Add'}}</button>
+  </div>
+</ion-content>

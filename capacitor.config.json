@@ -1,0 +1,9 @@
+{
+	"appId": "com.sarvm.biz",
+	"appName": "Retailer",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"server": {
+		"cleartext": true
+	  }
+}

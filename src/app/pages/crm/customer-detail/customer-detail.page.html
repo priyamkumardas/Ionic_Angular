@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" color="primary" defaultHref="/customers" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{ customerDetail?.name ? customerDetail?.name : userPhoneNumber }}</ion-title>
+  </ion-toolbar>
+  <ion-progress-bar mode="ios" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+<ion-content>
+  <div>
+    <ion-grid class="crm-items">
+      <ion-row>
+        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
+          <ion-item lines="none">
+            <ion-avatar>
+              <img src="assets/crm/person.svg" alt="Profile Image" />
+              <div *ngIf="status === 'ACTIVE'" class="status active"></div>
+              <div *ngIf="status === 'INACTIVE'" class="status inactive"></div>
+            </ion-avatar>
+            <ion-label>
+              <div class="name">{{ customerDetail?.name }}</div>
+              <div class="mobno">{{ userPhoneNumber }}</div>
+              <div class="history">{{'Lastorder' | language : 'Last Order'}} : {{customerDetail?.lastOrderDate | date : 'dd MMM yyyy'}}</div>
+            </ion-label>
+            <ion-button class="action" fill="outline" slot="end" (click)="referToCustomer(userPhoneNumber)" [ngClass]="clickDisable">
+            <img src="assets/images/crm/phonecall.svg" alt="Phone Call" />
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-grid class="order-items">
+    <ion-row>
+      <ion-col size="6">
+        <ion-toolbar>
+          <ion-buttons slot="start" class="height">
+            <img class="orderimages" src="assets/images/crm/shopping-bag.svg" alt="shopping bag" />
+            <p class="ordertexts" slot="end">{{'orders' | language : 'Orders'}}: <br /> {{customerDetail?.totalOrders}}</p>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-col>
+      <ion-col size="6">
+        <ion-toolbar>
+          <ion-buttons slot="start" class="height">
+            <!-- <ion-icon name="call-outline"></ion-icon> -->
+            <img class="orderimages" src="assets/images/crm/fluent_money-16-regular.svg" alt="Money" />
+            <p class="ordertexts" slot="end">{{'amount' | language : 'Amount'}}: <br /> {{customerDetail?.totalAmount | currency:'INR':'symbol':'0.0-2'}}</p>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ng-container>
+    <div class="day-navbar">
+      <a class="dayFilter" (click)="activeDay('3')" [ngClass]="{'active': activeNav==='3'}">3 days</a>
+      <a class="dayFilter" (click)="activeDay('5')" [ngClass]="{'active': activeNav==='5'}">5 days</a>
+      <a class="dayFilter" (click)="activeDay('7')" [ngClass]="{'active': activeNav==='7'}">7 days</a>
+      <div class="dateFilter" id="dateFiltr">
+        <ion-modal trigger="dateFiltr" handleBehavior="cycle" show-backdrop="false" side="end">
+          <ng-template>
+            <app-date-time-picker (datePickerValue)="activeDay($event)" [date_info]="dateCondition">
+            </app-date-time-picker>
+          </ng-template>
+        </ion-modal>
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </div>
+    </div>
+  </ng-container>
+  <ion-accordion-group class="crm-accordian-items">
+    <ion-accordion value="first">
+      <ion-item slot="header" color="none">
+        <ion-label>{{'activeOrders' | language : 'Active Orders'}}</ion-label>
+      </ion-item>
+      <div slot="content">
+        <div class="ion-no-margin">
+          <ion-grid class="crm-items">
+            <ion-row>
+              <ion-col size="12" size-sm="6" size-md="4" size-lg="3"
+                *ngFor="let customer of customerDetail?.activeOrders">
+                <ion-item lines="none" class="accordianitems-border">
+                  <!-- <ion-avatar> -->
+                    <img *ngIf="customer?.mode == 'PICKUP'" class="accordian-images" src="assets/images/crm/icon-park.svg" alt="" />
+                    <img *ngIf="customer?.mode != 'PICKUP'" class="accordian-images" src="assets/images/crm/iconDelivery.svg" alt="" />
+                  <!-- </ion-avatar> -->
+                  <ion-label>
+                    <div class="name">{{'orderId' | language : ' Order ID'}}: {{customer?.id}}</div>
+                    <div class="history">{{customer?.date | date : 'dd MMM yyyy'}}</div>
+                  </ion-label>
+                  <ion-label slot="end" class="ion-text-right">
+                    <div class="amount">{{customer?.amount | currency:'INR':'symbol':'0.0-2'}}</div>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+  <ion-accordion-group class="crm-accordian-items">
+    <ion-accordion value="first">
+      <ion-item slot="header" color="none">
+        <ion-label>{{'orderhistory' | language : 'Order History'}}</ion-label>
+      </ion-item>
+      <div slot="content">
+        <div class="ion-no-margin">
+          <ion-grid class="crm-items">
+            <ion-row>
+              <ion-col size="12" size-sm="6" size-md="4" size-lg="3"
+                *ngFor="let customer of customerDetail?.inactiveOrders">
+                <ion-item lines="none" class="accordianitems-border">
+                  <!-- <ion-avatar> -->
+                  <img *ngIf="customer?.mode == 'PICKUP'" class="accordian-images" src="assets/images/crm/icon-park.svg" alt="" />
+                  <img *ngIf="customer?.mode != 'PICKUP'" class="accordian-images" src="assets/images/crm/iconDelivery.svg" alt="" />
+                  <!-- </ion-avatar> -->
+                  <ion-label>
+                    <div class="name">{{'orderId' | language : ' Order ID'}}: {{customer?.id}}</div>
+                    <div class="history">{{customer?.date | date : 'dd MMM yyyy'}}</div>
+                  </ion-label>
+                  <ion-label slot="end" class="ion-text-right">
+                    <div class="amount">{{customer?.amount | currency:'INR':'symbol':'0.0-2'}}</div>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
+<ion-footer>
+  <ion-button shape="round" expand="full" (click)="commonService.featureNotAvailable()">{{'Pushnotification' | language : 'Push notification'}}</ion-button>
+</ion-footer>

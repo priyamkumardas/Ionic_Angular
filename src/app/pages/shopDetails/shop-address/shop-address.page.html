@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'shopAddress' | language : 'Shop Address'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="helpBtn" (click)="openHelpVideo()">
+        <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-progress-bar type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="map">
+    <ion-searchbar [debounce]="1000" noEmoticons type="text" mode="ios" [(ngModel)]="searchText"
+      (ionChange)="searchAddress($event)" id="myInput" placeholder="{{'search' | language : 'Search'}}"></ion-searchbar>
+    <div class="searchResults" *ngIf="searchAddResult?.length>0">
+      <ion-list>
+        <ion-item mode="md" *ngFor="let city of searchAddResult" (click)="searchCity(city)">
+          <p>{{ city.display_name }}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+    <app-mapview *ngIf="location.lat" [latlng]="location" (locationChange)="getAddress($event)"></app-mapview>
+    <ion-row>
+      <ion-col size="3"></ion-col>
+      <ion-col size="6">
+        <!-- <div class="location" (click)="getcurrentLocation = true; getLocation()">
+          <ion-icon name="locate-outline"></ion-icon>Use current location
+        </div> -->
+        <ion-buttons class="locationbtn" (click)="getcurrentLocation = true; getLocation()">
+          <ion-button color="primary" class="location" fill="clear" mode="ios" size="small">
+            <ion-icon name="locate-sharp"></ion-icon>Use current location
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+  </div>
+
+  <form [formGroup]="shopAddressForm" (ngSubmit)="submitForm()" novalidate>
+    <div class="ion-padding">
+      <div class="areaDetail">
+        <img src="assets/images/location-icon.svg" alt="location-icon" />
+        <p class="area">{{this.address?.display_name}}</p>
+      </div>
+      <p class="instruction">{{'enterDetails' | language : 'Enter Details'}}</p>
+      <div class="businessDetail">
+        <div class="addressDetails">
+          <div class="inputs">
+            <ion-item mode="md" fill="outline" shape="round">
+              <ion-label position="floating">{{'businessName' | language : 'Business Name'}}</ion-label>
+              <ion-input placeholder="{{'Entertext'|language:'Enter text'}}" type="text" formControlName="shop_name" id="shop_name"></ion-input>
+              <ion-note slot="error"
+                *ngIf="isSubmitted && errorControl.shop_name.errors?.required">{{'businessnameisrequired' | language : 'Business Name is required'}}</ion-note>
+            </ion-item>
+            <ion-item mode="md" fill="outline" shape="round">
+              <ion-label position="floating">{{'shopno' | language : 'Shop No'}}</ion-label>
+              <ion-input placeholder="{{'Entertext'|language:'Enter text'}}" type="number" formControlName="shop_number"
+                id="shop_number"></ion-input>
+              <ion-note slot="error"
+                *ngIf="isSubmitted && errorControl.shop_number.errors?.required">{{'shopno.isrequired.' | language :
+                'Shop no.is required.'}}</ion-note>
+            </ion-item>
+          </div>
+        </div>
+        <div class="addressDetails">
+          <div class="inputs">
+            <ion-item mode="md" fill="outline" shape="round">
+              <ion-label position="floating">{{'building/locality' | language : 'Building/Locality'}}</ion-label>
+              <ion-input placeholder="{{'Entertext'|language:'Enter text'}}" type="text" formControlName="locality" id="locality"
+                [(ngModel)]="form.locality"></ion-input>
+            </ion-item>
+            <ion-item mode="md" fill="outline" shape="round">
+              <ion-label position="floating">{{'landMark' | language : 'Landmark'}}</ion-label>
+              <ion-input placeholder="{{'Entertext'|language:'Enter text'}}" type="text" (keypress)="omitSpecialChar($event)"
+                formControlName="landmark" id="landmark" [(ngModel)]="form.landmark"></ion-input>
+            </ion-item>
+          </div>
+          <div class="inputs">
+          </div>
+          <div class="inputs">
+            <ion-item mode="md" fill="outline" shape="round">
+              <ion-label position="floating">{{'pincode' | language : 'Pin Code '}}</ion-label>
+              <ion-input pattern="^(\d{4}|\d{6})$" placeholder="{{'Entertext'|language:'Enter text'}}" type="tel" inputmode="number" minlength="6" maxlength="6"
+                [value]="this.address?.address?.postcode" formControlName="pincode" id="pincode"
+                [(ngModel)]="form.pincode" class="input" (keyup)="getPostalCode($event)" required></ion-input>
+              
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.pincode.errors?.required"> {{'pincodeisrequired' | language : 'Pincode is required.'}}</ion-note>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.pincode.errors?.pattern">{{'pincodeshouldbeof6digits'|language:'Pincode should be of 6 digits'}}</ion-note>
+              
+            </ion-item>
+            <ion-item mode="md" fill="outline" shape="round">
+              <ion-label position="floating">{{'city' | language : 'City'}}</ion-label>
+              <ion-input placeholder="{{'Entertext'|language:'Enter text'}}" type="text" formControlName="city" id="city"
+                [value]="this.address?.address?.city" [(ngModel)]="form.city" class="input"
+                (keypress)="onKeyPress($event)"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.city.errors?.required"> {{'cityisrequired' | language : 'City is required.'}}</ion-note>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+      <ion-input id="clickButton" (click)="autoClickfunction()" style="visibility: hidden;position: absolute;"></ion-input>
+    </div>
+    <div class="clear"></div>
+    <ion-footer mode="ios" class="bottom-fixed">     
+      <ion-toolbar>
+        <ion-button type="submit" color="primary" expand="block" shape="round" mode="ios" *ngIf="shopExist">{{'save'|language:'Save'}}</ion-button>
+        <ion-button type="submit" color="primary" expand="block" shape="round" mode="ios" *ngIf="!shopExist">{{'proceed'|language:'Proceed'}}</ion-button>
+      </ion-toolbar>       
+    </ion-footer>
+  </form>
+</ion-content>

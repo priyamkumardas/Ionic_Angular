@@ -1,0 +1,126 @@
+<ion-header class="header">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button slot="start" color="primary" defaultHref="/order" text=""
+                icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-no-padding">{{'orderhistory' | language : 'Order History'}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="openHelpVideo()">
+              <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+    </ion-toolbar>
+    <ion-progress-bar mode="ios" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar debounce="1000"
+    (ionChange)="searchFunction()" showClearButton="focus"
+    [(ngModel)]="searchLang" mode="ios" id="myInput" type="text" placeholder="{{'SearchbyOrderID'|language:'Search by Order ID'}}"></ion-searchbar>
+    <div class="top-view">
+        <div class="container1">
+            <div color="primary" mode="ios" outline="true" class="chiptab bg1"
+                [ngClass]="statusSegment == 'COMPLETED' ? 'filterActive' : 'filterNotActive'"
+                (click)="changeOrderSegment('COMPLETED')">
+                <div class="container">
+                    <!-- <img src="assets/images/doneall.svg" alt="icon" /> -->
+                    <img *ngIf="statusSegment != 'COMPLETED'" src="/assets/images/doneall.svg" alt="icon" />
+                    <img *ngIf="statusSegment == 'COMPLETED'" src="/assets/images/completed-active.svg" alt="icon" />
+                    <ion-label class="chiptitle">{{'Completed' | language : 'Completed'}}</ion-label>
+                </div>
+            </div>
+            <div color="primary" mode="ios" outline="true" class="chiptab bg2"
+                [ngClass]="statusSegment == 'CANCELLED' ? 'filterActive' : 'filterNotActive'"
+                (click)="changeOrderSegment('CANCELLED')">
+                <div class="container">
+                    <!-- <img src="assets/images/stop.svg" alt="icon" /> -->
+                    <img *ngIf="statusSegment != 'CANCELLED'" src="/assets/images/stop.svg" alt="icon" />
+                    <img *ngIf="statusSegment == 'CANCELLED'" src="/assets/images/cancelled-active.svg" alt="icon" />
+                    <ion-label class="chiptitle">{{'Cancelled' | language : 'Cancelled'}}</ion-label>
+                </div>
+            </div>
+            <div color="primary" mode="ios" outline="true" class="chiptab bg3"
+                [ngClass]="statusSegment == 'REJECTED' ? 'filterActive' : 'filterNotActive'"
+                (click)="changeOrderSegment('REJECTED')">
+                <div class="container">
+                    <!-- <img src="assets/images/cancel.svg" alt="icon" /> -->
+                    <img *ngIf="statusSegment != 'REJECTED'" src="/assets/images/cancel.svg" alt="icon" />
+                    <img *ngIf="statusSegment == 'REJECTED'" src="/assets/images/rejected-active.svg" alt="icon" />
+                    <ion-label class="chiptitle">{{'Rejected ' | language : 'Rejected '}}</ion-label>
+                </div>
+            </div>
+            <div color="primary" mode="ios" outline="true" class="chiptab bg4"
+                [ngClass]="statusSegment == 'NO_SHOW' ? 'filterActive' : 'filterNotActive'"
+                (click)="changeOrderSegment('NO_SHOW')">
+                <div class="container">
+                    <!-- <img src="assets/images/Box.svg" alt="icon" /> -->
+                    <img *ngIf="statusSegment != 'NO_SHOW'" src="/assets/images/Box.svg" alt="icon" />
+                    <img *ngIf="statusSegment == 'NO_SHOW'" src="/assets/images/no-show-active.svg" alt="icon" />
+                    <ion-label class="chiptitle">{{'noshow' | language : 'No Show'}}</ion-label>
+                </div>
+            </div>
+            <div color="primary" mode="ios" outline="true" class="chiptab bg5"
+                [ngClass]="statusSegment == 'PAYMENT_PENDING' ? 'filterActive' : 'filterNotActive'"
+                (click)="changeOrderSegment('PAYMENT_PENDING')">
+                <div class="container">
+                    <img *ngIf="statusSegment != 'PAYMENT_PENDING'" src="assets/images/pending_payment.svg"
+                        alt="icon" />
+                    <img *ngIf="statusSegment == 'PAYMENT_PENDING'" src="assets\images\payment_active.svg" alt="icon" />
+                    <ion-label class="chiptitle">{{'pendingpayment' | language : 'Pending Payment'}}</ion-label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container>
+        <div class="day-navbar">
+            <p class="dayFilter" (click)="activeDay('All')" [ngClass]="{'filterActive': activeNav==='All'}">
+                {{'all'|language:'All'}}</p>
+            <p class="dayFilter" (click)="activeDay('Today')" [ngClass]="{'filterActive': activeNav==='Today'}">
+                {{'today'|language:'Today'}}</p>
+            <p class="dayFilter" (click)="activeDay('Yesterday')" [ngClass]="{'filterActive': activeNav==='Yesterday'}">
+                {{'yesterday'|language:'Yesterday'}}</p>
+            <div class="dateFilter" id="dateFilt" *ngIf="this.orderList?.data?.length != 0">
+                <p class="dayFilter"
+                     *ngIf="activeNav == 'All' || activeNav == 'Today' || activeNav == 'Yesterday'; else other">
+                     {{todayDate | date:'dd MMM yyyy'}}</p>
+                 <ng-template #other>
+                     <p class="dayFilter">{{deliveryDate | date:'dd MMM yyyy'}}</p>
+                 </ng-template>
+                <ion-modal trigger="dateFilt" handleBehavior="cycle" show-backdrop="false" side="end">
+                    <ng-template>
+                        <app-date-time-picker [date_format]="format" [date_info]="dateCondition"
+                             (datePickerValue)="activeDay($event)" color="none"></app-date-time-picker>
+                    </ng-template>
+                </ion-modal>
+                <ion-icon color="primary" *ngIf="activeNav.type !== 'date'" name="calendar-clear-outline"></ion-icon>
+                <ion-icon color="primary" *ngIf="activeNav.type === 'date'" name="calendar-clear"></ion-icon>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- ion fab button used to refresh -->
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="pullToRefresh($event)">
+            <ion-icon name="reload-outline" color="light"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <!-- Order cards -->
+    <ng-container *ngIf="ordersData?.length != 0">
+        <app-order-item [order]="allOrders" [showButton]="false"></app-order-item>
+        <!-- infinite scroll with api pagination -->
+        <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+            <ion-infinite-scroll-content loadingText="Getting new orders..."
+                loadingSpinner="bubbles"></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </ng-container>
+
+    <!-- if there is no data then this ng-container will be visible -->
+    <ng-container *ngIf="!this.isLoading && ordersData?.length === 0">
+        <app-empty-list></app-empty-list>
+    </ng-container>
+</ion-content>
+<ion-footer class="ion-no-border footer">
+    <app-bottom-tab-view [tabsTextAvailable]="false"></app-bottom-tab-view>
+</ion-footer>

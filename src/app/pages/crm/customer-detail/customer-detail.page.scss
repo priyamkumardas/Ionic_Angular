@@ -1,0 +1,200 @@
+.crm-items {
+    padding: 0px !important;
+
+    ion-item {
+        --background: transparent;
+        --padding-start: 8px;
+        --padding-end: 8px;
+        --inner-padding-end: 0px;
+
+        ion-checkbox {
+            margin-right: 16px;
+        }
+
+        ion-avatar {
+            width: 70px;
+            height: 70px;
+            position: relative;
+            margin-right: 8px;
+
+            .status {
+                width: 14px;
+                height: 14px;
+                border-radius: 50px;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+
+                &.active {
+                    background: var(--ion-color-success);
+                }
+
+                &.inactive {
+                    background: var(--ion-color-danger-tint);
+                }
+            }
+        }
+
+        ion-label {
+            line-height: 20px;
+            margin: 8px 0;
+
+            .name {
+                font-style: normal;
+                font-weight: 600;
+                font-size: 14px;
+                color: var(--ion-color-dark-tint);
+            }
+
+            .mobno {
+                color: var(--ion-color-dark-tint);
+            }
+
+            .order {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 18px;
+                color: var(--ion-color-dark);
+
+                i {
+                    font-style: normal;
+                    margin-left: 8px;
+                }
+            }
+
+            .history {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                color: var(--ion-color-medium);
+            }
+            .amount
+            {
+                font-weight: 500;
+                color: var(--ion-color-dark);
+                font-size: 1rem;
+            }
+        }
+
+        ion-button.action {
+            --background: var(--ion-color-primary-contrast);
+            --color: var(--ion-color-primary);
+            --border-radius: 50px;
+            --border-width: 1px;
+            --border-color: var(--ion-color-primary);
+            width: 48px;
+            height: 48px;
+            margin: 0px;
+        }
+    }
+}
+
+.ion-button {
+    margin-top: 2vh;
+    top: 10px;
+    width: 80px;
+    height: 25px;
+    padding-left: 0px;
+}
+
+ion-footer {
+    ion-button {
+        margin: 15px;
+
+    }
+
+}
+
+.order-items {
+    .orderimages {
+        margin: 0 12px
+    }
+
+    .ordertexts {
+        line-height: 22px;
+        margin: 8px 0;
+    }
+    ion-toolbar
+    {
+        --background: transparent;
+    }
+
+    ion-buttons {
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), #10BAB2;
+        border-radius: 6px;
+        width: -webkit-fill-available;
+        border: 1px solid transparent;
+    }
+}
+
+.crm-accordian-items {
+    .accordian-images {
+        height: 40px;
+        width: 40px;
+        margin-right: 8px;
+    }
+
+    .accordianitems-border {
+        border: 1px solid var(--ion-color-light);
+        border-radius: 4px;
+        margin: 0 12px;
+        margin-bottom: 2px;
+        --padding-end: 8px;
+    }
+}
+
+.day-navbar {
+    background: var(--ion-color-primary-contrast);
+    // font-size: 3.5vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 3.5vw 0;
+    font-weight: 450;
+    cursor: pointer;
+}
+
+.dayFilter {
+    color: var(--ion-color-medium);
+    padding: 0 3vw;
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 26px;
+    color: var(--ion-color-primary);
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.active {
+        background: var(--ion-color-primary);
+        color: var(--ion-color-primary-contrast);
+    }
+}
+
+.height {
+    min-height: 60px;
+}
+
+.dateFilter {
+    margin: auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--ion-color-medium);
+    background: var(--ion-color-primary-contrast);
+
+    ion-icon {
+        color: var(--ion-color-primary);
+        margin: auto 0;
+        font-size: 27px;
+    }
+}
+
+ion-modal {
+    --background: #0000003b !important;
+}
+
+.disableClickCss {
+    pointer-events: none;
+}

@@ -1,0 +1,23 @@
+
+  <div class="CrossIcon" (click) = "cancel()">
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+
+  <div class="box">
+    <p id ="txt">{{'quantity' | language : 'Quantity'}}</p>
+    <ion-row>
+      <div class="card" (click)="selectItem('Pieces')">
+        <img src="assets/Product-detals/Group 251.png">
+        <p>{{'pieces' | language : 'Pieces'}}</p>
+      </div>
+      <div class="card" (click)="selectItem('Kilogram')">
+        <img src="assets/Product-detals/Vector (1).png">
+        <p>{{'kilogram' | language : 'Kilogram'}}</p>
+      </div>
+      <div class="card" (click)="selectItem('Litre')">
+        <img src="assets/Product-detals/Group.png">
+        <p>{{'liter' | language : 'Litre'}}</p>
+      </div>
+     
+    </ion-row>
+  </div>

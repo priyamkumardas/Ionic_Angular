@@ -1,0 +1,101 @@
+ion-searchbar {
+    padding: 0;
+}
+
+ion-content {
+    --background: #F8F9F9 !important;
+}
+
+.statusCategory {
+    margin: 8px 8px 0;
+
+    ion-segment {
+        --background: transparent;
+
+        ion-segment-button {
+            --indicator-height: 0px !important;
+            --background: #fff;
+            --background-checked: rgba(114, 243, 236, 0.6);
+            --color-checked: var(--ion-color-primary);
+            --border-radius: 6px;
+            margin: 0 4px 8px;
+            min-height: 30px;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.disableClick {
+    pointer-events: none;
+}
+
+.buttons {
+    margin: 0;
+
+    .search-button {
+        margin: 0;
+
+        ion-icon {
+            font-size: 22px;
+        }
+    }
+}
+
+.segment {
+    overflow-x: scroll;
+    display: flex;
+    color: var(--ion-color-success);
+
+    .category {
+        margin-left: 3vw;
+    }
+}
+
+.content {
+    height: 100vh;
+    overflow-y: scroll;
+    background: #f8f9f9;
+
+    .segmentDiv {
+        overflow: auto;
+    }
+
+    ion-segment {
+        width: fit-content;
+        margin: 0 16px 4px;
+
+        ion-segment-button {
+            min-width: auto !important;
+            min-height: 36px;
+        }
+    }
+}
+
+// below lines added by KUndan 
+.textalign {
+    margin-left: auto;
+    color: var(--ion-color-warning)
+}
+
+.textalign1 {
+    margin-left: auto;
+}
+
+.prod-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ion-fab-button {
+    width: 40px;
+    height: 40px;
+
+    ion-icon {
+        font-size: 22px;
+
+    }
+}
+
+ion-footer {
+    padding: 0px 16px;
+}

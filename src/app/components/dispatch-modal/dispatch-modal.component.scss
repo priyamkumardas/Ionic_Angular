@@ -1,0 +1,131 @@
+.CrossIcon {
+  height: 48px;
+  width: 48px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  border-radius: 100%;
+  background: #fbfbfb;
+}
+
+.continue {
+  margin: auto;
+  display: block;
+}
+
+span {
+  width: -webkit-fill-available;
+}
+
+.dm-btn {
+  --color-checked: var(--ion-color-primary);
+  --background-checked: var(--ion-color-secondary) 16%;
+  display: flex;
+  flex-direction: row;
+  font-size: 1rem;
+  text-transform: capitalize;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --indicator-height: 0;
+  height: 40px;
+
+  &:not(.segment-button-checked) {
+    p {
+      ion-icon {
+        filter: grayscale(100%);
+      }
+    }
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+
+    ion-icon {
+      margin-right: 8px;
+      font-size: 24px;
+    }
+  }
+}
+
+.ind-btn {
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 13px;
+  margin: 0 10px;
+  width: 95%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.header {
+  color: var(--ion-color-light-contrast);
+  font-size: 6vw;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+.modal {
+  position: absolute;
+  bottom: 0;
+  width: -webkit-fill-available;
+}
+
+.active {
+  justify-content: center;
+}
+
+// .tbar {
+//   margin: 2% 0 0 0;
+//   --background: #fff;
+// }
+
+.img {
+  height: 15vw;
+  width: 15vw;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 3px rgba(51, 51, 51, 0.25);
+  border-radius: 100%;
+  margin-bottom: 3vw;
+  overflow: hidden;
+}
+
+.cd {
+  height: auto;
+  text-align: center;
+  margin-bottom: 16px;
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 5px 0;
+  }
+}
+
+.viewAll {
+  text-align: center;
+  color: var(--ion-color-primary);
+}
+
+.Mob-number {
+  text-overflow: initial !important;
+  font-size: 0.9rem;
+}
+
+.dispatchContent{
+  max-height: 500px;
+    overflow-y: auto;
+}

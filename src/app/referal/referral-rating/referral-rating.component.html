@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content">
+    <div class="header box">
+      <ion-img id="type" *ngIf="referType === 'INDIVIDUAL'" src="assets/ReferrlImg/person.svg" alt=""></ion-img>
+      <ion-img id="type" *ngIf="referType === 'LOGISTICS_DELIVERY'" src="assets/ReferrlImg/deliveryValet.svg"
+        alt=""></ion-img>
+      <ion-img id="type" *ngIf="referType === 'RETAILER'" src="assets/ReferrlImg/retailer.svg" alt=""></ion-img>
+      <ion-img id="type" *ngIf="referType === 'wholeseller'" src="assets/ReferrlImg/wholesaler.svg" alt=""></ion-img>
+      <ion-img id="type" *ngIf="referType === 'farmer'" src="assets/ReferrlImg/farmer.svg" alt=""></ion-img>
+      <ion-img id="type" *ngIf="referType === 'traderBroker'" src="assets/ReferrlImg/trader_broker.svg"
+        alt=""></ion-img>
+      <ion-img id="type" *ngIf="referType === 'deliveryPartner'" src="assets/ReferrlImg/deliveryPartner.svg"
+        alt=""></ion-img>
+      <ion-img id="type" *ngIf="referType === 'other'" src="assets/ReferrlImg/other.svg" alt=""></ion-img>
+      <ion-label class="ion-padding">+91 {{phoneNumber}}</ion-label>
+    </div>
+    <div class="header">
+      <ion-label class="ion-padding">{{'RateReferrals'|language:'Rate Referrals'}}</ion-label>
+    </div>
+    <div class="ion-text-center ion-justify-content-center">
+      <ion-row class="ion-text-center ion-justify-content-center">
+        <ion-col size="1" *ngFor="let itm of [1,2,3,4,5,6,7,8,9]" (click)="updateRating(itm,remarks.value)">
+          <ion-img *ngIf="rating>=itm" src="assets/InvitePageImg/starRated.svg"></ion-img>
+          <ion-img *ngIf="itm>rating" src="assets/InvitePageImg/unRateStar.svg"></ion-img>
+          <ion-label>{{itm}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-card *ngIf="comments?.length">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">{{'Comments' | language:'Comments'}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="box2">
+          <div class="comments">
+            <ion-row *ngFor="let comment of comments" class="ion-text-left">
+              <div class="refCommentsImage">
+                <img class="imagepng" *ngIf="comment != ''" src="assets/ReferrlImg/referalcomments.svg" alt="" />
+                <p>{{comment}}</p>
+              </div>
+            </ion-row>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <div class="textboxes">
+      <p>{{'Leaveyourcommentbelow'|language:'Leave your comment below'}}</p>
+      <div class="method">
+        <ion-textarea #remarks [cols]="5" (ionChange)="updateRating(rating,remarks.value)"></ion-textarea>
+      </div>
+    </div>
+    <ion-row class="ion-text-center ion-justify-content-center">
+      <ion-button fill="solid" mode="ios" expand="full" shape="round" class="submitBtn" [disabled]="!ratingChanged"
+        (click)="referralRatingSave()">
+        {{'submit'|language:'Submit'}}
+      </ion-button>
+    </ion-row>
+  </div>
+</ion-content>

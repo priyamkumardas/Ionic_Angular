@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        
+            <!-- <ion-buttons slot="start" (click)="onBack()"> -->
+            <ion-buttons slot="start" class="ion-no-margin">
+                <ion-back-button slot="start" color="primary" defaultHref="/selected-language" text=""
+                  icon="chevron-back-outline"></ion-back-button>
+              </ion-buttons>
+            <!-- <ion-title>{{'selling' | language : 'Selling'}}</ion-title> -->
+            <ion-title class="ion-no-padding">{{'Iown ' | language : 'I Own '}}</ion-title>
+        
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <!-- <ion-row>
+            <ion-col size="12" class="myshop">
+                <p class="setxt"><b>I own</b></p>
+            </ion-col>
+        </ion-row> -->
+        <ion-row>
+            <ion-card (click)="selectType('fixed')">
+                <div class="sm-row">
+                    <img src="assets/images/shopp1.svg" alt="sophawker" class="hawker" />
+                    <!-- <img src="../../../../assets/images/mobilehawker.svg" alt="sophawker" class="hawker" /> -->
+                </div>
+                <div class="sm-row">
+                    <p class="setxt"><b>{{'FixedRetailershop' | language : 'Fixed Retailer Shop'}}</b></p>
+                </div>
+            </ion-card>
+        </ion-row>
+        <ion-row>
+            <ion-card (click)="selectType('mobile')">
+                <div class="sm-row">
+                    <img src="assets/images/hawker2.svg" alt="sophawker" class="hawker" />
+                    <!-- <img src="../../../../assets/images/hawker3.svg" alt="sophawker" class="hawker" /> -->
+                </div>
+                <div class="sm-row">
+                    <p class="setxt"><b>{{'MobileRetailershop ' | language : 'Mobile Retailer Shop '}}</b></p>
+                </div>
+            </ion-card>
+        </ion-row>
+    </ion-grid>
+</ion-content>

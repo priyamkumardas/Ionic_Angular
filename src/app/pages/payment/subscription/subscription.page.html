@@ -1,0 +1,58 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="!isModal" (click)="onBack()">
+      <ion-icon name="chevron-back-outline" color="primary"></ion-icon>
+       <ion-back-button defaultHref="/profile" text=""></ion-back-button> 
+    </ion-buttons>
+    <ion-title>{{'subscription' | language : 'Subscription'}}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start" *ngIf="!isModal" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" text="" defaultHref="/profile"
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons> -->
+    <ion-title class="ion-padding">{{'subscription' | language : 'Subscription'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let item of allSubscription?.subscriptionDetails; let ind = index"
+    (click)="selectSubscripItem(ind)">
+    <ion-row class="ion-padding-top">
+      <ion-col size="4"><ion-label class="active-plan">{{'ActivePlan' | language : 'Active Plan'}}</ion-label></ion-col>
+      <ion-col size="8" class="bgy">
+        <ion-label class="bgw">{{'expireson' | language : 'Expires on'}} {{item.endDate | date : 'dd MMM yyyy'}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-top">
+      <ion-col size="7">
+        <ion-label color="primary">{{'BasicSubscription ' | language : 'Basic Subscription'}}</ion-label>
+        <ion-label class="discount"></ion-label>
+        <ion-label>{{item?.amount | currency:'INR':'symbol':'0.0-2'}} + {{'GST' | language : 'GST'}}</ion-label>
+      </ion-col>
+      <ion-col size="5">
+        <ion-label class="invoice">{{'Invoice' | language : 'INVOICE'}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-top">
+      <ion-col size="6">
+        {{'LastSubscriptionOn ' | language : 'Last Subscription'}}
+      </ion-col>
+      <ion-col size="6" class="ion-text-center"> {{item.startDate | date : 'dd MMM yyyy'}} </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="5" class="ion-padding-vertical ion-text-center">
+        <ion-chip color="primary" mode="ios" outline="true" class="renewchip">
+          <ion-label class="bgw">{{'RenewPlan ' | language : 'Renew Plan'}}</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <!-- <div *ngFor="let item of allSubscription?.subscriptionDetails; let ind = index" (click)="selectSubscripItem(ind)"> -->
+  <!-- </div> -->
+  <!-- <ion-text color="success" class="ion-text-center">
+    <h4>View Other Plans &#x2192;</h4>
+</ion-text> -->
+  <ion-button color="primary" mode="ios" expand="full" shape="round" (click)="routetoHome()">{{'continue' | language : 'Continue'}}</ion-button>
+</ion-content>

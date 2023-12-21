@@ -1,0 +1,73 @@
+<div class="CrossIcon" (click)="action()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+<ion-content>
+  <div class="content">
+    <div class="header">
+      <p>{{'DispatchTo'|language:'Dispatch To'}}</p>
+    </div>
+    <ion-segment class="ind-btn" [(ngModel)]="segment" scrollable>
+      <ion-segment-button color="light" class="dm-btn" mode="md" value="0">
+        <p><ion-icon size="small" name="storefront-outline"></ion-icon>{{'ownDelivery'|language:'Own Delivery'}}</p>
+      </ion-segment-button>
+      <ion-segment-button class="dm-btn" mode="md" value="1">
+        <p><ion-icon size="small" src="assets/icon/delivery-boy.svg"></ion-icon>{{'thirdParty'|language:'Third Party'}}
+        </p>
+      </ion-segment-button>
+    </ion-segment>
+
+    <span [ngSwitch]="segment">
+      <span *ngSwitchCase="'0'">
+        <ion-searchbar [debounce]="500" show-clear-button="focus" mode="ios" id="myInput" [(ngModel)]="searchAssociated"
+          (ionChange)="searchDeliveryBoyAssociated()" #search placeholder="{{'search' | language : 'Search'}}">
+        </ion-searchbar>
+        <div class="dispatchContent">
+        <!-- <ion-toolbar class="tbar"> -->
+          <ion-row>
+            <ion-col size="4" class="cd" *ngFor="let data of self; let i = index"
+              (click)="selectAssociated(data?._id)">
+              <div class="img">
+                <ion-img src="{{data?.profileImage ? data?.profileImage : '/assets/images/profilePic1.svg'}}" class=""
+                  alt=""></ion-img>
+              </div>
+              <p>{{data?.name}}</p>
+              <p>{{data?.phone}}</p>
+            </ion-col>
+            <ion-col size="4" class="cd"
+              *ngFor="let data of searchAssociated ? filteredAssociated : associated; let i = index"
+              (click)="selectAssociated(data?._id)">
+              <div class="img">
+                <ion-img src="{{data?.profileImage ? data?.profileImage : '/assets/images/profilePic1.svg'}}" class=""
+                  alt=""></ion-img>
+              </div>
+              <p>{{data?.name}}</p>
+              <p>{{data?.phone}}</p>
+            </ion-col>
+          </ion-row>
+        <!-- </ion-toolbar> -->
+        </div>
+      </span>
+      <ion-slides *ngSwitchCase="'1'">
+        <ion-searchbar [debounce]="500" show-clear-button="focus" mode="ios" id="myInput" [(ngModel)]="searchFreelance"
+          (ionChange)="searchDeliveryBoyfreelance()" #searchF placeholder="{{'search' | language : 'Search'}}">
+        </ion-searchbar>
+        <div class="dispatchContent">
+        <!-- <ion-toolbar class="tbar"> -->
+          <ion-row>
+            <ion-col size="4" class="cd"
+              *ngFor="let data of searchFreelance ? filteredFreelanced : freelancer; let i = index"
+              (click)="selectFreelancer(data?._id)">
+              <div class="img">
+                <ion-img src="{{data?.profileImage ? data?.profileImage : '/assets/images/profilePic1.svg'}}" class=""
+                  alt=""></ion-img>
+              </div>
+              <p>{{data?.name}}</p>
+              <p>{{data?.phone}}</p>
+            </ion-col>
+          </ion-row>
+        <!-- </ion-toolbar> -->
+      </div>
+      </ion-slides>
+    </span>
+  </div>
+</ion-content>

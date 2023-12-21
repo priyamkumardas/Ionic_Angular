@@ -1,0 +1,58 @@
+ion-content {
+  background: #fff;
+  --background: var(--ion-color-secondary) 16%;
+}
+
+ion-col {
+  div {
+    border-radius: 12px;
+    background: var(--ion-color-secondary-contrast);
+    min-height: 115px;
+    position: relative;
+  }
+
+  ion-checkbox {
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    --size: 15px;
+    --background-checked: var(--ion-color-primary);
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .categoryName {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    margin-top: 25px;
+  }
+}
+
+ion-searchbar {
+  width: 100%;
+  --box-shadow: var(--background);
+  --border-radius: 30px;
+}
+ion-footer
+{
+  padding: 4px 16px;
+  ion-toolbar
+  {
+    --background: transparent;
+    --border-width: 0 !important;
+
+    ion-button
+    {
+      margin: 0;
+    }
+  }
+}

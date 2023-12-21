@@ -1,0 +1,201 @@
+<ng-container *ngFor="let order of orders;let ind = index">
+  <div class="card" *ngIf="order?.delivery?.mode == 'PICKUP'">
+    <div class="orderDetails">
+      <p class="orderId" (click)="gotoOrderDetails(order)">{{'orderid#' | language : 'Order #'}}: {{order?.orderID}}</p>
+      <div class="profile">
+        <div class="img">
+          <img src="{{order?.userDetails?.image}}" alt="profilePic" class="profilePic" />
+          <a href="tel:{{order?.userDetails?.phone}}"><img src="/assets/images/Group 7995.svg" alt="call-icon" class="callIcon" /></a>
+        </div>
+        <div class="info" (click)="gotoOrderDetails(order)">
+          <p class="stock">+91 {{order?.userDetails?.phone}}</p>
+          <p class="name">{{order?.userDetails?.name}}</p>
+          <div class="location">
+            <ion-icon name="location-outline"></ion-icon>
+            <p class="address">{{order?.delivery?.location?.address}}</p>
+          </div>
+          <div class="pickupPrices">
+            <div class="pickup">
+              <img src="assets/images/hand.svg" alt="" srcset="" />
+              <p class="status">{{'pickUp' | language :'Pickup'}}</p>
+            </div>
+            <ion-label>{{(order?.amount - order?.discount) | currency:'INR':'symbol':'0.0-2'}}</ion-label>
+          </div>
+        </div>
+        <div class="direction" (click)="openWithInAppBrowser(order)">
+          <img src="assets/icon/Direction.svg" alt="Direction_icon">
+        </div>
+      </div>
+      <div>
+        <div [ngClass]="clickDisable">
+          <div class="btns" *ngIf="order.status == orderStatus.NEW">
+            <ion-button shape="round" fill="clear" class="reject" (click)="openCancelModal(order, 'REJECTED',orderStatus.NEW)">
+              {{'Reject' | language : 'Reject'}}</ion-button>
+            <ion-button shape="round" class="accept" (click)="orderStatusChangeViewOld(ind, order, 'ACCEPTED')">
+              {{'accept '| language : 'Accept'}}
+            </ion-button>
+          </div>
+
+          <div class="btns" *ngIf="order.status == orderStatus.ACCEPTED">
+            <ion-button shape="round" fill="clear" class="reject"
+              (click)="openCancelModal(order, 'CANCELLED',orderStatus.ACCEPTED)">
+              {{'cancel' | language : 'Cancel'}}
+            </ion-button>
+            <ion-button shape="round" class="accept"
+              (click)="changeOrderStatusModal(order, 'PROCESSING', orderStatus.PROCESSING)">
+              {{'Process' | language : 'Process'}}
+            </ion-button>
+          </div>
+
+          <div class="btns" *ngIf="order.status == orderStatus.PROCESSING">
+            <ion-button shape="round" fill="clear" class="reject" (click)="openCancelModal(order, 'CANCELLED', orderStatus.PROCESSING)">
+              {{'cancel' | language : 'Cancel'}}
+            </ion-button>
+            <ion-button shape="round" class="accept" (click)="changeOrderStatusModal(order, 'READY', orderStatus.READY)">
+              {{'ready' | language : 'Ready'}}
+            </ion-button>
+          </div>
+
+          <div class="btns" *ngIf="order.status == orderStatus.READY">
+            <ion-button shape="round" fill="clear" class="reject"
+              (click)="openCancelModal(order, 'NO_SHOW', orderStatus.READY)">{{'noshow' | language : 'No show'}}
+              <ion-icon class="end-icon" slot="end" src="../../../../assets/icon/ic_cross.svg"></ion-icon>
+            </ion-button>
+
+            <ion-button shape="round" class="accept"
+              (click)="changeOrderStatusModal(order, 'DELIVERY', orderStatus.DELIVERY)">
+              {{'pickUp' | language : 'Pickup'}}
+              <ion-icon class="end-icon" slot="end" src="../../../../assets/icon/ic_right.svg"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div class="btns" *ngIf="order.status == 'DELIVERED'">
+            <ion-button *ngIf="order.payment.paid == false" shape="round" class="accept-full"
+              (click)="checkPaymentAcknowledgement(ind, order)">{{"PaymentReceived?" |language:"Payment Received ?"}}</ion-button>
+            <ion-button *ngIf="order.payment.paid == true" shape="round" class="accept-full" (click)="checkPaymentAcknowledgement(ind, order)">
+              <ion-icon class="end-icon" slot="start" src="./../../../../assets/icon/ic_doneall.svg"></ion-icon>{{'ConfirmPayment'|language:'Confirm Payment'}}</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="order?.delivery?.mode == 'DELIVERY'">
+    <div class="orderDetails">
+      <p class="orderId" (click)="gotoOrderDetails(order)">{{'orderid#' | language : 'Order #'}}: {{order.orderID}}</p>
+      <div class="profile">
+        <div class="img">
+          <img src="{{order?.userDetails?.image}}" alt="profilePic" class="profilePic" />
+          <a href="tel:{{order?.userDetails?.phone}}"><img src="/assets/images/Group 7995.svg" alt="call-icon" class="callIcon" /></a>
+        </div>
+        <div class="info" (click)="gotoOrderDetails(order)">
+          <p class="stock">+91 {{order?.userDetails?.phone}}</p>
+          <p class="name">{{order?.userDetails?.name}}</p>
+          <div class="location">
+            <ion-icon name="location-outline"></ion-icon>
+            <p class="address">{{order?.delivery?.location?.address}}</p>
+          </div>
+          <div class="pickupPrices">
+            <div class="pickup">
+              <img src="assets/images/truck.svg" alt="" srcset="" />
+              <p class="status">{{'delivery' | language :'Delivery'}}</p>
+            </div>
+            <ion-label>{{(order?.delivery?.deliveryCharges ? order?.delivery?.deliveryCharges : 0) + order?.amount - order?.discount | currency:'INR':'symbol':'0.0-2'}}</ion-label>
+          </div>
+        </div>
+        <div class="direction" (click)="openWithInAppBrowser(order)">
+          <img src="assets/icon/Direction.svg" alt="Direction_icon">
+        </div>
+      </div>
+
+      <div [ngClass]="clickDisable">
+        <div class="btns" *ngIf="order.status == orderStatus.NEW">
+          <ion-button shape="round" fill="clear" class="reject" (click)="openCancelModal(order, 'REJECTED',orderStatus.NEW)">
+            {{'Reject' | language : 'Reject'}}
+          </ion-button>
+          <ion-button shape="round" class="accept" (click)="orderStatusChangeViewOld(ind, order, 'ACCEPTED')">
+            {{'accept '| language : 'Accept'}}
+          </ion-button>
+        </div>
+
+        <div class="btns" *ngIf="order.status == orderStatus.ACCEPTED">
+          <ion-button shape="round" fill="clear" class="reject" (click)="openCancelModal(order, 'CANCELLED', orderStatus.PROCESSING)">
+            {{'cancel' | language : 'Cancel'}}</ion-button>
+          <ion-button shape="round" class="accept" (click)="changeOrderStatusModal(order, 'PROCESSING', orderStatus.PROCESSING)">
+            {{'Process' | language : 'Process'}}</ion-button>
+        </div>
+
+        <div class="btns" *ngIf="order.status == orderStatus.PROCESSING">
+          <ion-button shape="round" fill="clear" class="reject" (click)="openCancelModal(order, 'CANCELLED', orderStatus.READY)">
+            {{'cancel' | language : 'Cancel'}}</ion-button>
+          <ion-button shape="round" class="accept" (click)="changeOrderStatusModal(order, 'READY', orderStatus.READY)">
+            {{'ready' | language : 'Ready'}}</ion-button>
+        </div>
+
+        <div class="btns" *ngIf="order.status == orderStatus.READY">
+          <ion-button shape="round" fill="clear" class="reject" (click)="openCancelModal(order, 'CANCELLED', orderStatus.READY)">
+            {{'cancel' | language : 'Cancel'}}
+          </ion-button>
+          <ion-button shape="round" class="accept" (click)="openDispatchModal(order, 'DISPATCHED', orderStatus.DISPATCHED)">
+            {{'Dispatch' | language : 'Dispatch'}}
+          </ion-button>
+        </div>
+
+        <!-- <div class="btns" *ngIf="order.status == orderStatus.DELIVERY"> -->
+        <div class="btns" *ngIf="(order.status == orderStatus.DISPATCHED || order.status == orderStatus.PICKEDUP 
+          || order.status == orderStatus.IN_TRANSIT) && order.laStatus != null && order.laStatus != 'REJECTED'">
+          <ion-button shape="round" expand="full" class="accept-full" (click)="gotoOrderDetails(order)">
+            <ion-icon class="start-icon iconpadding" slot="start" src="./../../../../assets/icon/ic_doneall.svg"></ion-icon>
+             {{'Orderhasbeendispatched' | language :'Order has been dispatched'}}
+          </ion-button>
+        </div>
+
+        <div class="btns" *ngIf="order.status == orderStatus.DISPATCHED && order.laStatus == 'REJECTED'">
+          <ion-button shape="round" expand="full" class="accept-full" (click)="openReDispatchModal(order, 'DISPATCHED', orderStatus.PICKEDUP)">
+            {{'ReDispatch' | language : ' Redispatch'}}
+          </ion-button>
+        </div>
+
+        <div class="btns" *ngIf="order.status == orderStatus.DISPATCHED && order.laStatus == null">
+          <ion-button class="reject" fill="clear" (click)="openReDispatchModal(order, 'DISPATCHED', orderStatus.PICKEDUP)" shape="round" expand="block">
+            {{'ReDispatch' | language : ' Redispatch'}}
+          </ion-button>
+          <ion-button class="accept" (click)="changeOrderStatusModal(order, 'PICKEDUP', orderStatus.PICKEDUP)" shape="round" expand="block">
+            {{'Startdelivery' | language : 'Start Delivery'}}
+          </ion-button>
+        </div>
+
+        <div class="btns" *ngIf="order.status == orderStatus.IN_TRANSIT && order.laStatus == null">
+          <ion-button class="accept-full" (click)="changeOrderStatusModal(order, 'REACHED_DELIVERY_LOCATION')" shape="round" expand="block">
+            {{'ReachedDeliveryLocation'|language:'Reached Delivery Location'}}
+          </ion-button>
+        </div>
+    
+        <div class="btns" *ngIf="order.status == orderStatus.REACHED_DELIVERY_LOCATION && order.laStatus == null">
+          <ion-button class="reject" shape="round" fill="clear"
+            (click)="openCancelModal(order, 'NO_SHOW', orderStatus.READY)">{{'noshow' | language : 'No show'}}
+            <ion-icon class="end-icon" slot="end" src="../../../../assets/icon/ic_cross.svg"></ion-icon>
+          </ion-button>
+          <ion-button class="accept" (click)="changeOrderStatusModal(order, 'DELIVERED', orderStatus.PAYMENT_PENDING)" shape="round" expand="block">
+            {{'Delivered '|language:'Delivered '}}
+          </ion-button>
+        </div>
+
+        <!-- DELIVERY is A Hardercoded It should be PICKEDUP -->
+        <!-- <div class="btns" *ngIf="order.status == orderStatus.PICKEDUP || order.status == orderStatus.IN_TRANSIT">
+          <ion-button shape="round" class="accept-full" (click)="orderStatusChangeViewOld(ind, order, 'IN_TRANSIT')">Reached Delivery Location</ion-button>
+        </div> -->
+        <div class="btns" *ngIf="order.status == 'DELIVERED'">
+          <ion-button *ngIf="order?.payment?.paid == false" shape="round" class="accept-full"
+            (click)="checkPaymentAcknowledgement(ind, order)">
+            {{"PaymentReceived?" |language:"Payment Received ?"}}</ion-button>
+          <ion-button *ngIf="order?.payment?.paid == true" shape="round" class="accept-full"
+            (click)="checkPaymentAcknowledgement(ind, order)">
+            <ion-icon class="end-icon" slot="start" src="./../../../../assets/icon/ic_doneall.svg"></ion-icon>
+            {{'ConfirmPayment'|language:'Confirm Payment'}}
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

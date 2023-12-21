@@ -1,0 +1,148 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px 20px 0px 0px;
+  min-height: 100% !important;
+  overscroll-behavior-y: auto;
+  background-color: var(--ion-color-light);
+
+  ion-title {
+    color: #222222;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+    position: relative;
+    max-height: 15px;
+  }
+}
+
+ion-content {
+  --background: transparent;
+
+}
+
+.more-input {
+  width: 100%;
+  height: 10vw;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+
+  // margin: 10px 5vw;
+  img {
+    width: 55vw;
+    height: 45vw;
+  }
+}
+
+.product-lab {
+  text-align: center;
+  margin: 15px 11px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ion-color-dark-shade);
+}
+
+.box {
+  border: 1px solid rgba(125, 124, 131, 0.4);
+  border-radius: 6px;
+  margin: 1vw;
+  padding: 2vw;
+  height: 82px;
+  width: 82px;
+
+  img {
+    background: transparent;
+  }
+}
+
+.active {
+  border: 0;
+  background-color: #10bab266;
+}
+
+.mere-order-labl {
+  position: absolute;
+  margin-bottom: -2vw;
+  margin-left: 4vw;
+  background-color: #fbfbfb;
+  background: #fbfbfb;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+
+.item-content {
+  margin-left: 4vw;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+}
+
+.chipadd {
+  width: 95%;
+  height: 12vw;
+  border-radius: 24px;
+  margin: 5px 0 5px 0;
+}
+
+.quantity {
+  ion-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.mere-otp {
+  margin-top: 4vw;
+  margin-right: 2vw;
+  width: 6vw;
+  height: 6vw;
+}
+
+.item {
+  align-items: center;
+  display: flex;
+  margin-bottom: 5vw;
+  padding: 2vw;
+}
+
+.CrossIcon {
+  height: 48px;
+  width: 48px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  border-radius: 100%;
+  background: #fbfbfb;
+}
+
+.backbt {
+  color: var(--ion-color-primary);
+  margin-top: 10px;
+  position: absolute;
+  float: left;
+  left: 8px;
+  top: 5px;
+}
+
+ion-button {
+  width: 80vw;
+  margin: 20px auto;
+}
+
+ion-input {
+  text-align: center;
+}

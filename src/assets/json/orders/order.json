@@ -1,0 +1,48 @@
+{
+    "id":123,
+    "name": "Jhon Doe",
+    "location": "Faraway Place, Neverland",
+    "orders":12,
+    "rating": 4.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "520",
+    "photo": "do-have-image.jpg",
+    "status":"new",
+    "orderItemDetails":[
+        {
+          "name": "Strawberry",
+          "price": "90",
+          "currency":"INR",
+          "quantity": "500",
+          "unit":"grams"
+        },
+        {
+          "name": "Grapes",
+          "price": "55",
+          "currency":"INR",
+          "quantity": "500",
+          "unit":"grams"
+        },
+        {
+          "name": "Mango",
+          "price": "80",
+          "currency":"INR",
+          "quantity": "500",
+          "unit":"grams"
+        },
+        {
+          "name": "Tomato",
+          "price": "25",
+          "currency":"INR",
+          "quantity": "500",
+          "unit":"grams"
+        }
+    ],
+    "deliveryInfo" : {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    }
+}

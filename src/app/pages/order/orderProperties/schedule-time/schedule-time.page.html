@@ -1,0 +1,33 @@
+<div class="crossIcon" (click)="cancel()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+<ion-content>
+  <div class="contents">
+    <ion-title>{{'SellingPrice ' | language : 'Selling Price'}}</ion-title>
+
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="3.6" class="schedule-time">
+          <ion-label class="schedule-time-text">{{'today' | language : 'Today'}}</ion-label>
+        </ion-col>
+        <ion-col size="3.6" class="schedule-time">
+          <ion-label class="schedule-time-text">{{'tomorrow' | language : 'Tomorrow'}}</ion-label>
+        </ion-col>
+        <ion-col size="3.6" class="schedule-time">
+          <ion-label class="schedule-time-text">24th May</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="3.6" class="schedule-time">
+          <ion-label class="schedule-time-text">25th May</ion-label>
+        </ion-col>
+        <ion-col size="3.6" class="schedule-time">
+          <ion-label class="schedule-time-text">26th May</ion-label>
+        </ion-col>
+        <ion-col size="3.6" class="schedule-time" (click)="scheduleCalendar()">
+          <ion-label class="schedule-time-text">{{'more' | language : 'More'}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

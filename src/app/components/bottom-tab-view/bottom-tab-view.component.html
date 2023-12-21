@@ -1,0 +1,18 @@
+<ion-tab-bar slot="bottom">
+  <ion-tab-button layout="icon-top" (click)="orderPageNavigation('home')">
+    <ion-icon src="assets/images/homeImg/home.svg"></ion-icon>
+    <ion-label [ngClass]="checkRouter === '/home' ? 'active': ''">{{'home' | language : 'Home'}}</ion-label>
+  </ion-tab-button>
+  <ion-tab-button layout="icon-top" [selected]="checkRouter === '/order'" (click)="orderPageNavigation('order')">
+    <ion-icon name="bag-outline"></ion-icon>
+    <ion-label>{{'orders' | language :'Orders'}}</ion-label>
+  </ion-tab-button>
+  <ion-tab-button layout="icon-top" [selected]="checkRouter === '/order-history' ? true : false" (click)="orderPageNavigation('order-history')">
+    <ion-icon src="assets/images/homeImg/history.svg"></ion-icon>
+    <ion-label>{{'History' | language : 'History'}}</ion-label>
+  </ion-tab-button>
+  <ion-tab-button layout="icon-top" (click)="commonService.featureNotAvailable()">
+    <ion-icon name="notifications-outline"></ion-icon>
+    <ion-label>{{'notification' | language : 'Notification'}}</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

@@ -1,0 +1,30 @@
+<ion-footer>
+  <div class="CrossIcon" (click)="cancel()">
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+  <div class="options">
+    <p class="header">&nbsp;</p>
+    <ion-grid>
+      <ion-row class="share-ride ion-padding-bottom ion-justify-content-around">
+        <ion-col size="4" class="ion-text-center">
+          <div class="card" (click)="sendMessageBy(0)">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+            <div class="title">Whatsapp</div>
+          </div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="card" (click)="sendMessageBy(1)">
+            <ion-icon name="call-outline"></ion-icon>
+            <div class="title">Phone</div>
+          </div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="card" (click)="sendMessageBy(2)">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <div class="title">Message</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-footer>

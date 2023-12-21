@@ -1,0 +1,40 @@
+.crossIcon {
+    height: 48px;
+    width: 48px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    border-radius: 100%;
+    background: #fbfbfb;
+}
+
+.contents {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    ion-title {
+        text-align: center;
+        margin: 10px 0;
+        position: relative;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        color: #4f5052;
+    }
+}
+
+ion-datetime {
+    padding-left: 26px !important;
+    padding-right: 26px !important;
+    --ion-color-primary: linear-gradient(138.15deg, rgba(249, 207, 86, 0.52) 6.94%, #f9cf56 94.22%);
+
+    &:not(.datetime-placeholder) {
+        color: #4f5052;
+    }
+}

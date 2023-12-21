@@ -1,0 +1,60 @@
+<ion-card class="ion-no-margin">
+  <ion-card-content (click)="product.status === 'pending' && changeDetails(product)">
+    <div class="info">
+      <ion-grid class="catlog-prod">
+        <ion-row>
+          <ion-col size="3">
+            <span class="leftcheck" *ngIf="productStatus!=='all'">
+              <ion-checkbox mode="md" [(ngModel)]="product.checked" (click)="onSelectProduct(product.id,productStatus)"
+                *ngIf="product.status === 'unpublished' || product.status === 'published'"></ion-checkbox>
+            </span>
+          </ion-col>
+          <ion-col size="6"></ion-col>
+          <ion-col size="3">
+            <span class="gradinsign">
+              <img class="gradingsign" (click)="product.status !== 'pending' ? openGradingPopUp(product) : ''"
+                [src]="product?.grading ? '/assets/award/award-' + product.grading + '.svg' : '/assets/award/award0.png'"
+                alt="">
+            </span>
+          </ion-col>
+        </ion-row>
+        <ion-row><ion-col size="12"></ion-col></ion-row>
+        <ion-item lines="none" class="card ion-no-padding text-center namecard" (click)="product.status === 'pending' || allTab ? product.checked = product.checked : product.checked = !product.checked; 
+                onSelectProduct(product.id,productStatus)">
+          <div class="product-card">
+            <img class="productimg" [src]="product?.thumbnail ? product?.thumbnail : product?.image" alt="">
+            <p class="producttext">{{product?.name}}</p>
+          </div>
+        </ion-item>
+      </ion-grid>
+      <ion-row class="rowscard">
+        <p class="price" (click)="product.status !== 'pending' ? openPricePopUp(product): ''">
+          <img *ngIf="!product.price" src="/assets/images/rupee-icon.svg" alt="">
+          {{ product?.price ? '&#x20B9;' + product.price + '/' + product.soldBy : '-' }}
+        </p>
+      </ion-row>
+      <ion-row class="rowscard">
+        <div class="preOrder" (click)="product.status !== 'pending' && openPricePopUp(product)" style="width: 100%;">
+          <ion-col size="6">
+            <p class="text">{{'PreOrder '|language:'Pre Order '}}</p>
+          </ion-col>
+          <div class="discount">
+            <ion-chip color="primary" mode="ios" outline="true" class="chipadd">
+              <ion-icon name="remove-circle-outline" color="danger"></ion-icon>
+              <!-- The "||" operator is used to provide a default value of '0%' in case the discount value is undefined / null / empty string-->
+              <p>{{product?.discount || '0'}}%</p>
+              <ion-icon name="add-circle-outline" color="success"></ion-icon>
+            </ion-chip>
+          </div>
+        </div>
+      </ion-row>
+    </div>
+    <div class="status" [ngClass]="{'unpublishedBackground': product?.status === 'unpublished',
+       'publishedBackground': product?.status === 'published', 'pendingBackground': product?.status === 'pending'}">
+      <div class="iconstatus">
+        <img [src]="'/assets/images/' + product?.status + '.svg'" alt="">
+      </div>
+      <p>{{product?.status | titlecase}}</p>
+    </div>
+  </ion-card-content>
+</ion-card>

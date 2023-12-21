@@ -1,0 +1,67 @@
+<div class="CrossIcon" (click)="cancel()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+<ion-content>
+  <div class="contents">
+    <ion-icon class="backbt" name="chevron-back-outline" (click)="backToPricingPopup()"></ion-icon>
+    <ion-title>
+      {{'grading' | language : 'Grading'}}
+    </ion-title>
+    <div class="content">
+      <img class="img" [src]="product?.image" alt="fruit"/>
+      <ion-label class="text">{{product?.name}}</ion-label>
+    </div>
+ 
+    <ion-grid class="ion-padding">
+      <ion-row class="ion-margin">
+        <ion-col size="4" (click)="selectGrade('1')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='1'}">
+            <img  src="assets/award/award-1.svg" alt=""/>
+          </div>
+        </ion-col>
+        <ion-col size="4" (click)="selectGrade('2')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='2'}">
+          <img  src="assets/award/award-2.svg" alt=""/>
+          </div>
+        </ion-col>
+        <ion-col size="4" (click)="selectGrade('3')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='3'}">
+          <img  src="assets/award/award-3.svg" alt=""/>
+          </div>
+        </ion-col>
+     
+        <ion-col size="4"  (click)="selectGrade('4')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='4'}">
+          <img  src="assets/award/award-4.svg" alt=""/>
+        </div>
+        </ion-col>
+        <ion-col size="4"  (click)="selectGrade('5')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='5'}">
+          <img  src="assets/award/award-5.svg" alt=""/>
+        </div>
+        </ion-col>
+        <ion-col size="4" (click)="selectGrade('6')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='6'}">
+          <img  src="assets/award/award-6.svg" alt=""/>
+          </div>
+        </ion-col>
+        <ion-col size="4"  (click)="selectGrade('7')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='7'}">
+          <img  src="assets/award/award-7.svg" alt=""/>
+          </div>
+        </ion-col>
+        <ion-col size="4"  (click)="selectGrade('8')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='8'}">
+          <img  src="assets/award/award-8.svg" alt=""/>
+        </div>
+        </ion-col>
+        <ion-col size="4" (click)="selectGrade('9')">
+          <div class="img-box" [ngClass]="{'active':product?.grading ==='9'}" >
+          <img  src="assets/award/award-9.svg" alt=""/>
+        </div>
+        </ion-col>
+      </ion-row>
+      <ion-button color="primary" expand="block" shape="round" fill="solid" mode="ios" (click)="skipGradingPopup()">{{'skip' | language : 'Skip'}}</ion-button>
+    </ion-grid>
+  </div>
+</ion-content>

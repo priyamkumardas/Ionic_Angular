@@ -1,0 +1,1481 @@
+[
+  {
+    "id": 121,
+    "name": "Ert Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 8,
+    "rating": 3.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "380",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "new",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 122,
+    "name": "Abc Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 3,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "440",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "new",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 123,
+    "name": "Def Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 2,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "270",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "new",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 124,
+    "name": "Jlk Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 3,
+    "rating": 1.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "490",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "new",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 131,
+    "name": "Mno Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 5,
+    "rating": 4.1,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "360",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "accepted",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 132,
+    "name": "Test Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 8,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "90",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "accepted",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-03T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 133,
+    "name": "Demo Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 6,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "330",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "accepted",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-03T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 134,
+    "name": "View Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 8,
+    "rating": 4.4,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "260",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "accepted",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-15T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 135,
+    "name": "Chees Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 11,
+    "rating": 4.2,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "120",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "accepted",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 136,
+    "name": "Done Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 10,
+    "rating": 3.2,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "140",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "accepted",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 141,
+    "name": "Check Joe",
+    "location": "Faraway Place, Neverland",
+    "orders": 11,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "440",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "processing",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-03T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 142,
+    "name": "Funny Joe",
+    "location": "Faraway Place, Neverland",
+    "orders": 10,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "450",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "processing",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-18T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 143,
+    "name": "Demo Joe",
+    "location": "Faraway Place, Neverland",
+    "orders": 9,
+    "rating": 3.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "220",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "processing",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-03T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 144,
+    "name": "Dummy Joe",
+    "location": "Faraway Place, Neverland",
+    "orders": 6,
+    "rating": 1.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "480",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "processing",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-04T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 145,
+    "name": "Place Joe",
+    "location": "Faraway Place, Neverland",
+    "orders": 8,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "520",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "processing",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-04T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 146,
+    "name": "Game Joe",
+    "location": "Faraway Place, Neverland",
+    "orders": 4,
+    "rating": 4.4,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "320",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "processing",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-03T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 147,
+    "name": "One Joe",
+    "location": "Faraway Place, Neverland",
+    "orders": 6,
+    "rating": 1.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "220",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "processing",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 151,
+    "name": "Jhon Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 1,
+    "rating": 2.2,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "320",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "ready",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 152,
+    "name": "Charter Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 2,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "dispatch",
+    "currency": "INR",
+    "amount": "260",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "deliver",
+    "status": "ready",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 153,
+    "name": "Patch Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 3,
+    "rating": 3.0,
+    "outOfStock": 1,
+    "type": "dispatch",
+    "currency": "INR",
+    "amount": "210",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "deliver",
+    "status": "ready",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 154,
+    "name": "Ozark Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 6,
+    "rating": 3.1,
+    "outOfStock": 1,
+    "type": "dispatch",
+    "currency": "INR",
+    "amount": "123",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "deliver",
+    "status": "ready",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 155,
+    "name": "Session Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 5,
+    "rating": 1.3,
+    "outOfStock": 1,
+    "type": "dispatch",
+    "currency": "INR",
+    "amount": "620",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "deliver",
+    "status": "ready",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 156,
+    "name": "Final Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 5,
+    "rating": 2.2,
+    "outOfStock": 1,
+    "type": "dispatch",
+    "currency": "INR",
+    "amount": "550",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "deliver",
+    "status": "ready",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 161,
+    "name": "Faulan Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 6,
+    "rating": 3.4,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "520",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "dispatch",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 162,
+    "name": "Rest Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 4,
+    "rating": 2.4,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "140",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "dispatch",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 163,
+    "name": "Cycle Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 7,
+    "rating": 1.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "460",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "dispatch",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 164,
+    "name": "Charm Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 5,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "480",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "dispatch",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-10-01T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 165,
+    "name": "Click Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 6,
+    "rating": 3.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "420",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "dispatch",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  },
+  {
+    "id": 166,
+    "name": "Mouse Doe",
+    "location": "Faraway Place, Neverland",
+    "orders": 8,
+    "rating": 2.3,
+    "outOfStock": 1,
+    "type": "pickup",
+    "currency": "INR",
+    "amount": "120",
+    "photo": "do-have-image.jpg",
+    "deliveryType": "pickup",
+    "status": "dispatch",
+    "deliveryInfo": {
+      "deliveryBoy": "default",
+      "deliveryDate": "default",
+      "deliverySlot": "default"
+    },
+    "orderItemDetails": [
+      {
+        "name": "Strawberry",
+        "price": "90",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Grapes",
+        "price": "55",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Mango",
+        "price": "80",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "Tomato",
+        "price": "25",
+        "currency": "INR",
+        "quantity": "500",
+        "unit": "grams"
+      }
+    ],
+    "createdAt": "2022-09-02T21:18:09.187Z",
+    "updatedAt": "2022-09-02T21:48:51.938Z"
+  }
+]

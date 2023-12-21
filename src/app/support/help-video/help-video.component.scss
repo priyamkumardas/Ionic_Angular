@@ -1,0 +1,42 @@
+ion-row {
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
+ion-img {
+    margin: auto;
+}
+
+ion-col {
+    text-align: center;
+}
+
+ion-icon {
+    color: #10bab2;
+}
+
+.videoPlayer {
+    height: 250px;
+    width: 100%;
+    iframe{
+           
+            width: 100%;
+            height: 100%;
+            }
+}
+
+.img {
+    height: 70px;
+    width: 70px;
+    margin: auto;
+    display: flex;
+    background: #fcfcfc;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 1px 3px rgba(51, 51, 51, 0.25);
+    border-radius: 100%;
+}
+
+.imgs {
+    filter: grayscale(90%);
+}

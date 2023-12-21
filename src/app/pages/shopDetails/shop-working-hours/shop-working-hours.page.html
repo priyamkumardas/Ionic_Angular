@@ -1,0 +1,139 @@
+<ion-header>
+    <ion-toolbar>
+        <div class="header">
+            <ion-icon name="chevron-back-outline" (click)="onBack()"></ion-icon>
+            <ion-title>{{'yourShopWorkingHours' | language : 'Your Shop Working hours'}}</ion-title>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-text class="subhead">{{'specifyWorkingTime' | language : 'Specify Working Time'}}</ion-text>
+    <ion-grid>
+        <ion-row class="line2">
+            <span>{{'sameForEveryDay' | language : 'Same for Every Day'}}</span>
+            <ion-toggle class="toggle-same" [checked]="isEnableToggle ? true : false" (ionChange)="selectAll($event)">
+            </ion-toggle>
+        </ion-row>
+        <div *ngIf="isEnableToggle">
+            <ion-row class="weekday">
+                <ion-col class="column" *ngFor="let day of weekday; let ind = index">
+                    <ion-chip class="days" [ngClass]="{'selectedRow': day.isEnable}" (click)="onRowClick(day, ind)">
+                        <ion-label class="day">{{day.dName}}</ion-label>
+                    </ion-chip>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="timing" *ngFor="let item of collectTiems; let ind = index">
+                <ion-chip class="timebox" id="{{'open-date-input'+ ind+1}}" [disabled]="isEnableToggle ? false : true">
+                    <ion-label class="day">{{ dateValue(item, 'time'+ind+1) }}</ion-label>
+                    <ion-modal trigger="{{'open-date-input'+ ind+1}}" show-backdrop="false" side="end">
+                        <ng-template>
+                            <app-date-time-picker 
+                            [value]="fullDateValue(item, 'time'+ind+1)"
+                            [ngModel]="dateValue(item, 'time'+ind+1)" ngDefaultControl type="time"
+                            [contenerType]="'time'+ind+1" 
+                            [date_format]="format" (datePickerValue)="change($event)">
+                            </app-date-time-picker>
+                        </ng-template>
+                    </ion-modal>
+                </ion-chip>
+                <ion-text class="dott">-</ion-text>
+                <ion-chip class="timebox" id="{{'open-date-input'+ ind+2}}" [disabled]="isEnableToggle ? false : true">
+                    <ion-label class="day">{{ dateValue(item, 'time'+ind+2) }}</ion-label>
+                    <ion-modal trigger="{{'open-date-input'+ ind+2}}" show-backdrop="false" side="end">
+                        <ng-template>
+                            <app-date-time-picker 
+                            [value]="fullDateValue(item, 'time'+ind+2)"
+                            [ngModel]="dateValue(item, 'time'+ind+2)" ngDefaultControl type="time"
+                            [contenerType]="'time'+ind+2" 
+                            [date_format]="format" (datePickerValue)="change($event)">
+                            </app-date-time-picker>
+                        </ng-template>
+                    </ion-modal>
+                </ion-chip>
+                <ion-img class="sun" src="assets/images/sunrise.png"></ion-img>
+                <ion-icon *ngIf="ind > 1 && collectTiems.length-1 == ind" class="sun" name="trash"
+                    (click)="remove(ind)"></ion-icon>
+            </ion-row>
+            <ion-icon name="add" (click)="Add(collectTiems)">{{'addmore' | language : 'Add More'}}</ion-icon>
+        </div>
+    </ion-grid>
+
+
+    <div class="timebox-vertical" *ngIf="!isEnableToggle">
+        <ion-grid *ngFor="let allItem of fullWeekDay; let innd = index">
+            <ion-col size="2" class="column">
+                <ion-chip class="days" [ngClass]="{'selectedRow': allItem.isEnable}"
+                    (click)="onRowClick(allItem, innd)">
+                    <ion-label class="day">{{allItem.dName}}</ion-label>
+                </ion-chip>
+            </ion-col>
+            <ion-row class="content-item" *ngFor="let item of allItem.alltime; let ind = index">
+                <ion-col size="10">
+                    <ion-row class="ion-align-items-center">
+                        <ion-col size="4.5">
+                            <ion-chip class="timebox" id="{{'open-date-input'+allItem.dName+ind+1}}"
+                                [disabled]="isEnableToggle ? true : false">
+                                <ion-label class="day">{{ item['time'+allItem.dName+ind+1] | date: 'h:mm a'}}
+                                </ion-label>
+                                <ion-modal trigger="{{'open-date-input'+allItem.dName+ind+1}}" show-backdrop="false"
+                                    side="end">
+                                    <ng-template>
+                                        <app-date-time-picker [value]="item['time'+allItem.dName+ind+1]"
+                                            [(ngModel)]="item['time'+allItem.dName+ind+1]" ngDefaultControl type="time"
+                                            [contenerType]="'time'+allItem.dName+ind+1" [date_format]="format"
+                                            (datePickerValue)="change($event)">
+                                        </app-date-time-picker>
+                                    </ng-template>
+                                </ion-modal>
+                            </ion-chip>
+                        </ion-col>
+                        <ion-col size="1" class="">
+                            <ion-text class="dott">-</ion-text>
+                        </ion-col>
+                        <ion-col size="4.5" class="">
+                            <ion-chip class="timebox" id="{{'open-date-input'+allItem.dName+ind+2}}"
+                                [disabled]="isEnableToggle ? true : false">
+                                <ion-label class="day">{{ item['time'+allItem.dName+ind+2] | date: 'h:mm a'}}
+                                </ion-label>
+                                <ion-modal trigger="{{'open-date-input'+allItem.dName+ind+2}}" show-backdrop="false"
+                                    side="end">
+                                    <ng-template>
+                                        <app-date-time-picker [value]="item['time'+allItem.dName+ind+2]"
+                                            [(ngModel)]="item['time'+allItem.dName+ind+2]" ngDefaultControl type="time"
+                                            [contenerType]="'time'+allItem.dName+ind+2" [date_format]="format"
+                                            (datePickerValue)="change($event)">
+                                        </app-date-time-picker>
+                                    </ng-template>
+                                </ion-modal>
+                            </ion-chip>
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-img class="sun item-view" src="assets/images/sunrise.png"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="content-item ion-align-items-center">
+                <ion-col size="6">
+                    <ion-icon name="add" (click)="dynamicAdd(innd, allItem)">{{'addmore' | language : 'Add More'}}</ion-icon>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-icon *ngIf="allItem.alltime.length > 2" class="sun" name="trash" (click)="dynamicRemove(innd, allItem)"></ion-icon>
+                </ion-col>
+            </ion-row>
+            <ion-item-divider></ion-item-divider>
+        </ion-grid>
+    </div>
+</ion-content>
+
+<ion-footer class="foter">
+    <div class="save">
+        <ion-button fill="clear" (click)="save()" type="submit">{{'save&Continue' | language : 'Save & Continue'}}</ion-button>
+    </div>
+    <ion-button class="skip" outline="true" (click)="skipView()">
+        <ion-text class="skiptxt">{{'skipfornow' | language : 'Skip for now'}}</ion-text>
+    </ion-button>
+</ion-footer>

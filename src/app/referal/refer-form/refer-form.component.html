@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="action('close')">
+        <ion-icon name="chevron-back-outline" ></ion-icon>
+       </ion-button> 
+     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openMyRewardsModal()">
+        <ion-icon class="gift" name="gift-outline"></ion-icon>
+        <ion-label> {{"MyRewards " | language: "My Rewards "}}</ion-label>
+      </ion-button>
+      <ion-buttons slot="end">
+        <ion-button [ngClass]="clickDisable" (click)="openHelpVideo()">
+          <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar mode="ios" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar class="mt">
+    <ion-img class="icon" src="{{inviteType.image}}"></ion-img>
+  </ion-toolbar>
+  <h4 class="inviteType">{{inviteType.name | titlecase | language:inviteType.name}} </h4>
+
+  <div class="inputBox">
+    <ion-input type="tel" maxlength="10" placeholder="{{'Inviteesmobilenumber' | language:'Invitee\'s Mobile Number'}}" [(ngModel)]="mobileNumber"
+      (ionChange)="validatePhone($event)" pattern="^[0-9]{6}"></ion-input>
+  </div>
+
+  <ion-button shape="round" class="btn2" [ngClass]="!invalidPhone?'btn2':'btn2Disabled'" 
+    (click)="mobileNumber?.length == 10 && !invalidPhone ? invite() : referralService.showToastNumber()">
+        {{ "continue" | language: "CONTINUE" }}</ion-button>
+</ion-content>

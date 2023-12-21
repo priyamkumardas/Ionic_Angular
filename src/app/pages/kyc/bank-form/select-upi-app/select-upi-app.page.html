@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" color="primary" defaultHref="/bank-form" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-label>
+      <ion-title class="ion-no-padding">{{'Select UPI App'| language:'Select UPI App'}}</ion-title>
+    </ion-label>
+  </ion-toolbar>
+  <ion-progress-bar mode="ios" color="primary" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar class="tbar">
+    <ion-row>
+      <ion-col *ngFor="let upiapp of upiapps" size="4" (click)="selectUpi(this.upiapp.id)">
+        <div class="img">
+          <ion-img (click)="imageData(upiapp.image)" src="{{upiapp.image}}" alt=""></ion-img>
+        </div>
+        <p>{{upiapp.app}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-content>

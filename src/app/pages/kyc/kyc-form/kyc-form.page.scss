@@ -1,0 +1,116 @@
+.inputfield {
+  margin: 10px 8px;
+  --padding-start: 4px;
+}
+
+.title {
+  margin-left: 10px;
+}
+
+ion-segment {
+  margin-bottom: 5vw;
+
+  ion-segment-button {
+    --color: #7d7c83;
+    --color-checked: var(--ion-color-primary);
+  
+    ion-label {
+      text-transform: capitalize;
+    }
+  }
+}
+
+ion-modal {
+  --background: #0000003b !important;
+}
+
+.documentInput {
+  margin: 3vw 5vw;
+  margin-bottom: 7vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--ion-color-primary-contrast);
+  border: 1px dashed #2c3348;
+  border-radius: 5px;
+  padding: 3vw 1vw;
+  text-align: center;
+  line-height: 22px;
+
+  p {
+    margin: 2vw 0;
+    color: rgba(44, 51, 72, 0.6);
+  }
+
+  label {
+    margin: 2vw 0;
+    line-height: 22px;
+
+    u {
+      color: rgba(44, 51, 72, 0.6);
+    }
+  }
+}
+
+.document {
+  display: none;
+}
+
+.btns {
+  margin: 2vh auto;
+  width: 90vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  width: -webkit-fill-available;
+  text-align: center;
+  margin: 0;
+}
+
+.skip {
+  background: var(--ion-color-primary-contrast);
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 30px;
+
+  ion-button {
+    text-transform: capitalize;
+  }
+}
+
+.save {
+  background: var(--ion-color-primary);
+  border-radius: 30px;
+
+  ion-button {
+    color: var(--ion-color-primary-contrast);
+    text-transform: capitalize;
+  }
+}
+
+.removeBtn {
+  text-align: center;
+  position: absolute;
+}
+
+.doc-img {
+  max-height: 20vh;
+  margin: 2vh 0px;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+#star {
+  color: var(--ion-color-danger);
+  margin-left: 3px;
+}
+
+.error-message {
+  color: var(--ion-color-danger);
+  font-size: 12px;
+  margin-left: 10px;
+}

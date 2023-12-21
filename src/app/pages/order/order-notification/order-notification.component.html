@@ -1,0 +1,93 @@
+<ion-content>
+  <div class="container">
+    <div class="crossIcon">
+      <ion-icon name="close-outline" (click)="dismissModal()"></ion-icon>
+    </div>
+    <div class="orderDetails">
+      <p class="orderId">{{'orderid#' | language : 'Order #'}}: {{order?.orderID}}</p>
+      <div class="profile">
+        <div class="img">
+          <img
+            src="{{order?.user?.image ? order?.user?.image : 'https://s3.ap-south-1.amazonaws.com/dev.sarvm.com/Group+8121.svg'}}"
+            alt="profilePic" class="profilePic" />
+          <div *ngIf="order?.user?.image == ''" class="profileTxt">{{getCharector(order?.user?.name)}}</div>
+          <a href="tel:{{order?.phone}}"><img src="/assets/images/Group 7995.svg" alt="call-icon"
+              class="callIcon" /></a>
+        </div>
+        <div class="info">
+          <p class="stock" *ngIf="order?.user?.phone || order?.phone">+91 {{order?.user?.phone ? order?.user?.phone : order?.phone}}</p>
+          <p class="name">{{order?.user?.name}}</p>
+          <div class="location">
+            <ion-icon name="location-outline"></ion-icon>
+            <p class="address">{{order?.delivery?.location?.address}}</p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="pickup">
+            <img *ngIf="order.delivery?.mode != 'PICKEDUP'" src="assets/images/truck.svg" alt="" srcset="" />
+            <img *ngIf="order.delivery?.mode == 'PICKEDUP'" src="assets/images/hand.svg" alt="" srcset="" />
+            <p class="mod">{{order?.delivery?.mode}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="order-item-payment">
+        <p class="items">{{order?.products?.length}} {{'itemsfor' | language : 'items for'}}
+          <span class="amount">{{order?.amount | currency:'INR':'symbol':'0.0-2'}}</span>
+        </p>
+        <span class="payment-status">Payment : {{order?.payment?.paid == true ? 'Paid' : 'Pending'}}</span>
+      </div>
+    </div>
+    <div class="orderSummary">
+      <p class="heading">{{'orderSummary' | language : 'Order Summary'}}</p>
+      <div class="container">
+        <div class="completeOrderInfo" *ngFor="let item of order.orderItemDetails">
+          <ion-card mode="ios"><img class="product-img" src="{{item?.image}}"
+              alt="{{item?.name | slice:0:4}}"></ion-card>
+          <div class="quantity">
+            <p class="product">{{item?.name | textTruncate : 15}} x {{item?.unit ? item?.unit : item.soldBy}}</p>
+            <p class="weight"> {{item?.qty}} {{item?.soldBy}}<ion-chip *ngIf="item?.required">Mandatory</ion-chip></p>
+          </div>
+          <p class="totalPrice">{{item?.price | currency:'INR':'symbol':'0.0-2'}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="amounts">
+      <p class="sum">{{'Total' | language : 'Total'}}</p>
+      <p class="totalSum">{{order?.amount | currency:'INR':'symbol':'0.0-2'}}</p>
+    </div>
+    <div class="amounts">
+      <p class="sum">{{'discount' | language : 'Discount'}}</p>
+      <p class="totalSum">- {{(order?.discount ? order?.discount : 0) | currency:'INR':'symbol':'0.0-2'}}</p>
+    </div>
+
+    <div class="amounts" *ngIf="order?.delivery?.mode == 'DELIVERY'">
+      <p class="sum">{{'deliveryCharge' | language : 'Delivery Charge'}}</p>
+      <p class="totalSum">{{order?.delivery?.deliveryCharges | currency:'INR':'symbol':'0.0-2'}}</p>
+    </div>
+
+    <div class="bill" *ngIf="order?.delivery?.mode == 'DELIVERY'">
+      <p class="sum">{{'orderTotal' | language : 'Order Total'}}</p>
+      <p class="totalSum">{{order?.amount + (order?.delivery?.deliveryCharges) - (order.discount ? order.discount : 0) | currency:'INR':'symbol':'0.0-2'}}</p>
+    </div>
+    <div class="bill" *ngIf="order?.delivery?.mode == 'PICKUP'">
+      <p class="sum">{{'orderTotal' | language : 'Order Total'}}</p>
+      <p class="totalSum">{{order?.amount - (order?.discount ? order?.discount : 0) | currency:'INR':'symbol':'0.0-2'}}</p>
+    </div>
+    <!-- <div class="instructions-view" *ngIf="order?.instruction">
+      <p class="instruct-title">{{'DeliveryInstructions' | language : 'Delivery Instructions'}}</p>
+      <ion-label class="instruct-detials">
+        {{order?.instruction}}
+      </ion-label>
+    </div> -->
+    <ion-row *ngIf="order.status == 'NEW'">
+      <ion-col size="6" class="ion-padding">
+        <ion-button mode="ios" class="acceptrejectbtns" color="primary" shape="round" expand="full" fill="outline"
+          (click)="cancel(order, 'REJECTED')">{{'Reject' | language :'Reject'}}</ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-padding">
+        <ion-button mode="ios" class="acceptrejectbtns" color="primary" shape="round" expand="full"
+          (click)="acceptOrder(order, 'ACCEPTED')">{{'Accept '| language : 'Accept'}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

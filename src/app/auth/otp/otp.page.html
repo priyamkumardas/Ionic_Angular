@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/login" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="helpBtn" (click)="openHelpVideo()">
+        <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="refferal-banner" *ngIf="returnURL">
+    <ion-img src="assets\ReferrlImg\refferedby.svg"></ion-img>
+    <ion-text>{{shopId}}</ion-text>
+  </div>
+  <div [ngClass]="returnURL ? 'retailer-otpimg' : 'retailer-otp'">
+    <div class="otp-head">
+      <h3>{{'verificationCode' | language : 'Verification Code'}}</h3>
+      <h5>{{'otpsentto' | language : 'OTP Sent to'}} + 91 {{phoneNumber}}</h5>
+    </div>
+    <div class="otp-input">
+      <h4>{{'enterOtp' | language : 'Enter OTP'}}</h4>
+      <div class="otp-inpt-bx">
+        <ion-input #otp1 required="true" maxLength="4" class="test" [(ngModel)]="otp.first" (ionFocus)="otp.first = ''"
+          (ionChange)="onOTPChange($event, otp2)" type="tel" [class.error]="invalidOtp">
+        </ion-input>
+      </div>
+      <h5 *ngIf="timer">00 : {{ timer > 9 ? timer:'0'+timer }}</h5>
+    </div>
+    <p>{{'didntReceivetheOTP' | language : 'Didnt receive the OTP?'}}</p>
+    <div class="resend-otp" *ngIf="resendOtp; else elseBlock">
+      <!-- <img src="assets/images/sms.png" alt="logo"> -->
+      <!-- <img src="assets/images/call.png" alt="logo"> -->
+      <ion-button (click)="resendOtpFunc('sms')" shape="round" color="primary" size="small"><ion-icon slot="start"
+          name="chatbubble-outline"></ion-icon> {{'sms' | language : 'SMS'}}</ion-button>
+      <ion-button (click)="resendOtpFunc('call')" shape="round" color="primary" size="small"><ion-icon slot="start"
+          name="call-outline"></ion-icon> {{'call' | language : 'Call'}}</ion-button>
+    </div>
+    <ng-template #elseBlock>
+      <!-- <img src="assets/images/sms.png" alt="logo"> -->
+      <!-- <img src="assets/images/call.png" alt="logo"> -->
+      <div class="resend-otp">
+        <ion-button (click)="resendOtpFunc('sms')" shape="round" color="medium" [disabled]="!resendOtp"
+          size="small"><ion-icon slot="start" name="chatbubble-outline"></ion-icon> {{'sms' | language :
+          'SMS'}}</ion-button>
+        <ion-button (click)="resendOtpFunc('call')" shape="round" color="medium" [disabled]="!resendOtp"
+          size="small"><ion-icon slot="start" name="call-outline"></ion-icon> {{'call' |language : 'Call'}}</ion-button>
+      </div>
+    </ng-template>
+    <!-- <ion-button shape="round" expand="block" color="medium" *ngIf="otp.first.length < 4" [disabled]="otp.first.length < 4" mode="ios" (click)="checkAndVerifyOtp()">{{'verify' | language : 'Verify'}}</ion-button>
+    <ion-button shape="round" expand="block" color="primary" *ngIf="otp.first.length == 4" mode="ios" (click)="checkAndVerifyOtp()">{{'verify' | language : 'Verify'}}</ion-button> -->
+    <!-- <p class="terms">
+      {{'byClickingIaccepttheterms&conditionsandprivacypolicy' | language : 'By clicking, I accept the Terms & conditions and Privacy Policy'}}
+    </p> -->
+    <div >
+      <!-- <ion-input #otp2 type="button" (click)="checkAndVerifyOtp()"
+        value="{{'verify' | language : 'Verify'}}"></ion-input> -->
+        <ion-input #otp2 [readonly]="true" class="check"></ion-input>
+        <ion-button expand="block" class="vefify-otp" *ngIf="otp.first.length != 4; else activate" shape="round" #otp2 color="medium" [disabled]="true" mode="ios" (click)="checkAndVerifyOtp()">{{'verify' | language : 'Verify'}}</ion-button>
+        <ng-template #activate>
+          <ion-button expand="block" class="vefify-otp" shape="round" #otp2 color="primary"  mode="ios" (click)="checkAndVerifyOtp()" >{{'verify' | language : 'Verify'}}</ion-button>
+        </ng-template>
+      <p class="terms">
+        {{'byClickingIacceptthe'|language:'By clicking, I accept the'}} <a (click)="openUrl('https://sarvm.ai/terms&conditions.html')"> 
+          {{'terms&Conditions' | language : 'Terms & Conditions'}}
+        </a> &nbsp; {{'and' | language : 'and'}} &nbsp; <a (click)="openUrl('https://sarvm.ai/sarvm-privacy-policy.html')">
+          {{'privacyPolicy' | language : 'Privacy Policy'}}</a>.
+      </p>
+    </div>
+  </div>
+</ion-content>

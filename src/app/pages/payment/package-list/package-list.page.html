@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons *ngIf="!isModal" slot="start">
+            <ion-back-button color="primary" slot="start" text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{'Membershipplan ' | language : 'Membership Plan '}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="helpBtn" (click)="openHelpVideo()">
+              <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+    </ion-toolbar>
+    <ion-progress-bar mode="ios" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+<ion-content>
+    <ion-grid *ngIf="packageList">
+        <ion-row>
+            <ion-col class="ion-padding">
+                <ion-card class="card1">
+                    <div class="item1">
+                        <div class="sameline">
+                            <h3>{{packageList?.amount | currency:'INR':'symbol':'0.0-2'}}</h3>
+                            <div class="priceAc">
+                                <p class="pricept">{{packageList?.discountedAmount | currency:'INR':'symbol':'0.0-2'}}
+                                    <ion-text id="gst">+ {{packageList?.gst}}{{'percentagegst' | language : '% Gst'}}</ion-text></p>
+                                <ion-icon src="assets/images/homeImg/offer-tag.svg" slot="end"></ion-icon>
+                            </div>
+                        </div>
+                        <p class="month">{{packageList?.frequency}}</p>
+                        <p class="basic">{{packageList?.name}}</p>
+                        <hr/>
+                    </div>
+                    <div class="lists">
+                        <div class="checkmarks">
+                            <ion-list class="tagss" *ngFor="let subscriptionsList of packageList?.benefits">
+                                <ion-icon slot="start" src="./assets/icon/checkmark.svg" id="icon1"></ion-icon>
+                                <ion-text>{{subscriptionsList}}</ion-text>
+                            </ion-list>
+                        </div>
+                    </div>
+                    <div class="btn-two">
+                        <ion-button class="buy-btn" (click)="createSubscription()" expand="block" shape="round">
+                            {{'BuyNow ' | language : 'Buy now'}}</ion-button>
+                        <ion-button fill="clear" class="skip" expand="block" *ngIf="isModal" (click)="skip()">{{'skip' | language : 'Skip'}} </ion-button>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,115 @@
+<ion-header mode="md">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-no-margin">
+            <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+                icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-label>
+            <ion-searchbar class="" [debounce]="500" show-clear-button="focus" placeholder="{{'search'|language:'Search'}}" mode="ios" id="myInput" #search></ion-searchbar>
+        </ion-label>
+        <ion-buttons slot="end">
+            <ion-button (click)="openHelpVideo()">
+                <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+            </ion-button>
+            <ion-button color="primary">
+                <ion-img class="mycatbtn" src="assets/images/myCatalogbtn.svg" [routerLink]="['/my-catalog']"></ion-img>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="main_section">
+        <ion-row>
+            <ion-col class="product-scroll" sizeLg="10" sizeMd="10" sizeXs="10" size="10">
+                <div class="navbar">
+                    <p *ngFor="let item of finalData;let i = index" id="{{item?.id}}" class="ellipsis"
+                        [ngClass]="{'active' : i == selectedCategory}"
+                        (click)="selectedCategory = i;selectedSubCategory = 0">
+                        {{ item?.name }}
+                    </p>
+                </div>
+            </ion-col>
+
+            <ion-col sizeLg="2" sizeMd="2" sizeXs="2" size="2">
+                <p routerLink="/select-category" class="more-btn">
+                    <ion-icon class="plus-btn" slot="icon-only" name="add-circle"></ion-icon>
+                </p>
+            </ion-col>
+
+        </ion-row>
+        <div class="info-section">
+            <div class="sidebar">
+                <div class="scroll">
+                    <div class="fruitType" (click)="selectedSubCategory = j"
+                        *ngFor="let sub of finalData[selectedCategory]?.categories;let j = index"
+                        [ngClass]="{'current' : j === selectedSubCategory}">
+                        <div class="subimage">
+                            <ion-img src="{{ sub?.image }}" alt=""></ion-img>
+                        </div>
+                        <p class="subname">{{sub?.name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mainbar">
+                <ion-item lines="none" *ngIf="!search.value">
+                    <div class="text" slot="end">
+                        <p (click)="addRemoveAll(true)"
+                            *ngIf="!finalData[selectedCategory]?.categories[selectedSubCategory].categories[0].itemSelected"
+                            class="selectall">
+                            <u>{{'Selectall' | language : 'Select All'}}</u>
+                        </p>
+                        <p (click)="addRemoveAll(false)"
+                            *ngIf="finalData[selectedCategory]?.categories[selectedSubCategory]?.categories[0]?.itemSelected"
+                            class="cancel">
+                            <u>{{'clear' | language : 'Clear'}}</u>
+                        </p>
+                    </div>
+                </ion-item>
+                <ion-item lines="none" *ngIf="search.value">
+                    <div class="text" slot="end">
+                        <p (click)="addRemoveSearch(true ,search.value )"
+                            *ngIf="!searchSelected"
+                            class="selectall">
+                            <u>{{'Select all' | language : 'Select all'}}</u>
+                        </p>
+                        <p (click)="addRemoveSearch(false, search.value)"
+                            *ngIf="searchSelected"
+                            class="cancel">
+                            <u>{{'clear' | language : 'Clear'}}</u>
+                        </p>
+                    </div>
+                </ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ng-container
+                            *ngFor="let product of finalData[selectedCategory]?.categories[selectedSubCategory].categories[0].products">
+                            <ion-col sizeLg="5" sizeMd="5" sizeXs="5" size="5"
+                                *ngIf="search.value ? product.name.toLowerCase().includes(search.value.toLowerCase()) : true">
+                                <div class="card"
+                                    (click)="product?.status == 'published' ? commonService.danger('Published product cannot be unselected.'): ''">
+                                    <ion-checkbox (ngModelChange)="checkIsChecked()"
+                                        [disabled]="product?.status == 'published'" mode="md" color="primary"
+                                        [(ngModel)]="product.checked"></ion-checkbox>
+                                    <label (click)="product.checked = !product.checked; checkIsChecked()"><ion-img
+                                            class="productimg"
+                                            src="{{ product?.thumbnail ? product?.thumbnail : product?.image}}"></ion-img>
+                                        <p class="subname product-img-txt">{{product.name}}</p>
+                                    </label>
+                                </div>
+                            </ion-col>
+                        </ng-container>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </div>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="getMasterCatalogData()">
+            <ion-icon name="reload-outline" color="light"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
+<ion-footer>
+    <ion-button style="margin: 10px;" shape="round" expand="full" (click)="onContinue()" mode="ios">
+        {{'continue' | language : 'Continue'}} ({{totalCount}})</ion-button>
+</ion-footer>

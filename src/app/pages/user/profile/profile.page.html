@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item lines="full" class="profile">
+    <ion-avatar class="ion-no-margin" slot="start">
+      <ion-img src="assets/icon/Account circle.svg" alt=""></ion-img>
+    </ion-avatar>
+    <div class="icon">
+      <ion-label>
+        {{'Profile ' | language : 'Profile '}}
+      </ion-label>
+      <span>{{commonservice.userData.phone}}</span>
+    </div>
+    <ion-buttons slot="end" (click)="editProfile()">
+      <ion-button color="primary">
+      {{'Edit' | language : 'EDIT' }}
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="4">
+        <div class="img" routerLink="/shop-address">
+          <ion-img src="assets/icon/Address.svg" alt=""></ion-img>
+        </div>
+        <p>{{'shopAddress' | language : 'Shop Address'}}</p>
+      </ion-col>
+      <ion-col size="4">
+        <div class="img" routerLink="/setting">
+          <ion-img src="assets/icon/Settings.svg" alt=""></ion-img>
+        </div>
+        <p>{{'settings' | language : 'Settings'}}</p>
+      </ion-col>
+      <ion-col size="4" routerLink="/help">
+        <div class="img">
+          <ion-img src="assets/icon/bx_help-circle.svg" alt=""></ion-img>
+        </div>
+        <p>{{'help' | language : 'Help'}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" (click)="refferalservice.startWalletActivity()">
+        <div class="img">
+          <ion-img src="assets/icon/walletIcn.svg" alt=""></ion-img>
+        </div>
+        <p>{{'Wallet' | language : 'Wallet'}}</p>
+      </ion-col>
+      <!-- <ion-col size="4" (click)="commonservice.featureNotAvailable()"> -->
+        <ion-col size="4" routerLink="/bank-form">
+        <!-- <div class="img" routerLink="/bank-form"> -->
+        <div class="img">
+          <ion-img src="assets/icon/bankDetail.svg" alt=""></ion-img>
+        </div>
+        <p>{{'bankDetails' | language : 'Bank Details'}}</p>
+      </ion-col>
+      <ion-col size="4"  routerLink="/referal">
+        <div class="img">
+          <ion-img src="assets/icon/refer.svg" alt=""></ion-img>
+        </div>
+        <p>{{'Refer&earn' | language : 'Refer & Earn'}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div class="img" routerLink="/package-list">
+          <ion-img src="assets/icon/Subscriptions (1)2.svg" alt=""></ion-img>
+        </div>
+        <p>{{'subscription' | language : 'Subscription'}}</p>
+        <ion-badge color="warning" *ngIf="!this.isSubscribed">{{'pending' | language :'Pending'}}</ion-badge>
+      </ion-col>
+      <ion-col size="4" (click)="openGstModal()" [ngClass]="clickDisable">
+        <div class="img">
+          <ion-img src="assets/icon/Gstn2.svg" alt=""></ion-img>
+        </div>
+        <p>{{'gstin ' | language : 'GSTIN'}}</p>
+        <ion-badge color="warning" *ngIf="!this.gstSubmitted">{{'pending' | language :'Pending'}}</ion-badge>
+      </ion-col>
+      <ion-col size="4" routerLink="/kyc-form">
+        <div class="img">
+          <ion-img src="assets/icon/kyc.svg" alt=""></ion-img>
+        </div>
+        <p>{{'Kyc' | language : 'KYC'}}</p>
+        <ion-badge color="warning" *ngIf="!this.kycVerified">{{'pending' | language :'Pending'}}</ion-badge>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div class="img" (click)="gotoMyQr()">
+          <ion-img src="assets/icon/scanMyShop.svg" alt=""></ion-img>
+        </div>
+        <p>{{'scanmyshop' | language : 'Scan my shop'}}</p>
+      </ion-col>
+      </ion-row>
+  </ion-toolbar>
+  <ion-item lines="full">
+    <ion-avatar>
+      <ion-img src="assets/icon/Account circle.svg" alt=""></ion-img>
+    </ion-avatar>
+    <div class="icon">
+      <ion-label>{{'AccountManager ' | language : 'Account manager '}}</ion-label>
+    </div>
+    <ion-buttons slot="end" *ngIf="userDetails?.data?.managerDetail?.phone != undefined">
+      <a [href]="'tel:' + userDetails?.data?.managerDetail?.phone"><ion-img src="assets/icon/call.svg" alt=""></ion-img></a>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="userDetails?.data?.managerDetail?.phone == undefined" (click)="commonservice.toast('Account manager is not assigned.')">
+        <ion-img src="assets/icon/call.svg" alt=""></ion-img>
+    </ion-buttons>
+  </ion-item>
+  <div>
+    <ion-item lines="none" (click)="logOutUser()">
+      <div class="logout">
+        <ion-icon size="large" name="power-sharp" slot=""></ion-icon>
+      </div>
+      <p>{{'logout' | language : 'Logout'}}</p>
+    </ion-item>
+  </div>
+  <div id="container">
+    <p *ngIf="!appEnvirorment">Environment: {{env_name}}</p>
+    <span><strong>{{'appversion' | language : 'App Version'}}:</strong> {{ commonservice.appCodeVersionName }}</span>
+  </div>
+</ion-content>

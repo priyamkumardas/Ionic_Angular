@@ -1,0 +1,199 @@
+<div class="CrossIcon" (click)="cancel()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+<ion-content>
+  <div class="contents">
+    <ion-icon class="backbt" name="chevron-back-outline" (click)="backToQuantityPopup()"></ion-icon>
+    <ion-title>{{'Minimumorderquantity'|language:'Minimum order quantity'}}</ion-title>
+    <div class="content">
+      <img [src]="product?.image" alt="fruit" />
+      <ion-label class="product-lab">{{product?.name}}</ion-label>
+      <div class="Quantity-header" *ngIf="!showMore">
+        <!-- For kg  -->
+        <ion-grid *ngIf="product?.soldBy == 'Kg'">
+          <ion-row class="quantity" color="primary">
+            <ion-col size="3" *ngFor="let item of availableQuantityGm">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="3" *ngFor="let item of availableQuantityKg">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="3">
+              <div (click)="toggleMore()" class="box">
+                <ion-img src="/assets/icon/kg/kg-more.svg"></ion-img>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- For Plates -->
+        <ion-grid *ngIf="product?.soldBy == 'Plt'">
+          <ion-row class="qunatity" color="primary">
+            <ion-col size="3" *ngFor="let item of availableQuantityPlt">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item?.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="3" *ngIf="product?.soldBy == 'Plt'">
+              <div (click)="toggleMore()" class="box">
+                <ion-img src="/assets/icon/pcs/pcs-more.svg"></ion-img>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- For glass -->
+        <ion-grid *ngIf="product?.soldBy == 'Gls'">
+          <ion-row class="quantity" color="primary">
+            <ion-col size="4" *ngFor="let item of availableQuantityGlass">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item?.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="4" *ngIf="product?.soldBy == 'Gls'">
+              <div (click)="toggleMore()" class="box">
+                <ion-img src="/assets/icon/gls/glassMore.svg"></ion-img>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- For Liter -->
+        <ion-grid *ngIf="product?.soldBy == 'Ltr'">
+          <ion-row class="qunatity" color="primary">
+            <ion-col size="3" *ngFor="let item of availableQuantityMl">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="3" *ngFor="let item of availableQuantityLtr">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="3">
+              <div (click)="toggleMore()" class="box">
+                <ion-img src="/assets/icon/ltr/ltr-more.svg"></ion-img>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- For Packets -->
+        <ion-grid *ngIf="product?.soldBy == 'Pkt'">
+          <ion-row class="quantity" color="primary">
+            <ion-col size="4" *ngFor="let item of availableQuantityPkt">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item?.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="4" *ngIf="product?.soldBy == 'Pkt'">
+              <div (click)="toggleMore()" class="box">
+                <ion-img src="/assets/icon/Pkt/MorePacket.svg"></ion-img>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- For Pieces -->
+        <ion-grid *ngIf="product?.soldBy == 'Pcs'">
+          <ion-row class="quantity" color="primary">
+            <ion-col size="4" *ngFor="let item of availableQuantityPcs">
+              <div class="box" (click)="setQuanity(item.quantity, product?.soldBy)"
+                [ngClass]="{'active' : product.quantity === item?.quantity}">
+                <ion-img [src]="item?.image"></ion-img>
+              </div>
+            </ion-col>
+            <ion-col size="4" *ngIf="product?.soldBy == 'Pcs'">
+              <div (click)="toggleMore()" class="box">
+                <ion-img src="/assets/icon/pcsplt/MorePieces.svg"></ion-img>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <ion-grid fixed *ngIf="showMore">
+        <ion-row class="ion-margin-bottom">
+          <ion-col size="11">
+            <ion-chip color="primary" mode="ios" outline="true" class="chipadd">
+              <ion-icon name="remove-circle-outline" color="danger" (click)="changePrice('dec')"></ion-icon>
+              <ion-input min="0" class="price" onkeypress="return event.charCode >= 46 && event.charCode <= 57"
+                type="number" placeholder="Enter no." [(ngModel)]="product.quantity"
+                (ionChange)="checkPrice($event)"></ion-input>
+              <ion-icon name="add-circle-outline" (click)="changePrice('inc')" color="success"></ion-icon>
+            </ion-chip>
+          </ion-col>
+          <ion-col size="1" (click)="toggleMore()">
+            <ion-img class="mere-otp" src="/assets/icon/options.svg"></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-bottom">
+          <ion-radio-group value="default" [(ngModel)]="selectedOption" (ionChange)="radioGroupChange($event)">
+            <ion-col size="12" *ngIf="product?.soldBy == 'Kg'">
+              <div class="list">
+                <label class="item item-radio">
+                  <ion-radio mode="md" value='gram'></ion-radio>
+                  <div class="item-content">{{'Gram'|language:'Gram'}}</div>
+                </label>
+                <label class="item item-radio">
+                  <ion-radio mode="md" value='Kg'></ion-radio>
+                  <div class="item-content">{{'kilogram'|language:'Kilogram'}}</div>
+                </label>
+              </div>
+            </ion-col>
+            <ion-col size="12" *ngIf="product?.soldBy == 'Pcs'">
+              <div class="list">
+                <label class="item item-radio">
+                  <ion-radio mode="md" value="Pcs"></ion-radio>
+                  <div class="item-content">{{'pieces'|language:'Pieces'}}</div>
+                </label>
+              </div>
+            </ion-col>
+            <ion-col size="12" *ngIf="product?.soldBy == 'Plt'">
+              <div class="list">
+                <label class="item item-radio">
+                  <ion-radio mode="md" value="Plt"></ion-radio>
+                  <div class="item-content">{{'Plates'|language:'Plates'}}</div>
+                </label>
+              </div>
+            </ion-col>
+            <ion-col size="12" *ngIf="product?.soldBy == 'Pkt'">
+              <div class="list">
+                <label class="item item-radio">
+                  <ion-radio mode="md" value="Pkt"></ion-radio>
+                  <div class="item-content">{{'Packets'|language:'Packets'}}</div>
+                </label>
+              </div>
+            </ion-col>
+            <ion-col size="12" *ngIf="product?.soldBy == 'Gls'">
+              <div class="list">
+                <label class="item item-radio">
+                  <ion-radio mode="md" value="Gls"></ion-radio>
+                  <div class="item-content">{{'Glass'|language:'Glass'}}</div>
+                </label>
+              </div>
+            </ion-col>
+            <ion-col size="12" *ngIf="product?.soldBy == 'Ltr'">
+              <label class="item item-radio">
+                <ion-radio mode="md" value="ml"></ion-radio>
+                <div class="item-content">{{'Milliliter'|language:'Milli liter'}}</div>
+              </label>
+              <label class="item item-radio">
+                <ion-radio mode="md" value="Ltr"></ion-radio>
+                <div class="item-content">{{'liter'|language:'Liter'}}</div>
+              </label>
+            </ion-col>
+          </ion-radio-group>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-button color="primary" mode="ios" expand="block" shape="round" fill="solid"
+      (click)="saveProduct()">{{'save'|language:'Save'}}</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,59 @@
+.contener{
+    text-align: -webkit-center;
+    position: relative;
+}
+
+.close-btn{
+    width: 50px;
+    height: 50px;
+}
+
+.btns {
+    margin: 0 3vw;
+    margin-top: 3vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #4f5052;
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+ion-button{
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #4F5052;
+    text-transform: capitalize;
+    border-radius: 37px;
+    border: 1px solid #FFFFFF;
+}
+
+.available-button{
+    box-sizing: border-box;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), #0AC511;
+}
+
+.not-available-button{
+    box-sizing: border-box;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), #888888;
+}
+
+.return-button{
+    box-sizing: border-box;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), #FECB32;
+}
+
+.cancel-button{
+    box-sizing: border-box;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), #FF5353;
+}

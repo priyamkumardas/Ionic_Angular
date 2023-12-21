@@ -1,0 +1,82 @@
+<div class="CrossIcon" (click)="cancel()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+
+<ion-content class="ion-no-padding">
+  <div class="contents">
+    <ion-icon class="backbt" name="chevron-back-outline" (click)="cancel()"></ion-icon>
+    <ion-title>{{'Addproduct' | language : 'Add product'}}</ion-title>
+    <div class="content">
+      <div>
+        <img [src]="product?.image" alt="fruit" />
+        <span (click)="openGradingPopUp(product)">
+          <ion-chip color="primary" mode="ios" outline="true" class="hgt" class="gradinsign">
+            <img class="gradingsign"
+              [src]="product?.grading ? '/assets/award/award-' + product.grading + '.svg' : '/assets/award/award0.png'"
+              alt="">
+          </ion-chip>
+        </span>
+      </div>
+      <ion-label class="ion-text-center">{{product?.name}}</ion-label>
+    </div>
+    <div class="chipsold">
+      <div class="soldby">
+        <ion-label class="label">{{'SoldBy' | language : 'Sold By '}}</ion-label>
+        <ion-grid class="ion-padding">
+          <ion-row class="ion-margin">
+            <ion-col size="4" *ngFor="let soldby of soldByCategories">
+              <ion-chip color="primary" mode="ios" outline="true" class="hgt" (click)="selectItem(soldby.soldBy)"
+                [ngClass]="{'active':product?.soldBy === soldby?.soldBy}">
+                <div class="chipBox">
+                  <img [src]="soldby?.image" alt="" />
+                  <ion-label>{{soldby?.key | language : soldby?.name}}</ion-label>
+                </div>
+              </ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="4" class="ion-text-left">
+            <p class="textBold">{{'SellingPrice' | language: 'Selling Price'}}</p>
+          </ion-col>
+          <ion-col size="8" class="ion-text-center">
+            <ion-chip color="primary" mode="ios" outline="true" class="chipadd">
+              <ion-label class="prodCurr">&#x20B9;</ion-label>
+              <ion-input min="0" class="price" type="number" placeholder="0" [(ngModel)]="product.price"
+                (ionChange)="checkPrice($event)"></ion-input>
+              <span class="prodQty">{{product?.soldBy ? '/'+product?.soldBy:''}}</span>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="4" class="ion-text-left">
+            <p class="textBold">{{'PreOrderDiscount' | language: 'Pre Order Discount'}}</p>
+          </ion-col>
+          <ion-col size="8" class="ion-text-center">
+            <ion-chip color="primary" mode="ios" outline="true" class="chipadd">
+              <ion-icon class="inputDiscount" name="remove-circle-outline" color="danger"
+                (click)="changeDiscount('dec')"></ion-icon>
+              <ion-input min="0" class="price" type="tel" placeholder="0" [(ngModel)]="product.discount" maxlength="3"
+                (ionChange)="checkDiscount($event)"> </ion-input>
+              <ion-text class="prodDis">%</ion-text>
+              <ion-icon name="add-circle-outline" (click)="changeDiscount('inc')" color="success"></ion-icon>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="4" class="ion-text-left">
+            <p class="textBold">{{'MinimumOrderQuantity' | language: 'Minimum Order Quantity'}}</p>
+          </ion-col>
+          <ion-col size="8" class="ion-align-items-center ion-text-center"
+            (click)="product.soldBy == '' ? this.commonService.danger('Please select sold by.') : openOrderQuentity(product)">
+            <div class="moqChip">
+              <ion-label>{{product?.quantity ? product?.quantity : 0}} {{product?.soldBy}}</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+    <ion-button color="primary" expand="block" shape="round" fill="solid" mode="ios" (click)="saveProduct()">
+      {{'save' | language : 'Save'}}</ion-button>
+  </div>
+</ion-content>

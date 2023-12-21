@@ -1,0 +1,86 @@
+<ion-footer>
+  <div class="CrossIcon" (click)="modelCtrl.dismiss(active)">
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+  <ion-card class="content">
+    <ion-grid>
+      <!-- <ion-row>
+        <ion-col class="top-btns">
+          <div (click)="commonservice.featureNotAvailable()">
+            <ion-button slot="start" color="primary" fill="clear" size="small">{{'clear'|language:'Clear'}}</ion-button>
+          </div>
+          <div (click)="commonservice.featureNotAvailable()">
+            <ion-button slot="end" color="primary" fill="clear" size="small">{{'done'|language:'Done'}}</ion-button>
+          </div>
+        </ion-col>
+      </ion-row> -->
+      <ion-row class="ion-margin-horizontal">
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'IM'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/inventory.svg" class="roleImg"></ion-img>
+            <p class="ion-text-nowrap">{{'inventoryManager'|language:'Inventory Manager'}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'OM'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/Payperorder.svg" class="roleImg"></ion-img>
+            <p class="ion-text-nowrap">{{'ordermanger'|language:'Order Manager'}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'PM'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/procurement.svg" class="roleImg"></ion-img>
+            <p>{{'procurementmanager'|language:'Procurement Manager'}}</p>
+          </div>
+        </ion-col>
+
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'DM'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/truck.svg" class="roleImg"></ion-img>
+            <p class="ion-text-nowrap">{{'deliverymanager'|language:'Delivery Manager'}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'FM'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/finance.svg" class="roleImg"></ion-img>
+            <p class="ion-text-nowrap">{{'financemanager'|language:'Finance Manager'}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'POSE'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/pos.svg" class="roleImg"></ion-img>
+            <p>{{'posexecutive'|language:'PoS Executive'}}</p>
+          </div>
+        </ion-col>
+
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'SM'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/store.svg" class="roleImg"></ion-img>
+            <p class="ion-text-nowrap">{{'storemanager'|language:'Store Manager'}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'DP'}"
+          (click)="modelCtrl.dismiss('Delivery Person')">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/delivery-man.svg" class="roleImg"></ion-img>
+            <p class="ion-text-nowrap del-person">{{'DeliveryPerson'|language:'Delivery Person'}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="roles" size="4" [ngClass]="{'active':active == 'OT'}"
+          (click)="commonservice.featureNotAvailable()">
+          <div class="ion-text-center">
+            <ion-img src="/assets/usermanagement/user.svg" class="roleImg"></ion-img>
+            <p>{{'others'|language:'Others'}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-footer>

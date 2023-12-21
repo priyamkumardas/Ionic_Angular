@@ -1,0 +1,127 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!showSearch" class="ion-no-padding">{{'Mycatalog ' | language : 'My Catalog '}}</ion-title>
+    <ion-searchbar [debounce]="500" show-clear-button="focus" placeholder="Search" mode="ios" id="myInput"
+      [hidden]="!showSearch" #search></ion-searchbar>
+    <ion-buttons slot="end" class="buttons">
+      <ion-button *ngIf="!showSearch" (click)="toggleSearch(true)" class="search-button">
+        <ion-icon color="medium" name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="showSearch" (click)="toggleSearch(false)">
+        <ion-icon color="medium" name="close-outline" slot="end"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="!showSearch" (click)="onAdd()">
+        <ion-icon color="primary" size="large" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openHelpVideo()">
+        <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="statusCategory">
+    <ion-segment value="all" [scrollable]="true" mode="md" class="main-segment">
+      <ion-segment-button value="all" (click)="updateProductList('all')">{{'all' | language :
+        'All'}}</ion-segment-button>
+      <ion-segment-button value="pending" (click)="updateProductList('pending')">{{'pending' | language :
+        'Pending '}}</ion-segment-button>
+      <ion-segment-button value="unpublished" (click)="updateProductList('unpublished')">{{'Unpublished ' | language :
+        'Unpublished '}}</ion-segment-button>
+      <ion-segment-button value="published" (click)="updateProductList('published')">{{'published' | language :
+        'Published'}}</ion-segment-button>
+    </ion-segment>
+  </div>
+  <div class="content">
+    <div class="segmentDiv">
+      <ion-segment no-padding [(ngModel)]="selectTabs" scrollable="true" mode="md" (ionChange)="segmentChanged()">
+        <ion-segment-button [value]="i" *ngFor="let category of getProductDataFromBackend;let i = index">
+          <ion-label style="text-transform: none;">{{category?.name}}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item [color]="'transparent'" class="ion-no-padding text-center" [mode]="'ios'" [lines]="'none'"
+          *ngIf="productStatus==='unpublished' || productStatus==='published'">
+          <a *ngIf="(productStatus === 'unpublished' || productStatus === 'published') && isSelectAllOrClear()"
+            class="textalign1" (click)="selectAllProducts(search.value ? search.value : false)">
+            {{'Selectall' | language : 'Select All'}}
+          </a>
+          <a *ngIf="(productStatus === 'unpublished' || productStatus === 'published') && !isSelectAllOrClear()"
+            class="textalign" (click)="clearAllProducts(search.value ? search.value : false)">
+            {{'clear' | language : 'Clear'}}
+          </a>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ng-container *ngIf="productStatus!=='all'">
+      <ion-row>
+        <ng-container *ngFor="let catalog of categoryProducts">
+          <!-- In categories the 0th index will be all product listing which we are sending tin api from select food screen -->
+          <ng-container
+            *ngFor="let product of filter_product_array(catalog.categories[0].products,productStatus) ; let i = index">
+            <ion-col size="6" [ngClass]="clickDisable"
+              *ngIf="search.value ? product.name.toLowerCase().includes(search.value.toLowerCase()) : true">
+              <app-product-card [allTab]="false" [product]="product" [search]="search" [productStatus]="productStatus"
+                (favEventChangeDetails)="changeDetails(product)" (favEventOpenPricePopUp)="openPricePopUp(product)"
+                (favEvenOpenGradingPopUp)="openGradingPopUp(product)"
+                (favEventOnSelectProduct)="onSelectProduct(product.id, productStatus)"></app-product-card>
+            </ion-col>
+          </ng-container>
+        </ng-container>
+      </ion-row>
+    </ng-container>
+    <!--here we are using for loop to loop through an array of categoryProducts and display each product in a separate column.
+  we also have a search bar that filters the products based on their name. If the search bar is empty, all products are displayed.
+  If the search bar has a value, only the products that contain search value in their name are displayed. And......product card's is
+  displayed through a component named "app-product-card", and favEvents takes input variables and emits output events. These are further 
+  used to modify the product's details, open pop-up's for setting grading, pricing, and discounts, and to update the product's status.
+ -->
+    <ng-container *ngIf="productStatus==='all'">
+      <ion-accordion-group [multiple]="true" style="width: 100%" [value]="['pending']">
+        <ion-accordion [value]="type" *ngFor="let type of productsType">
+          <ion-item slot="header" color="light">
+            <ion-label style="text-align: left;">{{type | titlecase}}</ion-label>
+          </ion-item>
+          <div class="" slot="content">
+            <ion-row>
+              <ng-container *ngFor="let catalog of categoryProducts" class="prod-div">
+                <ng-container *ngFor="let product of catalog?.categories[0]?.products">
+                  <ng-container
+                    *ngIf="search.value ? product.name.toLowerCase().includes(search.value.toLowerCase()) : true">
+                    <ion-col size="6" [ngClass]="clickDisable" *ngIf="product.status.trim().toLowerCase() == type">
+                      <app-product-card [allTab]="true" [product]="product" [search]="search"
+                        [productStatus]="productStatus" (favEventChangeDetails)="changeDetails(product)"
+                        (favEvenOpenGradingPopUp)="openGradingPopUp(product)"
+                        (favEventOpenPricePopUp)="openPricePopUp(product)"></app-product-card>
+                    </ion-col>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ion-row>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ng-container>
+  </div>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="pullToRefresh()">
+      <ion-icon name="reload-outline" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<ion-footer>
+  <ion-button *ngIf="productStatus==='unpublished'" expand="block" class="button1" shape="round" mode="ios"
+    [disabled]="!unpublishProducts.length" (click)="updateProduct('',true); clearProductCount()">
+    {{'publish' | language : 'Publish'}} ({{unpublishProducts.length}})</ion-button>
+  <ion-button *ngIf="productStatus==='published'" expand="block" class="button1" shape="round" mode="ios"
+    [disabled]="!publishProducts.length" (click)="updateProduct('',true); clearProductCount()">
+    {{'unpublish' | language : 'Unpublish'}} ({{publishProducts.length}})</ion-button>
+</ion-footer>

@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/profile" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding"> {{'help' | language : 'Help'}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" (click)="commonservice.featureNotAvailable()">
+          <div class="img">
+            <ion-img src="assets/icon/faqg.svg" alt=""></ion-img>
+          </div>
+          <p>{{'faqs' | language : 'FAQs'}}</p>
+        </ion-col>
+        <ion-col size="3" (click)="openBrowser('https://sarvm.ai/terms&conditions.html')">
+          <div class="img">
+            <ion-img src="assets/icon/term&con.svg" alt=""></ion-img>
+          </div>
+          <p>{{'terms&Conditions' | language : 'Terms & Condition'}}</p>
+        </ion-col>
+        <ion-col class="col3" size="3" (click)="commonservice.featureNotAvailable()" disabled>
+          <div class="img">
+            <ion-img src="assets/icon/trackord.svg" alt=""></ion-img>
+          </div>
+          <p disabled>{{'trackOrder' | language : 'Track Order'}}</p>
+        </ion-col>
+        <ion-col size="3" (click)="openBrowser('https://sarvm.ai/sarvm-privacy-policy.html')">
+          <div class="img">
+            <ion-img src="assets/icon/privict.svg" alt=""></ion-img>
+          </div>
+          <p>{{'privacyPolicies' | language : 'Privacy Policies'}}</p>
+        </ion-col>
+        <ion-col size="3" (click)="commonservice.featureNotAvailable()">
+          <div class="img">
+            <ion-img src="assets/icon/compln.svg" alt=""></ion-img>
+          </div>
+          <p>{{'mycomplaints' | language : 'My Complaints'}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-grid>
+      <!-- <ion-title> -->
+      <h3>{{'contactUs' | language : 'Contact Us'}}</h3>
+      <!-- </ion-title> -->
+      <ion-row>
+        <ion-col size="3">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-icon name="mail-outline"></ion-icon>
+            </ion-buttons>
+            <p (click)="openBrowser('mailto:cs@sarvm.ai')">{{'email' | language : 'Email'}}</p>
+          </ion-toolbar>
+        </ion-col>
+        <ion-col size="6">
+          <ion-toolbar>
+            <ion-buttons slot="start" *ngIf="managerPhone != undefined">
+              <a href="tel:{{managerPhone}}"><ion-img src="assets/icon/helpcall.svg" alt=""></ion-img></a>
+            </ion-buttons>
+            <ion-buttons slot="start" *ngIf="managerPhone == undefined"
+              (click)="commonservice.toast('Account manager is not assigned.')">
+              <ion-img src="assets/icon/helpcall.svg" alt=""></ion-img>
+            </ion-buttons>
+            <p>{{'AccountManager ' | language : 'Account Manager'}}</p>
+          </ion-toolbar>
+        </ion-col>
+        <ion-col size="3">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <!-- <ion-icon name="chatbubble-outline"></ion-icon> -->
+              <ion-img src="assets/icon/helpchat.svg" alt=""></ion-img>
+            </ion-buttons>
+            <p>{{'chat' | language : 'Chat'}}</p>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+      <ion-row class="address">
+        <ion-col size="12">
+          <ion-toolbar>
+            <ion-buttons (click)="openBrowser('https://goo.gl/maps/RMjBgsCJsDrzvMQaA')" slot="start">
+              <ion-icon name="location-outline"></ion-icon>
+            </ion-buttons>
+            <p (click)="openBrowser('https://goo.gl/maps/RMjBgsCJsDrzvMQaA')" class="ion-text-start"
+              style="padding-left: 10px;">
+              C-21 Workfella 150, 1, Infantry Rd, Vasanth Nagar, Bengaluru,
+              Karnataka 560001
+            </p>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+      <ion-row class="link">
+        <ion-col size="6">
+          <ion-toolbar (click)="openBrowser('https://sarvm.ai/')">
+            <ion-buttons slot="start">
+              <ion-icon name="link-outline"></ion-icon>
+            </ion-buttons>
+            <span>https://sarvm.ai/</span>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-content>

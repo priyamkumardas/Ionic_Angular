@@ -1,0 +1,73 @@
+ion-footer {
+    bottom: 0px;
+    position: absolute;
+    width: -webkit-fill-available;
+}
+.content{
+    background: var(--ion-color-primary-contrast);
+    height: 320px;
+    border-radius: 20px 20px 0px 0px;
+    height: auto;
+    margin: 0;
+    
+}
+.top-btns{
+    display: flex;
+    justify-content: space-between;
+    div{
+        border: 0;
+    }
+}
+
+    
+.footer-md::before {
+    background-image: none;
+}
+
+.CrossIcon {
+    height: 48px;
+    width: 48px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    border-radius: 100%;
+    background: var(--ion-color-primary-contrast);
+   
+}
+.roles{
+    // border: 1px solid var(--ion-color-medium-shade);
+    // border-radius: 6px;
+   div{
+    border: 1px solid var(--ion-color-medium-shade);
+    border-radius: 6px;
+    // color: var(--ion-color-primary);
+    font-size: 11px;
+    height: 78px;
+    // width: 97px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p{
+        margin: 0px;
+    }
+    .del-person{
+        color: var(--ion-color-primary);
+    }
+   }
+        .roleImg{
+            width: 24px;
+            height: 24px;
+           margin: 8px auto;
+        }
+ }
+   
+.clear {
+        display: flex;
+        justify-content: space-between;
+        width: 50vw;
+        margin: 20px 10px 0px 20px;
+    }

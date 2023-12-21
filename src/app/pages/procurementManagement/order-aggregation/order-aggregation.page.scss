@@ -1,0 +1,90 @@
+ion-card {
+    box-shadow: none;
+    border: 1px solid var(--ion-color-medium-tint);
+    border-radius: 5px;
+}
+
+ion-label {
+    white-space: pre-line !important;
+}
+
+.text1 {
+    font-size: 14px;
+    color: var(--ion-color-dark-shade);
+}
+
+ion-skeleton-text {
+    --border-radius: 5px;
+    height: 18px;
+    width: 60px;
+}
+
+.images {
+    height: 30px;
+    width: 30px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+ion-col{
+    margin: auto 0;
+}
+
+
+.textCorrection {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+p {
+    font-size: 12px;
+}
+
+ion-avatar {
+    width: 30px;
+    height: 30px;
+}
+
+ion-item {
+    .avtar {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.date {
+    width: 40px;
+    margin: 0;
+    background: linear-gradient(0deg, rgba(16, 186, 178, 0.1), rgba(16, 186, 178, 0.1)), #FFFFFF;
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 30px;
+    padding: 5px 10px;
+    color: var(--ion-color-primary);
+}
+
+.singleDate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dateContainer {
+    overflow: scroll;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.active {
+    background: linear-gradient(0deg, var(--ion-color-primary), var(--ion-color-primary)), #FFFFFF;
+    color: #FFFFFF;
+}

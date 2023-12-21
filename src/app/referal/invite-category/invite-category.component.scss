@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ion-grid {
+  margin-left: 16px;
+  overflow: scroll;
+}
+
+ion-col {
+  text-align: center;
+  padding: 6%;
+}
+
+ion-toolbar {
+  ion-label{
+    font-weight: bold;
+    margin-left: 10px;
+    text-transform: capitalize;
+    color:  #000000;
+  }
+}
+
+.imgBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var( --ion-color-light-tint);
+  border-radius: 12px;
+}
+
+ion-row {
+ display:flex;
+ flex-wrap: wrap;
+}
+
+.nav-logo {
+  height: 45px;
+  width: 40px;
+  margin-left: 10px;
+}

@@ -1,0 +1,146 @@
+.container {
+  align-items: center;
+  background-color: var(--ion-color-primary-tint);
+  overflow: scroll;
+  display: grid;
+}
+
+ion-toolbar {
+  ion-label {
+    font-weight: bold;
+    margin-left: 10px;
+    text-transform: capitalize;
+    color: var(--ion-color-dark);
+  }
+}
+
+.navbr {
+  background-color: var(--ion-color-primary-tint);
+  position: relative;
+  display: flex;
+  height: 58px;
+  padding-top: 24px;
+  width: 100%;
+  align-items: center;
+
+  ion-text {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    position: absolute;
+    right: 16px;
+  }
+}
+
+.nav-back {
+  zoom: 2;
+  margin-left: 4px;
+}
+
+.nav-gift {
+  zoom: 1.5;
+  position: absolute;
+  right: 70px;
+}
+
+.nav-logo {
+  height: 45px;
+  width: 40px;
+  margin-left: 10px;
+}
+
+.gift-img {
+  margin: 20% auto;
+
+  ion-img {
+    display: -webkit-box;
+    width: 214.26px;
+    height: 212.17px;
+  }
+}
+
+p {
+  margin: 20px 34px 20px 34px;
+  width: calc(100% - 68px);
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.rfl-stat {
+  top: 60px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.box {
+  width: 100%;
+  background-color: var(--ion-color-medium-contrast);
+  text-align: -webkit-center;
+  padding-bottom: 20px;
+  border-radius: 45px 44px 0px 0px;
+  height: 100%;
+
+  ion-icon {
+    min-width: 20px;
+  }
+
+  #txt {
+    padding-top: 10px;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ion-color-dark-tint-shade);
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+  }
+
+  #rupee {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 45px;
+    color: var(--ion-color-primary);
+    margin: 0;
+  }
+
+  ion-button {
+    --background: var(--ion-color-warning-shade-dark);
+    text-transform: capitalize;
+    font-weight: 500;
+    padding: 0 4px;
+    &.inviteBtn
+    {
+      padding: 0 16px;
+    }
+  }
+
+  .card {
+    margin-top: 20px;
+    display: flex;
+    margin-left: 16px;
+    margin-right: 16px;
+    justify-content: space-around;
+
+    .item {
+      width: calc((100% - 15px) / 2);
+      text-align: center;
+
+      p {
+        margin: auto auto;
+        width: 100%;
+        margin-bottom: 20px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 134.5%;
+        color: var(--ion-color-dark-tint-shade);
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,220 @@
+.header {
+    display: flex;
+    ion-title {
+        font-size: 5.5vw;
+        position: relative;
+    }
+}
+.priceAc{
+    width: 100%;
+}
+
+#gst {
+    font-size: 12px;
+   
+    margin-left: 0;
+}
+
+ion-card {
+    box-shadow: none;
+}
+
+ion-button {
+    box-shadow: none;
+}
+ion-item{
+    background-color: transparentize($color: #000000, $amount: 0);
+}
+
+.lists{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sameline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 87px;
+    ion-icon{
+        position:absolute ;
+       min-width:80px;
+       min-height: 80px;
+        right: -59px;
+        top: -6px;
+    }
+}
+
+.card1 {
+    // --background: var(--ion-color-secondary) 16%;
+
+    border: 1.5px solid var(--ion-color-primary);
+    border-radius: 20px;
+    width: 100% !important;
+    height: auto !important;
+    margin: auto;
+}
+
+// ion-text {
+    
+//     margin-left: 26px;
+// }
+ 
+.item1 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    .tage {
+        color: #3b66ff;
+        height: 16px;
+        font-weight: 800;
+    }
+    .month{
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0.02em;
+      color: var( --ion-color-medium-shade);
+
+    }
+}
+
+.checkmarks {
+   text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    // padding-right: 50%;
+    border-top: 0.8px solid rgb(180, 166, 166);
+  
+    // border-radius: 20px;
+}
+
+.btns {
+    // background: linear-gradient( 0deg, rgba(59, 102, 255, 0.06), rgba(59, 102, 255, 0.06)), #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 216%;
+}
+
+.tagss {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: center;
+    // margin-left: 25%;
+    // padding-left: 27px;
+    width: 100% !important;
+   background: transparent;
+   
+    ion-icon {
+      margin-right: 20px !important;
+        // border: 0.5px solid #3b66ff;
+        border-radius: 1px;
+    }
+    
+    
+    ion-text{     
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+text-align: center;
+letter-spacing: 0.01em;
+color: var(--ion-color-warning-contrast);
+    }
+    p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        /* identical to box height */
+        text-align: center;
+        letter-spacing: 0.01em;
+        
+    }
+}
+.pricept{
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 52px;
+    color: var(--ion-color-warning-contrast);
+}
+
+
+// .buybtn {
+//     width: 92%;
+//     text-transform: capitalize;
+//     box-shadow: none;
+// }
+.buy-btn{
+    font-size: 16px;
+    text-transform: capitalize;
+    width: 70vw;
+    margin: 0 auto;
+}
+ion-button{
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+.skip {
+    // color: #3b66ff;
+    // // background-color: #333333;
+    // --background: transparent;
+    // text-align: center;
+    // padding-right: 6%;
+    text-transform: capitalize;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+
+}
+
+.iconcheck {
+    margin-right: 18px;
+    left: 18px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 44px;
+    // line-height: 52px;
+}
+
+.proceedbtn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sameline {
+    h3 {
+         font-weight: 400;
+        font-size: 24px;
+        line-height: 28px;
+        // margin: 0px;
+        // margin-left: 25px;
+        color:var( --ion-color-danger);
+        text-decoration: line-through;
+    }
+    h1 {
+        margin: 0px;
+        margin-right: 5px;
+        font-size: 44px;
+    }
+}
+.basic{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.01em;
+    color:  var( --ion-color-primary-shade);
+     margin: 0;
+}

@@ -1,0 +1,112 @@
+ion-icon {
+    min-width: 20px;
+    padding-right: 5px;
+}
+
+.qr {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+
+.shopImage {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.shopName {
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.about {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 15px 20px 0px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.store {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+}
+
+.line {
+    border: 1px solid #DDDDDD;
+    margin-top: 10px;
+}
+
+.lineBottom {
+    border: 1px solid #DDDDDD;
+}
+
+.images {
+    img {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+ion-row {
+    align-items: center;
+    margin: 0px 15px;
+
+    .images{
+        img{
+            height: 50px;
+            width: 50px;
+            margin: auto;
+        }
+    }
+
+    ion-icon {
+        font-size: 22px;
+    }
+
+    ion-label {
+        margin: auto;
+        color: var(--ion-color-success-tint);
+        margin-top: 5px;
+    }
+
+    .categoryName {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.location {
+    font-weight: 400;
+    font-size: 16px;
+    align-items: center;
+    display: flex;
+    color: var(--ion-color-dark-tint);
+}
+
+.sell {
+    margin: 10px 15px 10px 15px;
+    ion-row{
+        justify-content: left !important;
+        margin: 0px !important;
+    }
+    ion-col{
+        margin-bottom: 8px;
+    }
+}
+
+.selling {
+    p {
+        font-size: 18px;
+        margin: 0;
+        margin-right: 5px;
+    }
+}

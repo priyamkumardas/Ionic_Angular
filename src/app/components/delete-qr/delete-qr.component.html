@@ -1,0 +1,15 @@
+<div class="cont">
+  <div>
+    <img src="assets\banking\sadEmoji.svg" alt="">
+  </div>
+  <div class="msg">
+    <p class="header">{{'DeletetheUPIID?'|language:'Delete the UPI ID'}}</p>
+    <p>{{'areYouSure'|language:'Are you sure ?'}}</p>
+  </div>
+  <div class="btns">
+    <ion-button strong="true" fill="clear" expand="full" class="no" (click)="viewNo()">
+     <ion-icon slot="start" src="assets/icon/thumbs-down.svg"></ion-icon>{{'no'|language:'No '}}</ion-button>
+    <ion-button strong="true" fill="clear" expand="full" class="yes" (click)="viewYes()">
+      <ion-icon slot="start" src="assets/icon/thumbs-up.svg"></ion-icon>{{'yes'|language:'Yes'}}</ion-button>
+  </div>
+</div>

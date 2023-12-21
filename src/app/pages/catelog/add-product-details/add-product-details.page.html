@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+    <ion-img slot="start" style="margin-left:30px ;margin-right: 20px;"
+      src="assets/Product-detals/Vector (3).png" (click)="onBack()"></ion-img>
+    <ion-title>{{'addproductdetails' | language : 'Add Product Details'}}</ion-title>
+    <ion-img slot="end" style="margin-right:10px " src="assets/Product-detals/Add User BTn.png"></ion-img>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="category">
+    <div class="chips" [ngClass]="{'selectedItem': cate?.selected}" *ngFor="let cate of storedProducts" (click)="itemSelect(cate)">
+      <img src="{{cate?.image}}" alt="">
+      <p style="padding: 10px">{{cate?.name ? cate?.name : cate}}</p>
+      <ion-icon style="margin-left: 2px ;font-size:32px" name="close-outline" (click)="itemRemove(cate)"></ion-icon>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="text-deleteIcon">
+      <span>{{'pricelist' | language : 'Price list'}}</span>
+      <img src="assets/Product-detals/Vector.png"/>
+    </div>
+
+    <div class="select">
+      <div class="img-changeImg">
+        <img class="img-item" id="img" src="{{itemFilling?.image}}" alt="">
+        <ion-row>
+          <img src="assets/Product-detals/camera.png" alt="">
+          <span>{{'change ' | language : 'Change'}}</span>
+        </ion-row>
+      </div>
+      <div id="select">
+        <p>{{'tropicalfruit' | language : 'Tropical Fruit'}}</p>
+        <p id="txt">{{itemFilling?.name}}</p>
+      </div>
+    </div>
+    <div class="row" style="margin:0px 10px 20px 10px">
+      <div (click)="unitSelect(itemFilling)" class="unit-qut-box" style="margin-right :20px">
+        <span>{{itemFilling.soldBy ? itemFilling.soldBy : 'Unit'}}</span>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </div>
+      <div class="unit-qut-box">
+        <ion-input type="text" placeholder="Qut" [(ngModel)]="itemFilling.quantity"></ion-input>
+      </div>
+    </div>
+
+    <div class="regular-price">
+      <span style="margin-left:10px;width:110px;">{{'regularprice' | language : 'Regular price'}}</span>
+      <div class="rupee">
+        <ion-input noEmoticons placeholder="₹" type="number" [(ngModel)]="itemFilling.regularPrice"></ion-input>
+      </div>
+    </div>
+
+    <div class="discount-price">
+      <span style="margin-left:10px; width:110px">{{'discountprice' | language : 'Discount Price'}}</span>
+      <div class="rupee">
+        <ion-input noEmoticons placeholder="₹" type="number" [(ngModel)]="itemFilling.discountPrice"></ion-input>
+      </div>
+    </div>
+
+    <div class="address">
+      <input type="text" name="" id="" [(ngModel)]="itemFilling.placeOrigin"  placeholder="{{'placeOfOrigin' | language : 'Place Of Origin'}}">
+    </div>
+    <div class="description">
+      <input type="text" name="" id="" [(ngModel)]="itemFilling.description" placeholder="{{'description' | language : 'Description'}}">
+    </div>
+  </div>
+
+  <div class="btn">
+    <ion-button class="Save" (click)="submitForm()">{{'save' | language : 'Save'}}</ion-button>
+    <ion-button class="SaveAndContinue" [disabled]="isEnableSave == undefined ? true : isEnableSave" (click)="submitProductDetails()">{{'save&Continue' | language : 'Save & Continue'}}</ion-button>
+  </div>
+
+</ion-content>

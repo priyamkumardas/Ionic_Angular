@@ -1,0 +1,45 @@
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start" class="ion-no-margin">
+        <ion-back-button slot="start" color="primary" defaultHref="/selected-language" text=""
+          icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button class="helpBtn" (click)="openHelpVideo()">
+          <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="container">
+    <div class="logo">
+      <ion-img class="img" src="assets/images/basket.png" alt="logo"></ion-img>
+    </div>
+    <ion-text text-wrap>
+      <p>{{'entermobilenumberforotpverification' | language : 'Enter Mobile Number for OTP Verification'}}</p>
+    </ion-text>
+    <ion-item fill="" shape="round" color="light" lines="full">
+      <ion-label class="placeh" text-wrap>+91</ion-label>
+      <div class="verticalLine"></div>
+      <ion-input class="mob" #inputinfo placeholder="{{'enterMobilenumber' | language : 'Enter Mobile Number'}}"
+        inputmode="tel" value="number" type="text" minlength="10" class="inputField" maxlength="10"
+        (ionInput)="isNumberKey($event)" (ionChange)="validatePhone($event)" [(ngModel)]="phoneNumber"></ion-input>
+      <ion-icon slot="end" *ngIf="invalidPhone" name="checkmark-circle-sharp" style="color: gray"></ion-icon>
+      <ion-icon slot="end" *ngIf="!invalidPhone" name="checkmark-circle-sharp" color="primary"></ion-icon>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button strong="true" mode="md" expand="block" fill="solid" shape="round" [disabled]="invalidPhone"
+          (click)="sendNumberForOtp(inputinfo)">{{'getOtp' | language : 'Get OTP'}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ion-text>
+    <p class="terms">
+      {{'byClickingIacceptthe'|language:'By clicking, I accept the'}} <a (click)="openUrl('https://sarvm.ai/terms&conditions.html')"> {{'terms&Conditions' | language : 'Terms & Conditions'}}
+      </a> &nbsp; {{'and' | language : 'and'}} &nbsp; <a (click)="openUrl('https://sarvm.ai/sarvm-privacy-policy.html')"> 
+          {{'privacyPolicy' | language : 'Privacy Policy'}}</a>.
+    </p>
+  </ion-text>
+</ion-content>

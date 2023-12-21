@@ -1,0 +1,52 @@
+
+.CrossIcon {
+  height: 15vw;
+  width: 15vw;
+  margin-bottom: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 10vw;
+  border-radius: 50%;
+  color: grey;
+  background: var(--ion-color-primary-contrast);
+}
+.continue{
+  margin: auto;
+  display: block;
+}
+.content{
+  background: var(--ion-color-primary-contrast);
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.header{
+  color: #222222;
+  font-size: 6vw;
+  font-weight: 600;
+  margin: 0 auto;
+}
+ion-button {
+  text-transform: none;
+ }
+
+.modal{
+  position: absolute;
+  bottom: 0;
+  width: -webkit-fill-available;
+}
+
+ion-input{
+  color: gray;
+}
+ion-row{
+  margin: 0 3vw;
+}
+.active{
+  justify-content: center;
+}

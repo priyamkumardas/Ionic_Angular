@@ -1,0 +1,109 @@
+.top-view {
+    background: #dcfffd;
+    margin-top: 10px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll !important;
+    overflow-y: hidden;
+}
+
+.avtar {
+    width: 48px;
+    height: 48px;
+}
+
+.arrow1 {
+    position: absolute;
+    left: 0;
+    z-index: 999;
+}
+
+.arrow2 {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+
+.border {
+    border-radius: 50%;
+    border: 6px solid var(--ion-color-warning-shade);
+    width: 48px;
+    height: 48px;
+}
+
+.options {
+    margin: auto 10px;
+}
+
+.plus-btn {
+    font-size: 55px;
+    color: var(--ion-color-primary);
+}
+
+.arrow {
+    font-size: 25px;
+}
+
+.qr-code-img {
+    width: 200px;
+}
+
+.overflow {
+    overflow-x: scroll;
+    overflow-y: scroll !important
+}
+
+.container {
+    overflow: scroll;
+    margin: auto;
+    background: white;
+    width: 90vw;
+    border-radius: 10px;
+    padding: 3vw 0;
+}
+
+.image-box{
+    justify-content: center;
+    display: flex;
+    overflow: scroll;
+    min-height: 343px;
+    max-height: 343px;
+    align-items: center;
+}
+
+.isOrder {
+    --background: transparent;
+}
+
+.qr-code {
+    position: relative;
+}
+
+.capture {
+    padding: 8px;
+    position: absolute;
+    bottom: -16px;
+    right: 20px;
+    background: #d1d1d1;
+    border-radius: 50px;
+    font-size: 30px;
+}
+
+.rescan{
+    justify-content: center;
+}
+ion-row{
+    justify-content: center;
+    margin: 10px;
+}
+.name{
+    font-weight: 600;
+}
+.upi-icon-avtar {
+    margin-top: 15px;
+}
+.avtar-img {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+}

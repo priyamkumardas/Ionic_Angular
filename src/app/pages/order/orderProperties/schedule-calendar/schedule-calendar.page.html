@@ -1,0 +1,17 @@
+<div class="crossIcon" (click)="cancel()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+
+<ion-content>
+  <div class="contents">
+    <ion-title>{{'scheduleDelivery' | language : 'Schedule Delivery'}}</ion-title>
+
+    <ion-datetime size="cover" #datetime [value]="value" (ionChange)="change(datetime.value, contenerType)"
+      [presentation]="type" [disabled]="isDisabled">
+      <!-- <ion-buttons slot="buttons">
+        <ion-button color="primary" fill="clear" (click)="cancel()">Cancel</ion-button>
+        <ion-button color="primary" fill="clear" (click)="done(datetime.value, contenerType)">Done</ion-button>
+      </ion-buttons> -->
+    </ion-datetime>
+  </div>
+</ion-content>

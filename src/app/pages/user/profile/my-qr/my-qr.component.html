@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/profile" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'MyShopQRCode'|language:'My Shop QR Code'}}</ion-title>
+  </ion-toolbar>
+  <ion-progress-bar color="primary" type="indeterminate" mode="ios" *ngIf="commonservice.isLoading"></ion-progress-bar>
+</ion-header>
+<ion-content>
+  <div class="content" *ngIf="responseSuccess">
+    <div id="download">
+      <div class="ion-padding ion-text-center" slot="content">
+        <qrcode [qrdata]="shopQR" [imageSrc]="'./assets/icon/sarvmQR.svg'" [allowEmptyString]="true" [width]="256"
+          [title]="'A custom title attribute'" [errorCorrectionLevel]="'H'">
+        </qrcode>
+      </div>
+      <p class="ion-text-center shopName">{{shopDetails?.shop_name}}</p>
+      <!-- <p class="ion-text-center">{{shopDetails?.shop_number}}</p> -->
+      <div>
+        <div class="line"></div>
+        <ion-row>
+          <ion-col size='auto'>
+            <ion-icon name="location-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-text class="location">
+              {{shopDetails?.shop_number}}, {{shopDetails?.locality}}, {{shopDetails?.city}}, {{shopDetails?.pincode}}
+              {{shopDetails?.state}}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size='auto'>
+            <ion-icon name="call-outline"></ion-icon>
+          </ion-col>
+          <ion-col class="location">
+            +91 {{commonservice.userData.phone}}
+          </ion-col>
+        </ion-row>
+        <div class="lineBottom"></div>
+        <div class="about"> Selling </div>
+        <ion-grid>
+          <ion-row class="sell">
+            <ng-container *ngFor="let p of shopDetails?.category">
+              <ion-col size="4">
+                <!-- <ion-row class="images">
+                  <img src={{p?.image}} alt="" />
+                </ion-row> -->
+                <ion-row class="categoryName">
+                  {{p?.name}}
+                </ion-row>
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+    <div>
+      <ion-row class="ion-text-center ion-text-capitalize">
+        <ion-col size="6" class="ion-padding">
+          <ion-button class="ion-text-capitalize" color="primary" fill="outline" expand="full" shape="round" mode="md"
+            size="medium" (click)="shareQr()">
+            <ion-icon slot="start" name="share-social-outline"></ion-icon>
+            {{'share'|language:'Share'}}
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" class="ion-padding">
+          <ion-button class="ion-text-capitalize" color="primary" fill="outline" expand="full" shape="round" mode="md"
+            size="medium" (click)="downloadQr()">
+            <ion-icon slot="start" name="cloud-download-outline"></ion-icon>
+            {{'Download'|language:'Download'}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

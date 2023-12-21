@@ -1,0 +1,49 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-label>
+      <ion-title class="ion-no-padding">{{'imSelling'|language:'I am Selling'}}</ion-title>
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="openHelpVideo()">
+        <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <ion-refresher mode="ios" slot="fixed" (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher> -->
+  <ion-grid class="ion-padding-horizontal ion-padding-bottom">
+    <ion-searchbar animated color="light" type="text" mode="md" id="myInput" (ionChange)="searchFunction()"
+      [(ngModel)]="searchLang" placeholder="{{'Searchbyfruitscategory' | language : 'Search by category'}}">
+    </ion-searchbar>
+    <ion-row>
+      <ng-container *ngFor="let category of searchLang ? categories : masterCategoryArray">
+        <ion-col size="4">
+          <div class="ion-text-center">
+            <ion-checkbox class="check" id="{{category?.name}}" (click)="chooseCategory(category)"
+              [(ngModel)]="category.checked" [disabled]="categoryPresentinBackend.includes(category.name)"
+              mode="md"></ion-checkbox>
+            <div
+              (click)="categoryPresentinBackend.includes(category.name) ? '' : category.checked = !category.checked; chooseCategory(category)">
+              <img [src]="category?.image" alt="" />
+              <p class="ion-text-center categoryName">{{category?.name}}</p>
+            </div>
+          </div>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button shape="round" mode="ios" expand="block" color="primary" (click)="navigate()">{{'continue' | language :
+      'Continue'}}</ion-button>
+  </ion-toolbar>
+</ion-footer>

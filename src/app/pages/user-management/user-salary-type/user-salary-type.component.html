@@ -1,0 +1,39 @@
+<ion-footer>
+  <div class="CrossIcon" (click)="modelCtrl.dismiss(active)">
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+  <ion-card class="content ion-no-margin" >
+    <p class="clear"><strong>{{'Salarytype'|language:'Salary type'}}</strong></p>
+    <ion-grid class="ion-padding">
+      <ion-row>
+
+        <ion-col [ngClass]="{'active':active == 'MW'}" (click)="commonservice.featureNotAvailable()"> 
+
+          <div  class="ion-text-center">
+          <ion-img src="/assets/usermanagement/Monthly.svg" class="roleImg"></ion-img>
+
+          <p class="ion-text-nowrap" >{{'Monthlywage'|language:'Monthly wage'}}</p>
+
+        </div>
+      </ion-col>
+
+        <ion-col [ngClass]="active == 'DW'?'active':''" (click)="commonservice.featureNotAvailable()">
+
+           <div  class="ion-text-center">
+          <ion-img src="/assets/usermanagement/Daily.svg" class="roleImg"></ion-img>
+          <p class="ion-text-nowrap">{{'DailyWage'|language:'Daily Wage'}}</p>
+        </div>
+      </ion-col>
+        <ion-col [ngClass]="active == 'PPO'?'active':''" (click)="modelCtrl.dismiss('PAY_PER_ORDER')">
+           <div  class="ion-text-center">
+          <ion-img src="/assets/usermanagement/Payperorder.svg" class="roleImg"></ion-img>
+
+          <p class="ion-text-nowrap pay-per-order">{{'Payperorder'|language:'Pay per order'}}</p>
+
+        </div>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-footer>
+

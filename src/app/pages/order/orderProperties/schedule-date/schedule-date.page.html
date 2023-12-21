@@ -1,0 +1,42 @@
+<div class="crossIcon" (click)="cancel()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+
+<ion-content>
+  <div class="contents">
+    <div class="title">
+      <ion-icon name="calendar-clear-outline"></ion-icon>
+      {{'scheduleDelivery' | language : 'Schedule Delivery'}}
+    </div>
+    <p class="selected-date">4 May 2022</p>
+  </div>
+  <div class="schedule-main">
+    <div>
+      <div class="schedule-background">
+        <img src="assets/icon/sunrise.svg" alt="pickup" />
+      </div>
+      <p class="time-slot">6AM-10AM</p>
+    </div>
+
+    <div>
+      <div class="schedule-background">
+        <img src="assets/icon/sun.svg" alt="pickup" />
+      </div>
+      <p class="time-slot">10AM-2PM</p>
+    </div>
+
+    <div>
+      <div class="schedule-background">
+        <img src="assets/icon/sunset.svg" alt="pickup" />
+      </div>
+      <p class="time-slot">2PM-6PM</p>
+    </div>
+
+    <div>
+      <div class="schedule-background">
+        <img src="assets/icon/moon.svg" alt="pickup" />
+      </div>
+      <p class="time-slot">6PM-10PM</p>
+    </div>
+  </div>
+</ion-content>

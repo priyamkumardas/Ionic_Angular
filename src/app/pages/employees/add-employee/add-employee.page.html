@@ -1,0 +1,111 @@
+<ion-header>
+    <ion-toolbar>
+        <div class="header" style="display: flex">
+            <ion-back-button slot="start"></ion-back-button>
+            <ion-title style="text-align: center"><strong>{{'AddEmployee' | language : 'Add Employee'}}</strong></ion-title>
+            <ion-img class="reset" src="assets/images/reset.svg" slot="end"></ion-img>
+        </div>
+    </ion-toolbar>
+</ion-header>
+<ion-segment [(ngModel)]="segment" class="bgw" (ionChange)="segmentChanged($event)">
+    <ion-segment-button mode="md" value="0" checked>
+        <p class="textprim">{{'personal' | language : 'Personal'}}</p>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="1">
+        <p class="textprim">{{'iddetails' | language : 'ID Details'}}</p>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="2">
+        <p class="textprim">{{'emergencyContact' | language : 'Emergency Contact'}}</p>
+    </ion-segment-button>
+</ion-segment>
+
+<ion-content>
+    <div [ngSwitch]="segment">
+        <ion-slides *ngSwitchCase="'0'" style="display: content">
+            <div class="container" style="display: flex; justify-content: center; margin: 8%">
+                <img src="{{employeeProfileURL ? employeeProfileURL : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}}" class="profile_img" />
+                <ion-img button id="pic" src="assets/images/cam.svg" alt="" class="changepic"></ion-img>
+            </div>
+
+            <!-- forms for entering details -->
+
+            <form style="display: block">
+                <input type="text" class="name" placeholder="Employee ID *" />
+                <input type="text" class="name" placeholder="Full Name *" />
+                <input type="text" class="name icon-rtl" placeholder="Assign Role" />
+                <input type="text" class="name" placeholder="Email Address *" />
+                <input type="text" class="name" placeholder="Mobile Number" />
+                <input type="text" class="name" placeholder="Education" />
+                <input type="text" class="name" placeholder="Address line 1" />
+                <input type="text" class="name" placeholder="Address line 2" />
+                <input type="text" class="name" placeholder="Address line 3" />
+                <input type="text" class="name icon-rtc" placeholder="Date of Joining*" />
+            </form>
+            <div class="navnext">
+                <div class="next colr">{{'next' | language : 'Next'}}& #8594;</div>
+            </div>
+        </ion-slides>
+
+        <ion-slides *ngSwitchCase=" '1' ">
+            <!-- forms for entering details -->
+
+            <form>
+                <input type="text " class="name icon-rtc" placeholder="Date of Joining* " />
+                <div class="surd">
+                    <span>
+            <img
+              src="assets/images/aadhar.svg"
+              alt=""
+              class="pan"
+            />
+          </span>
+                    <input disabled="true" type="read " class="name" placeholder=" Upload Aadhar card " style="all: unset" />
+                    <span>
+            <img
+              src="assets/images/upload-cloud.svg"
+              alt=""
+              style="display: inline-block"
+              class="pan"
+            />
+          </span>
+                </div>
+                <div class="surd">
+                    <span>
+            <img src="assets/images/pan.svg" alt="" class="pan" />
+          </span>
+                    <input disabled="true" type="read " class="name" placeholder="Upload Pan card " style="all: unset" />
+                    <span>
+            <img
+              src="assets/images/upload-cloud.svg"
+              alt=""
+              class="pan"
+            />
+          </span>
+                </div>
+
+                <input type="text " class="name" placeholder="Baic Salary per month " />
+            </form>
+            <div class="navnext">
+                <div class="back colr" slot="start">& #8592; Previous</div>
+                <div class="next colr" slot="end">{{'next' | language : 'Next'}}&#8594;</div>
+            </div>
+        </ion-slides>
+        <ion-slides *ngSwitchCase=" '2' ">
+            <!-- forms for entering details -->
+
+            <form style="display: block; width: 100%">
+                <input type="text " class="name" placeholder="Emergency Contact Number* " />
+                <input type="text " class="name" placeholder="Contact Name * " />
+                <input type="text " class="name" placeholder="Relationship " />
+            </form>
+            <ion-footer class="foter">
+                <button class="skip" outline="false">
+          <ion-text class="skiptxt textprim">& #8592; Previous</ion-text>
+        </button>
+                <button class="proceedbtn">
+          <ion-text class="proceed">{{'saveAndContinue' | language : 'Save and Continue'}}</ion-text>
+        </button>
+            </ion-footer>
+        </ion-slides>
+    </div>
+</ion-content>

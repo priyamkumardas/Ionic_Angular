@@ -1,0 +1,72 @@
+ion-footer {
+  bottom: 0px;
+  position: absolute;
+  width: -webkit-fill-available;
+}
+ion-toolbar {
+  ion-label{
+    font-weight: bold;
+    margin-left: 10px;
+    text-transform: capitalize;
+    color:  #000000;
+  }
+}
+.inviteapps{
+  background: var(--ion-color-light);
+}
+
+ion-card {
+  background: var(--ion-color-light);
+  border-radius: 0px;
+  margin: 0px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.CrossIcon {
+  height: 48px;
+  width: 48px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+   margin-right: auto;
+   font-size: 30px;
+   border-radius: 100%;
+   background: var(--ion-color-light);
+ }
+.options{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+p {
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+}
+.content {
+  border-radius: 20px 21px 0px 0px;
+  width: -webkit-fill-available;
+  padding-bottom: 20px;
+  margin: 0;
+  .active {
+     border : 2px solid #578b69;
+     border-radius: 20px;
+  }
+}
+
+.header {
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #4F5052;
+}
+.footer-md::before {
+  background-image: none;
+}

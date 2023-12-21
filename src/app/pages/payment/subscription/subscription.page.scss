@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    ion-title {
+        font-size: 5.5vw;
+        //position: relative;
+    }
+    ion-icon {
+        margin: auto 0;
+        font-size: 5vw;
+        padding: 0 0 0 3vw;
+        color: var(--ion-color-dark-tint);
+    }
+}
+.active-plan{
+    font-size: 16px;
+    // line-height: 16px;
+    color: var(--ion-color-dark-shade);
+    font-weight: 500;
+}
+.bgy {
+    background: #f7bc0d;
+}
+
+.renew {
+    display: flex;
+    align-items: center;
+}
+
+.renewchip {
+    background-color: #aaaaaa;
+    margin: 0 auto;
+}
+
+.discount {
+    margin-top: 4px;
+}
+
+.bgw {
+    color:var(--ion-color-dark-contrast);
+   
+    font-weight: 500;
+}
+
+.invoice {
+    border: 1px solid black;
+    padding: 3px 18px;
+    margin: 8px;
+}
+
+ion-button{
+    margin: 15px;
+}

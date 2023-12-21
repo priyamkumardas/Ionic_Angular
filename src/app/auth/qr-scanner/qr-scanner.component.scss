@@ -1,0 +1,41 @@
+.scan-box {
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+    display: block;
+    height: 300px;
+    margin: 20vh auto 0px;
+    width: 300px;
+}
+
+.icon {
+    position: relative;
+    z-index: 1;
+    width: 2em;
+
+    ion-icon {
+        color: #fff;
+    }
+}
+
+.text {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+ion-buttons {
+    margin: 0 !important;
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    right: 10px;
+    font-size: 4vw;
+    ion-button {
+        font-size: 5vw;
+    }
+    ion-icon {
+        font-size: 5vw;
+    }
+}

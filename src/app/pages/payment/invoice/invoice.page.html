@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start" (click)="onBack()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-buttons> -->
+        <ion-title>{{'Invoice' | language : 'INVOICE'}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid fixed class="first-card">
+        <ion-row class="ion-margin">
+            <ion-col size="6"><ion-label>{{'entityname' | language : 'Entity Name'}}</ion-label></ion-col>
+            <ion-col size="6"><ion-text> SarvMai Pvt Ltd </ion-text></ion-col>
+        </ion-row>
+        <ion-row class="ion-margin">
+            <ion-col size="6"><ion-label>{{'GSTINNumber ' | language : 'GSTIN Number'}}</ion-label></ion-col>
+            <ion-col size="6"><ion-text>29ABICS9020N1ZP</ion-text></ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-horizontal">
+            <ion-col size="6">{{'InvoiceNumber' | language : 'Invoice Number'}}</ion-col>
+            <ion-col size="6"><ion-text>{{invoiceNo}}</ion-text></ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-card>
+        <ion-grid fixed>
+            <div class="labels">
+                <ion-row>
+                    <ion-col size="6"><ion-label>{{'IGSTIN' | language : 'IGSTIN'}}</ion-label></ion-col>
+                    <ion-col size="6"><ion-text>{{shopDetails.GST_no}}</ion-text></ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="6"><ion-label>{{'ShopName' | language : 'Shop Name'}}</ion-label></ion-col>
+                    <ion-col size="6"><ion-text>{{shopDetails.shop_name}}</ion-text></ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="6"><ion-label>{{'PhoneNo.' | language : 'Phone No.'}}</ion-label></ion-col>
+                    <ion-col size="6"><ion-text>{{commonService.userData?.phone}}</ion-text></ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="6"><ion-label>{{'shopAddress' | language : 'Shop Address'}}</ion-label></ion-col>
+                    <ion-col size="6"><ion-text>{{userAddress}}</ion-text></ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="6"><ion-label>{{'BasicSubscription ' | language : 'Basic Subscription'}}</ion-label></ion-col>
+                    <ion-col size="6"><ion-text>{{subscripInfo.startDate | date : 'dd MMM yyyy'}}</ion-text></ion-col>
+                </ion-row>
+            </div>
+            <ion-row class="ion-margin">
+                <ion-col size="6"><ion-label>{{'amount' | language : 'Amount'}}</ion-label></ion-col>
+                <ion-col size="6"><ion-text>{{subscripInfo?.amount | currency:'INR':'symbol':'0.0-2'}}</ion-text></ion-col>
+            </ion-row>
+            <ion-row class="ion-margin">
+                <ion-col size="6"><ion-label>{{'gst18' | language : 'GST (18%)'}}</ion-label></ion-col>
+                <ion-col size="6"><ion-text>&plus; {{subscripInfo?.gst | currency:'INR':'symbol':'0.0-2'}}</ion-text> </ion-col>
+            </ion-row>
+            <ion-row class="ion-margin">
+                <ion-col size="6"><ion-label>{{'TotalAmount ' | language : 'Total Amount'}}</ion-label></ion-col>
+                <ion-col size="6"><ion-text>{{subscripInfo.amount + subscripInfo.gst | currency:'INR':'symbol':'0.0-2'}}</ion-text></ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+    <ion-button color="primary" expand="block" shape="round" mode="ios" routerLink="/home" class="ion-margin">{{'home' | language :'Home'}}
+    </ion-button>
+</ion-content>

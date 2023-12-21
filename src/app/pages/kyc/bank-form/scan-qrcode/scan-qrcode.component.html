@@ -1,0 +1,129 @@
+<ion-header *ngIf="!isOrder">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" color="primary" defaultHref="/bank-form" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-label><ion-title class="ion-no-padding">{{'ScanQRcode'|language:'Scan QR code'}}</ion-title></ion-label>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/select-upi-app">
+        <ion-icon color="primary" size="large" slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+      <!-- <ion-button (click)="removeQrCode()">
+        <ion-icon color="primary" size="large" slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button> -->
+      <ion-button (click)="openDeleteModal(retailerId, paymentInfoId)">
+        <!-- <ion-icon color="primary" size="large" slot="icon-only" name="trash-outline"></ion-icon> -->
+        <img src="assets\banking\qr_delete.svg" alt="">
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar type="indeterminate" mode="ios" color="primary" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content *ngIf="!isOrder">
+  <div class="container">
+    <ion-row class="ion-align-items-center top-view overflow" scrollX="true">
+      <div class="arrow1">
+        <ion-buttons>
+          <ion-icon color="danger" name="chevron-back-outline" class="arrow arrow-left"
+            (click)="forwardQR('back')"></ion-icon>
+        </ion-buttons>
+      </div>
+      <ion-col size="2" *ngFor="let upiInfo of userPaymentInfo ; let i = index">
+        <div class="ion-margin-end" (click)="changeQR(i)">
+          <ion-avatar [ngClass]="getIndex == i ? 'border' : 'avtar'">
+            <img alt="icon" src="assets/banking/{{upiInfo.app}}.png" />
+          </ion-avatar>
+        </div>
+      </ion-col>
+      <div class="arrow2">
+        <ion-buttons>
+          <ion-icon color="danger" name="chevron-forward-outline" class="arrow arrow-right"
+            (click)="forwardQR('next')"></ion-icon>
+        </ion-buttons>
+      </div>
+    </ion-row>
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="auto">
+          <ion-avatar class="upi-icon-avtar">
+            <img alt="icon" *ngIf="paymentInfoId" class="avtar-img" src="assets/banking/{{displayUserUpiIcon}}.png" />
+          </ion-avatar>
+        </ion-col>
+        <!-- <ion-col size="auto">
+          <ion-row class="name">
+            {{displayUserName}}
+          </ion-row>
+          <ion-row class="number">
+            +91 {{displayUserMobile}}
+          </ion-row>
+        </ion-col> -->
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-padding">
+          <div class="ion-text-center qr-code">
+            <img *ngIf="displayUserPaymentInfo" src="{{displayUserPaymentInfo}}" class="qr-code-img" alt="">
+            <!-- <ion-icon *ngIf="displayUserPaymentInfo" name="camera-outline" class="capture" (click)="presentActionSheet()"></ion-icon> -->
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="upi">
+        UPI ID: {{displayUserUpi}}
+      </ion-row> -->
+      <ion-row class="rescan">
+        <ion-button *ngIf="paymentInfoId" fill="outline" mode="ios" (click)="presentActionSheet()">
+          <ion-img src="assets\banking\rescan.svg"></ion-img>
+          <ion-label>
+            {{'Reupload'|language:'Reupload'}}
+          </ion-label>
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<!-- For Showing QR code on order popup's-->
+<!-- 
+  Definition's of the variable's used...
+
+  isOrder:- it is a flag coming from cancel order modal popup which indicates if this page has to show content for order page 
+  or accessed from normal route....
+-->
+<div *ngIf="isOrder" class="container">
+  <div *ngIf="userPaymentInfo?.length !== 0">
+    <ion-row class="ion-align-items-center top-view overflow" scrollX="true">
+      <div class="arrow1">
+        <ion-buttons>
+          <ion-icon color="danger" name="chevron-back-outline" class="arrow arrow-left"
+            (click)="forwardQR('back')"></ion-icon>
+        </ion-buttons>
+      </div>
+      <ion-col size="2" *ngFor="let upiInfo of userPaymentInfo ; let i = index">
+        <div class="ion-margin-end" (click)="changeQR(i)">
+          <ion-avatar [ngClass]="getIndex == i ? 'border' : 'avtar'">
+            <img alt="icon" src="assets/banking/{{upiInfo.app}}.png" />
+          </ion-avatar>
+        </div>
+      </ion-col>
+      <div class="arrow2">
+        <ion-buttons>
+          <ion-icon color="danger" name="chevron-forward-outline" class="arrow arrow-right"
+            (click)="forwardQR('next')"></ion-icon>
+        </ion-buttons>
+      </div>
+    </ion-row>
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col class="ion-padding">
+          <div class="image-box">
+            <img src="{{displayUserPaymentInfo}}" class="qr-code-img" alt="">
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="upi">
+        UPI ID: {{displayUserUpi}}
+      </ion-row> -->
+    </ion-grid>
+  </div>
+</div>

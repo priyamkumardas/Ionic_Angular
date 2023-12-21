@@ -1,0 +1,195 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons *ngIf="!isModal" slot="start" (click)="onBack()" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/shop-address" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title [ngClass]="isModal ? 'title' : ''">{{'Kyc' | language : 'KYC Form'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openHelpVideo()">
+        <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment mode="md" value="addressDetail" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="addressDetail">
+      <ion-label>{{'Addressdetail' | language : 'Address Detail'}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="panProof">
+      <ion-label>{{'PanProof' | language : 'PAN Proof'}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <form [formGroup]="kycForm" (ngSubmit)="submitfinal()">
+    <div [hidden]="segment === 'panProof' " class="segment">
+      <div class="documentInput" (click)="adharImage? removeAlert('aadhar'):chooseImage('aadhar')">
+        <ng-container>
+          <img [src]="adharImage ? adharImage: '/assets/images/documentInput.svg'" alt="" class="doc-img" />
+          <!--<input type="file" accept="image/*" id="document" class="document" />  (change)="uploadImage($event,'adhar')" -->
+          <div class="labels" *ngIf="!adharImage">
+            <label for="document"><u>{{'uploadidentityproof' | language : 'Upload Identity Proof'}}</u><span
+                id="star">*</span></label>
+            <p>
+              {{'aadharcard/voterid/bplid/drivinglicense' | language : 'Aadhar Card/ Voter ID/BPL ID/Driving License'}}
+            </p>
+          </div>
+        </ng-container>
+        <div class="removeBtn" *ngIf="adharImage">
+          <ion-button color="warning" class="re-upload">{{'re-upload' | language:'Re-Upload'}}</ion-button>
+        </div>
+      </div>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'idCardNo.' | language : 'ID Card No.'}}</ion-label>
+              <ion-input formControlName="idno" type="text" id="idCard" placeholder="{{'EnterIDCardNo'|language:'Enter ID Card No'}}"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.idno.errors?.required">ID Card No. is
+                required.</ion-note>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'name' | language : 'Name'}}</ion-label>
+              <ion-input formControlName="name" type="text" id="name" placeholder="{{'EnterName'|language:'Enter Name'}}"
+                (keypress)="onKeyPress($event)"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.name.errors?.required">Name is
+                required.</ion-note>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'shopno./building' | language : 'Shop no./Building '}}</ion-label>
+              <ion-input formControlName="shopNumber" type="text" id="shopNumber" placeholder="{{'EnterShopNoorBuilding'|language:'Enter Shop No / Building'}}"
+                (keypress)="restrictSpecialCharacters($event)"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.shopNumber.errors?.required">Shop No./Building
+                is required.</ion-note>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'locality/area' | language : 'Locality/Area'}}</ion-label>
+              <ion-input formControlName="area" type="text" id="area" placeholder="{{'EnterLocalityorArea'|language:'Enter Locality / Area'}}"
+                (keypress)="restrictSpecialCharacters($event)"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.area.errors?.required">Area./Locality is
+                required.</ion-note>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'streetno' | language : 'Street no '}}</ion-label>
+              <ion-input formControlName="street" type="text" id="street" placeholder="{{'EnterStreetno'|language:'Enter Street no'}}"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.street.errors?.required">{{'streetno.isrequired'
+                | language : 'Street no.is required.'}}</ion-note>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'landMark' | language : 'Landmark'}}</ion-label>
+              <ion-input formControlName="landmark" type="text" id="landmark"
+                (keypress)="restrictSpecialCharacters($event)" placeholder="{{'EnterLandmark'|language:'Enter Landmark'}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'city/state' | language : 'City/State'}}</ion-label>
+              <ion-input formControlName="city" type="text" id="city" (keypress)="restrictSpecialCharacters($event)"
+                placeholder="{{'EnterCityorState'|language:'Enter City or State'}}"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.city.errors?.required">{{' cityisrequired' | language : 'City is required.'}}</ion-note>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'pincode' | language : 'Pincode'}}</ion-label>
+              <ion-input type="tel" formControlName="pincode" inputmode="number" id="pincode" minlength="6"
+                maxlength="6" (keypress)="restrictSpecialCharacters($event)" placeholder="{{'EnterPincode'|language:'Enter Pincode'}}"></ion-input>
+              <ion-note slot="error" *ngIf="isSubmitted && errorControl.pincode.errors?.required">{{'pincodeisrequired'
+                | language : 'Pincode is required.'}}</ion-note>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div [hidden]="segment === 'addressDetail' " class="segment">
+      <div class="documentInput" (click)="panImage? removeAlert('bplId'):chooseImage('bplId')">
+        <ng-container>
+          <img [src]="panImage ? panImage: '/assets/images/documentInput.svg'" alt="" class="doc-img" />
+          <div class="labels" *ngIf="!panImage">
+            <label for="pan"><u>{{'uploadPanCard' | language : 'Upload Pan Card'}}</u><span id="star">*</span></label>
+          </div>
+        </ng-container>
+        <div class="removeBtn" *ngIf="panImage">
+          <ion-button color="warning" class="re-upload">{{'re-upload' | language : 'Re-Upload'}}</ion-button>
+        </div>
+      </div>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'panCardNo' | language : 'PAN Card No.'}}</ion-label>
+              <ion-input type="text" [(ngModel)]="kycUserInfo.panno" maxlength="10" minlength="10"
+                pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$" (ngModelChange)="kycUserInfo.panno = $event.toUpperCase()" formControlName="panno" type="text" id="idCard"
+                placeholder="{{'EnterPANCardNo'|language:'Enter PAN Card No'}}"></ion-input>
+              <ion-note slot="error"
+                *ngIf="isSubmitted && errorControl?.panno?.errors?.pattern">{{'InvalidPANNumberFormat' | language :
+                'Invalid PAN Number Format'}}</ion-note>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'nameAsPerPancard' | language : 'Name as per PAN card'}}</ion-label>
+              <ion-input formControlName="panName" [(ngModel)]="kycUserInfo.panName" id="name"
+                placeholder="{{'EnterNameasperPANcard'|language:'Enter Name as per PAN card'}}" (keypress)="restrictSpecialCharacters($event)"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'fathersName' | language : 'Father’s Name'}}</ion-label>
+              <ion-input formControlName="fathername" [(ngModel)]="kycUserInfo.fathername" id="father-name"
+                placeholder="{{'EnterFathersName'|language:'Enter Fathers Name'}}" (keypress)="restrictSpecialCharacters($event)"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item id="dob" class="inputfield" fill="outline" shape="round" mode="md">
+              <ion-label position="floating">{{'dob' | language : 'dob'}}</ion-label>
+              <ion-input type="text" [(ngModel)]="kycUserInfo.dob"
+                [value]="kycUserInfo?.dob ? kycUserInfo?.dob : defaultDate" formControlName="dob"
+                (keypress)="restrictSpecialCharacters($event)">                
+              </ion-input>
+              <ion-icon name="calendar-clear-outline" slot="end" size="small"></ion-icon>
+            </ion-item>
+            <ion-modal trigger="dob" handleBehavior="cycle" show-backdrop="false" side="end">
+              <ng-template>
+                <app-date-time-picker [isDisabled]="false" [(ngModel)]="kycUserInfo.dob ? kycUserInfo.dob : defaultDate"
+                  formControlName="dob" ngDefaultControl [date_format]="format" [date_info]="dateCondition" (datePickerValue)="getDate($event)">
+                </app-date-time-picker>
+              </ng-template>
+            </ion-modal>
+            <!-- <label for="dob" class="label">{{'dob' | language : 'DOB'}}<span id="star">*</span></label> -->
+            <span class="error-message" *ngIf="isSubmitted && errorControl.dob.errors?.required">
+              DOB is required.
+            </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="btns">
+      <div class="skip btn" *ngIf="isModal">
+        <ion-button fill="clear" (click)="ConfirmKYCSkip()">{{'skip' | language : 'Skip'}}</ion-button>
+      </div>
+      <div class="save btn">
+        <ion-button fill="clear" type="submit">{{'save&Continue' | language : 'Save & Continue'}}</ion-button>
+      </div>
+    </div>
+  </form>
+</ion-content>

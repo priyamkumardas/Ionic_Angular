@@ -1,0 +1,360 @@
+.header {
+    display: flex;
+}
+
+.text1 {
+    font-size: 3.5vw;
+}
+
+ion-checkbox {
+    left: 25vw;
+    --size: 15px;
+}
+
+ion-checkbox::part(container) {
+    border-radius: 3px;
+    border: 2px solid var(--ion-color-primary);
+}
+
+#back-btn {
+    position: relative;
+    left: 5vw;
+    font-size: 5.5vw;
+    color: var(--ion-color-primary);
+}
+
+.mycatbtn {
+    height: 60px;
+    width: 60px;
+}
+
+.searchbar {
+    display: flex;
+    width: 65vw;
+    position: relative;
+    left: 1vw;
+    margin: 1.5vw 0;
+}
+
+ion-icon {
+    margin: auto 0;
+}
+
+ion-toolbar .sc-ion-searchbar-ios-h {
+    padding: 0;
+    --border-radius: 50px;    
+}
+
+.navbar {
+    display: flex;
+    overflow: scroll;
+
+    p {
+        display: block;
+        height: fit-content;
+        width: fit-content;
+        text-align: center;
+        color: var(--ion-color-primary);
+        padding: 2vw;
+        font-size: 4.5vw;
+        margin: 0 3vw 4px;
+    }
+}
+
+.active {
+    border-bottom: 2px solid;
+}
+
+.info-section {
+    display: flex;
+    margin-top: 1vw;
+    height: calc(100% - 40px);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: -webkit-fill-available;
+}
+
+.main_section {
+    height: 100%;
+
+    .product-scroll {
+        flex-wrap: nowrap;
+        overflow-x: scroll !important;
+        overflow-y: hidden;
+        width: 85%;
+    }
+}
+
+.productimg {
+    height: 80px;
+    width: 100%;
+    object-fit: contain;
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+.subimage {
+    width: 10vw;
+}
+
+.product-img-txt {
+    position: absolute !important;
+}
+
+.subname {
+    margin-top: 5px;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-img-txt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: absolute !important;
+}
+
+.fruitType {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #E7FFFE;
+    padding: 4vw 1vw;
+
+    p {
+        font-size: 3vw;
+        text-align: center;
+        color: var(--ion-color-primary);
+    }
+}
+
+.scroll {
+    border-radius: 10px;
+    margin-right: 10px;
+    overflow: scroll;
+    width: 20vw;
+}
+
+.current {
+    background: var(--ion-color-primary);
+
+    .subimage {
+        -webkit-filter: brightness(0) invert(1);
+        filter: brightness(0) invert(1);
+    }
+
+    p {
+        color: var(--ion-color-primary-contrast);
+        background: var(--ion-color-primary);
+    }
+}
+
+.data {
+    color: var(--ion-color-primary-contrast);
+    background: var(--ion-color-primary);
+}
+
+.mainbar {
+    height: -webkit-fill-available;
+    overflow: scroll;
+    width: 100%;
+
+    .text {
+        display: flex;
+        justify-content: space-between;
+        margin: 2vw 1.5vw;
+        font-size: 4.5vw;
+    }
+
+    ion-col {
+        margin: 1vw 3vw;
+    }
+}
+
+.card {
+    margin-bottom: 10vw;
+    width: 100%;
+
+    p {
+        text-align: center;
+        color: var(--ion-color-warning-contrast);
+        font-size: 3.5vw;
+    }
+}
+
+#clear {
+    display: block;
+    color: var(--ion-color-primary);
+    font-size: 3.5vw;
+    margin: auto 0;
+    margin-right: 3vw;
+}
+
+input {
+    position: absolute;
+    top: 1vw;
+    right: 5vw;
+    appearance: none;
+    border-radius: 0px;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+    top: 0px;
+    background: var(--ion-color-primary-contrast);
+    position: absolute;
+    right: 0px;
+    border-radius: 0px 4px 0px 4px;
+}
+
+input::before {
+    position: absolute;
+    content: "";
+    background: var(--ion-color-primary-contrast);
+    height: 3vw;
+    width: 3vw;
+    border: 1px solid var(--ion-color-primary);
+}
+
+input:checked::before {
+    background-image: url(../../../../assets/icon/Check-box.svg);
+    background-repeat: no-repeat;
+    border: 0;
+    background-size: cover;
+    min-width: 5vw;
+    min-height: 5vw;
+}
+
+.selected {
+    height: 40px;
+    background: var(--ion-color-warning);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 4vw;
+
+    p {
+        color: var(--ion-color-primary-contrast);
+        font-size: 4vw;
+        margin-right: 5vw;
+    }
+}
+
+.refresh {
+    margin-left: 340px;
+}
+
+.activeBtn,
+.deactiveBtn {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: 48px;
+    margin: auto;
+    padding: 5px 0px 5px 0px;
+    text-transform: none;
+}
+
+ion-fab-button {
+    width: 40px;
+    height: 40px;
+    opacity: 75%;
+
+    ion-icon {
+        font-size: 22px;
+    }
+}
+
+.deactiveBtn {
+    --background: #72F3EC;
+}
+
+.activeBtn {
+    --background: var(--ion-color-primary);
+}
+
+.selectall,
+.cancel {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 30px;
+    margin-right: 15px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.selectall {
+    u {
+        text-decoration: none;
+    }
+    color: var(--ion-color-primary);
+    letter-spacing: 0.02em;
+}
+
+.cancel {
+    text-transform: uppercase;
+    color: var(--ion-color-warning);
+
+    u {
+        text-decoration: none;
+    }
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.more-btn {
+    float: right;
+    right: 12px;
+    position: absolute;
+    top: 3px;
+    margin: 0;
+}
+
+.more-btn .btn {
+    background: var(--ion-color-primary-contrast);
+}
+
+.mic-icon {
+    position: relative;
+    right: 10%;
+    font-size: 20px;
+}
+
+.plus-btn {
+    font-size: 10vw;
+    color: var(--ion-color-primary);
+}
+
+.btnMore {
+    display: flex;
+    margin: 6px;
+    border: 2px solid var(--ion-color-primary);
+    border-radius: 25px;
+    background-color: var(--ion-color-primary-contrast);
+    width: 95px;
+}
+
+.More {
+    margin-top: 7px;
+    color: var(--ion-color-primary);
+    padding: 4px;
+    font-size: initial;
+}

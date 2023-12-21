@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button  routerLink="/referal/my-referal">
+        <ion-icon class="gift" name="gift-outline"></ion-icon>
+        <ion-label> {{"MyRewards " | language: "My Rewards "}}</ion-label>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ "Invite " | language: "Invite" }}</ion-title>
+  </ion-toolbar>
+  <ion-progress-bar mode="ios" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-margin" *ngFor="let itm of refCategory;let idx=index" size="6"
+        (click)="action('refer-form',idx,itm)">
+        <div class="imgBox">
+          <ion-img src="{{itm.image}}"></ion-img>
+        </div>
+        <p class="name">{{itm.languageKey | language : itm.name}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

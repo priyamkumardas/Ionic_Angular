@@ -1,0 +1,21 @@
+<ion-footer class="ion-no-border">
+  <div class="CrossIcon" (click)="cancel()">
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+  <div class="dates-header">
+    <p class="header" >{{'selectdate'|language:'Select Date'}}</p>
+    <ion-datetime mode="ios" size="cover" [max]="date_info?.max ? date_info?.max : max" #datetime [value]="value" (ionChange)="change(datetime.value, contenerType)"
+      [presentation]="type" [disabled]="isDisabled">
+    </ion-datetime>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button color="primary" expand="full" mode="ios" size="medium" shape="round" fill="outline"
+          (click)="cancel()"><ion-icon color="Primary" name="close-outline"></ion-icon>{{'Close' | language : 'Close'}}</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button color="primary" expand="full" mode="ios" size="medium" shape="round"
+          (click)="done(datetime.value, contenerType)">{{'Apply' | language : 'Apply'}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

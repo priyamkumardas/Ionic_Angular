@@ -1,0 +1,179 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px 20px 0px 0px;
+  min-height: 100% !important;
+  overscroll-behavior-y: auto;
+  background-color: var(--ion-color-light);
+
+  ion-title {
+    margin: 10px 0;
+    color: #222222;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+  }
+}
+
+ion-content {
+  --background: transparent;
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  // margin: 10px 5vw;
+  img {
+    width: 45vw;
+    height: 35vw;
+  }
+
+  ion-label {
+    margin: 15px 11px;
+    color: #222222;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.inputDiscount {
+  padding-right: 12px !important;
+}
+
+ion-col {
+  p {
+    padding-left: 5px;
+  }
+}
+
+.moqChip {
+  color: #188989;
+  font-size: 15px;
+}
+
+span {
+  ion-chip {
+    width: 55px;
+    height: 55px;
+    font-size: 16px;
+    position: absolute;
+    top: 34px;
+    border-radius: 50%;
+    background-color: rgb(204 196 196 / 20%);
+    border: 0 !important;
+  }
+}
+
+.hgt {
+  width: 82px;
+  height: 76px;
+  padding: 10px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--ion-color-medium-shade);
+
+  &.active {
+    border: 0;
+    background-color: #10bab266;
+  }
+}
+
+.chipsold {
+  margin: 10px 12px;
+}
+
+ion-grid {
+  padding: 0;
+
+  ion-row {
+    ion-col {
+      padding: 0 0 10px 0;
+      justify-content: center;
+      display: flex;
+    }
+  }
+}
+
+.label {
+  color: var(--ion-color-dark-shade);
+  font-size: 14px;
+  font-weight: 550;
+  margin-left: 10px;
+}
+
+.price {
+  width: 40vw;
+  text-align: center;
+  padding: 0 5px !important;
+}
+
+.chipBox {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  img {
+    margin-bottom: 15px;
+  }
+}
+
+.chipadd {
+  width: 10rem;
+  height: 40px;
+  border-radius: 24px;
+  border: 1px solid var(--unselect, rgba(125, 124, 131, 0.40));
+}
+
+.CrossIcon {
+  height: 48px;
+  width: 48px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  border-radius: 100%;
+  background: #fbfbfb;
+}
+
+.button-native {
+  width: 90% !important;
+}
+
+.textBold {
+  font-size: 14px !important;
+  font-weight: 550;
+}
+
+.gradingsign {
+  height: 31px !important;
+}
+
+.prodCurr {
+  //left: 25px !important;
+  //position: relative !important;
+  margin-left: 25px;
+}
+
+.backbt {
+  color: var(--ion-color-primary);
+  margin-top: 10px;
+  position: absolute;
+  float: left;
+  left: 8px;
+  top: 5px;
+}
+
+ion-button {
+  width: 80vw;
+  margin: 20px auto;
+}

@@ -1,0 +1,264 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/home" text="" color="dark"></ion-back-button> -->
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'crm'|language:'CRM'}}</ion-title>
+  </ion-toolbar>
+  <ion-progress-bar mode="ios" type="indeterminate" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+        <!-- NEW AND EXISTING CUSTOMERS SECTION -->
+  <ion-segment [(ngModel)]="customers" class="main-segment">
+    <ion-segment-button value="new">
+      <ion-label>{{'New'|language:'New'}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="existing">
+      <ion-label>{{'Existing'|language:'Existing'}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="customers">
+    <div *ngSwitchCase="'new'" class="ion-no-margin ion-padding-bottom">
+      <ion-segment [(ngModel)]="newSegment" color="primary" mode="md" class="new-customer-segment">
+        <div class="nav">
+          <p *ngFor="let f of filters; let i = index" (click)="applyFilter(f.key, i)"
+            [class.active]="selectedIndex === i">
+            {{ f.key |language:f.value}}
+          </p>
+        </div>
+      </ion-segment>
+      <!-- My referal -->
+      <div>
+        <div class="box2" *ngFor="let referrals of count" [id]="referrals?._id">
+          <ion-img id="type" *ngIf="referrals?.type === 'INDIVIDUAL'" src="assets/ReferrlImg/person.svg"
+            alt=""></ion-img>
+          <ion-img id="type" *ngIf="referrals?.type === 'LOGISTICS_DELIVERY'" src="assets/ReferrlImg/deliveryValet.svg"
+            alt=""></ion-img>
+          <ion-img id="type" *ngIf="referrals?.type === 'RETAILER'" src="assets/ReferrlImg/retailer.svg"
+            alt=""></ion-img>
+          <ion-img id="type" *ngIf="referrals?.type === 'wholeseller'" src="assets/ReferrlImg/wholesaler.svg"
+            alt=""></ion-img>
+          <ion-img id="type" *ngIf="referrals?.type === 'farmer'" src="assets/ReferrlImg/farmer.svg" alt=""></ion-img>
+          <ion-img id="type" *ngIf="referrals?.type === 'traderBroker'" src="assets/ReferrlImg/trader_broker.svg"
+            alt=""></ion-img>
+          <ion-img id="type" *ngIf="referrals?.type === 'deliveryPartner'" src="assets/ReferrlImg/deliveryPartner.svg"
+            alt=""></ion-img>
+          <ion-img id="type" *ngIf="referrals?.type === 'other'" src="assets/ReferrlImg/other.svg" alt=""></ion-img>
+          <button id="like" fill="clear" [routerLink]="['/referal/referal-ratting']" [state]="{ phoneNumber: referrals?.phone_number,
+            referType: referrals?.type,
+            rating: referrals?.ratings,
+            comments: referrals?.comments }">
+            <ion-img id="like" src="assets/ReferrlImg/tabler_thumb-up.png" *ngIf="referrals?.ack_status" alt=""></ion-img>
+            <ion-img id="like" src="assets/ReferrlImg/ic_thumb_up_inactive.png" *ngIf="!referrals?.ack_status" alt=""></ion-img>
+          </button>
+          <p id="num">+91 {{ referrals?.phone_number }}</p>
+          <p id="StatusTxt">
+            {{'Referralstatus '|language:'Referral Status '}}
+            <!-- {{ referrals?.first_order_status }} -->
+          </p>
+          <div class="Allcheckbox">
+            <ng-container *ngFor="let stage of referrals.stages">
+              <div *ngIf="stage?.show" class="checkbox">
+                <ion-icon color="primary" *ngIf="stage?.value" name="checkmark-circle"></ion-icon>
+                <ion-icon color="medium" *ngIf="!stage?.value" name="checkmark-circle"></ion-icon>
+                <span>{{ stage?.name }}</span>
+              </div>
+            </ng-container>
+          </div>
+          <div class="comments"
+            *ngIf="referrals?.comments?.length && referrals?.comments[referrals?.comments?.length-1] != ''">
+            <img class="imgsize" src="assets/ReferrlImg/referalcomments.svg" alt="" />
+            <p class="greyColor">
+              {{referrals?.comments[referrals?.comments?.length-1]}}</p>
+          </div>
+          <ion-row>
+            <ion-col size="10" class="ion-no-padding centeralign">
+              <div class="comments" *ngIf="referrals?.comments?.length && referrals?.comments?.length > 1">
+                <button class="paddingLeft" fill="clear" [routerLink]="['/referal/referal-ratting']" [state]="{ phoneNumber: referrals?.phone_number,
+                  referType: referrals?.type,
+                  rating: referrals?.ratings,
+                  comments: referrals?.comments }">
+                  {{'viewAll' | language:'View all'}} {{referrals?.comments?.length}} {{'Comment' | language:'comments'}}
+                </button>
+              </div>
+              <div class="comments" *ngIf="!referrals?.comments?.length || referrals?.comments?.length == 1">
+                <button class="paddingLeft" fill="clear" [routerLink]="['/referal/referal-ratting']" [state]="{ phoneNumber: referrals?.phone_number,
+                  referType: referrals?.type,
+                  rating: referrals?.ratings,
+                  comments: referrals?.comments }">
+                  <img class="imgsize" src="assets/ReferrlImg/referalcomments.svg" alt="" />{{'Addcommentandrating' | language:'Add comment and Rating'}}
+                </button>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding">
+              <button class="ratingsRef" fill="clear" [routerLink]="['/referal/referal-ratting']" [state]="{ phoneNumber: referrals?.phone_number,
+                referType: referrals?.type,
+                rating: referrals?.ratings,
+                comments: referrals?.comments }">
+                <img src="assets/InvitePageImg/starRated.svg" alt="" />
+                <p>{{referrals?.ratings}}/9</p>
+              </button>
+            </ion-col>
+          </ion-row>
+          <div class="new-action">
+            <ion-buttons *ngIf="!referrals?.referral_reward_status">
+              <ion-button class="reminder" fill="solid" [routerLink]="['/referal/invite-screen']" [state]="{referals: referrals}"
+                *ngIf="!referrals?.referral_reward_status">
+                <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
+                {{'Reminder'|language:'Reminder'}}
+              </ion-button>
+              <ion-button color="primary" fill="solid" href="tel:{{ referrals?.phone_number }}"
+                *ngIf="!referrals?.referral_reward_status">
+                <ion-icon slot="start" name="call-outline"></ion-icon>
+                {{'call'|language:'Call'}}
+              </ion-button>
+            </ion-buttons>
+            <p id="StatusTxt" *ngIf="referrals?.referral_reward_status">
+              <img src="assets/ReferrlImg/rewards.png" alt="" />{{'youhavegotthereward'|language:'You have got the Reward'}}
+            </p>
+          </div>
+        </div>
+        <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
+    </div>
+    <div *ngSwitchCase="'existing'" class="ion-no-margin ion-padding-bottom">
+      <div id="customer">
+        <ion-segment [(ngModel)]="segment" color="primary" mode="md" (ionChange)="segmentChange(segment)">
+          <ion-segment-button value="1">
+            {{'all'|language:'All'}}
+          </ion-segment-button>
+          <ion-segment-button value="2">
+            {{'Active'|language:'Active'}}
+          </ion-segment-button>
+          <ion-segment-button value="3">
+            {{'Inactive'|language:'Inactive'}}
+          </ion-segment-button>
+        </ion-segment>
+        <ng-container>
+          <div class="day-navbar">
+            <a class="dayFilter" (click)="activeDay('3')" [ngClass]="{'active': activeNav==='3'}">{{'3days'|language:'3 days'}}</a>
+            <a class="dayFilter" (click)="activeDay('5')" [ngClass]="{'active': activeNav==='5'}">{{'5days'|language:'5 days'}}</a>
+            <a class="dayFilter" (click)="activeDay('7')" [ngClass]="{'active': activeNav==='7'}">{{'7days'|language:'7 days'}}</a>
+            <div class="dateFilter" id="dateFil">
+              <ion-modal trigger="dateFil" handleBehavior="cycle" show-backdrop="false" side="end">
+                <ng-template>
+                  <app-date-time-picker (datePickerValue)="activeDay($event)" [date_info]="dateCondition">
+                  </app-date-time-picker>
+                </ng-template>
+              </ion-modal>
+              <ion-icon name="calendar-clear-outline"></ion-icon>
+            </div>
+          </div>
+        </ng-container>
+        <!-- All customers, segment=1 -->
+        <div [ngSwitch]="segment">
+          <div *ngSwitchCase="'1'" class="ion-no-margin ion-padding-bottom">
+            <ion-grid class="crm-items">
+              <ion-row>
+                <ion-col *ngFor="let customer of allCustomers" size="12" size-sm="6" size-md="4" size-lg="3">
+                  <ion-item lines="none">
+                    <!-- <ion-checkbox slot="start" color="primary" mode="md"></ion-checkbox> -->
+                    <ion-checkbox slot="start" class="check" color="primary" mode="md" id="{{customer?.userId}}"
+                      (click)="chooseCustomer(customer.userId, customer.userPhoneNumber)" mode="md"></ion-checkbox>
+                    <ion-avatar>
+                      <img src="assets/crm/person.svg" alt="Profile Image" />
+                      <div *ngIf="customer.userStatus === 'ACTIVE'" class="status active"></div>
+                      <div *ngIf="customer.userStatus === 'INACTIVE'" class="status inactive"></div>
+                    </ion-avatar>
+                    <ion-label
+                      (click)="customerDetails(customer.userId, customer.userPhoneNumber, customer.userStatus)">
+                      <!-- <div class="name">Jogesh Wani</div> -->
+                      <div class="name">{{ customer?.name ? customer?.name : customer?.userPhoneNumber }}</div>
+                      <div class="order">{{'orders' | language : 'Orders'}}: {{customer?.totalOrders}}
+                        <i>{{customer?.totalAmount | currency:'INR':'symbol':'0.0-2'}}</i></div>
+                      <div class="history">{{'Lastorder' | language : 'Last Order'}}: {{customer?.lastOrderDate | date :
+                        'dd MMM yyyy'}}</div>
+                    </ion-label>
+                    <ion-button [ngClass]="clickDisable" class="action" fill="outline" slot="end"
+                      (click)="referToCustomer(customer.userPhoneNumber)">
+                      <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+                    </ion-button>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!-- active ,segment=2 -->
+          <ion-card *ngSwitchCase="'2'" class="ion-no-margin ion-padding-bottom">
+            <ion-grid class="crm-items">
+              <ion-row>
+                <ng-container *ngFor="let customer of allCustomers">
+                  <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngIf="customer.userStatus === 'ACTIVE'">
+                    <ion-item lines="none">
+                      <!-- <ion-checkbox slot="start" color="primary" mode="md"></ion-checkbox> -->
+                      <ion-checkbox slot="start" class="check" color="primary" mode="md" id="{{customer?.userId}}"
+                        (click)="chooseCustomer(customer.userId, customer.userPhoneNumber)" mode="md"></ion-checkbox>
+                      <ion-avatar>
+                        <img src="assets/crm/person.svg" alt="Profile Image" />
+                        <div class="status active"></div>
+                      </ion-avatar>
+                      <ion-label
+                        (click)="customerDetails(customer.userId, customer.userPhoneNumber, customer.userStatus)">
+                        <!-- <div class="name">Jogesh Wani</div> -->
+                        <div class="name">{{ customer?.name ? customer?.name : customer?.userPhoneNumber }}</div>
+                        <div class="order">{{'orders' | language : 'Orders'}}: {{customer?.totalOrders}}
+                          <i>{{customer?.totalAmount | currency:'INR':'symbol':'0.0-2'}}</i></div>
+                        <div class="history">{{'Lastorder' | language : 'Last Order'}}: {{customer?.lastOrderDate | date : 'dd MMM yyyy'}}</div>
+                      </ion-label>
+                      <ion-button [ngClass]="clickDisable" class="action" fill="outline" slot="end"
+                        (click)="referToCustomer(customer.userPhoneNumber)">
+                        <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+                      </ion-button>
+                    </ion-item>
+                  </ion-col>
+                </ng-container>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+          <!-- inactive segment=3 -->
+          <ion-card *ngSwitchCase="'3'" class="ion-no-margin ion-padding-bottom">
+            <ion-grid class="crm-items">
+              <ion-row>
+                <ng-container *ngFor="let customer of allCustomers">
+                  <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngIf="customer.userStatus === 'INACTIVE'">
+                    <ion-item lines="none">
+                      <!-- <ion-checkbox slot="start" color="primary" mode="md"></ion-checkbox> -->
+                      <ion-checkbox slot="start" class="check" color="primary" mode="md" id="{{customer?.userId}}"
+                        (click)="chooseCustomer(customer.userId, customer.userPhoneNumber)" mode="md"></ion-checkbox>
+                      <ion-avatar>
+                        <img src="assets/crm/person.svg" alt="Profile Image" />
+                        <div class="status inactive"></div>
+                      </ion-avatar>
+                      <ion-label
+                        (click)="customerDetails(customer.userId, customer.userPhoneNumber, customer.userStatus)">
+                        <!-- <div class="name">Jogesh Wani</div> -->
+                        <div class="name">{{ customer?.name ? customer?.name : customer?.userPhoneNumber }}</div>
+                        <div class="order">{{'orders' | language : 'Orders'}}: {{customer?.totalOrders}}
+                          <i>{{customer?.totalAmount | currency:'INR':'symbol':'0.0-2'}}</i></div>
+                        <div class="history">{{'Lastorder' | language : 'Last Order'}}: {{customer?.lastOrderDate | date
+                          : 'dd MMM yyyy'}}</div>
+                      </ion-label>
+                      <ion-button [ngClass]="clickDisable" class="action" fill="outline" slot="end"
+                        (click)="referToCustomer(customer.userPhoneNumber)">
+                        <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+                      </ion-button>
+                    </ion-item>
+                  </ion-col>
+                </ng-container>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer [ngSwitch]="customers">
+  <ion-button *ngSwitchCase="'existing'" shape="round" expand="full" class="push-notification" [disabled]="disabled"
+    (click)="commonService.featureNotAvailable()">{{'Pushnotification' | language : 'Push notification'}}</ion-button>
+</ion-footer>

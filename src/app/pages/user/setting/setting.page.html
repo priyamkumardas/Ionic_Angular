@@ -1,0 +1,53 @@
+<!-- <ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'settings' | language : 'Settings'}}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/profile" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'settings' | language : 'Settings'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <p id="heading">{{'settings'|language}}</p>
+  <div class="location-setting">
+    <div class="location">
+      <p>{{'allowLocation'|language}}</p>
+      <ion-toggle></ion-toggle>
+    </div>
+    <p class="detail">{{'byAllowingTheLocationYouWillGetAllYourNearbyRestaurants'|language:'By allowing the location you will get all your nearby restaurants'}}</p>
+  </div>
+  <div class="notification-setting">
+    <div class="notification">
+      <p>{{'allowNotification'|language}}</p>
+      <ion-toggle></ion-toggle>
+    </div>
+    <p class="detail">{{'byAllowingTheNotificationYouWillGetNotifiedByYourFavouriteRestaurants'|language:'By allowing the notification you will get notified by your favourite restaurants'</p>
+  </div> -->
+  <ion-card>
+    <ion-img src="../../../../assets/images/uil_language.svg"></ion-img>
+    <p class="change" routerLink="/update-language">
+      {{'changelanguage' | language : 'Change Language'}}
+    </p>
+  </ion-card>
+
+  <p class="txt">
+    {{'nowyoucanchooseyoursuitablelanguage' | language : 'Now you can choose your suitable language '}}
+  </p>
+  <ion-card (click)="deleteAccount()">
+    <ion-img src="assets/icon/deleteIcon.svg"></ion-img>
+    <p class="change">
+      {{'DeleteAccount' | language : 'Delete Account'}}
+    </p>
+  </ion-card>
+    <p class="txt">
+    {{'Whywouldyouliketodeleteyouraccount?'|language:'Why would you like to delete your account?'}}
+  </p>
+</ion-content>

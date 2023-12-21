@@ -1,0 +1,235 @@
+ion-checkbox {
+    margin: 0px;
+    --size: 18px;
+    margin-left: auto;
+}
+ion-checkbox::part(container) {
+    border-radius: 3px;
+    border: 2px solid var(--ion-color-primary);
+  }
+
+ion-searchbar{
+    padding: 0;
+ }
+// ion-segment{
+//     height: 47px;
+//  }
+ion-segment-button{
+    min-width: auto !important;
+}
+.statusCategory {
+    margin-top: 7px;
+    margin-bottom: 7px;
+ }
+
+ion-item {
+    text-align: center;
+    .producttext {
+        margin-top: 100px;
+        height: 58px;
+        text-align: center;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .productimg {
+        position: absolute;
+        top: 0;
+        height: 100px;
+        z-index: -1;
+    }
+
+    .producttextcard {
+        margin-top: 100px;
+        text-align: center;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .productimgcard {
+        position: absolute;
+        top: 0;
+        // right: 0;
+        width: 121px;
+        height: 100px;
+        z-index: -1;
+        border-radius: 50% !important;
+    }
+
+    .product-card {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.button1 {
+    padding: 10px;
+    --background: var(--ion-color-warning)
+}
+
+.buttons .search-button{
+    margin-right: -20px;
+}
+
+.segment {
+    overflow-x: scroll;
+    display: flex;
+    color: var(--ion-color-success);
+
+    .category {
+        margin-left: 3vw;
+    }
+}
+
+.content {
+    height: 100vh;
+    overflow-y: scroll;
+    background: #f8f9f9;
+}
+
+.box {
+    box-shadow: 0px 1px 10px 1px rgba(2, 27, 26, 0.06);
+    border-radius: 6px;
+    padding: 4px 10px;
+    color: #7d7c83;
+    background: #ffffff;
+    text-align: center;
+}
+
+.active {
+    color: rgb(8, 144, 140);
+    background: rgba(114, 243, 236, 0.6);
+}
+
+.price {
+    margin: 0 auto;
+    width: 157%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+ion-card {
+    text-align: center;
+}
+
+ion-card-content {
+    position: relative;
+    padding-bottom: 25px !important;
+    padding-inline-start: 10px !important;
+    padding-inline-end: 10px !important;
+    padding-top: 5px !important;
+}
+
+.info {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gradingsign {
+    max-width: 150%;
+    width: 26px;
+    height: 26px;
+}
+
+.catlog-prod {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.status {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2px 0;
+    border-top: 1px solid var( --ion-color-medium-shade);
+    .iconstatus {
+        margin-right: 8%;
+    }
+}
+
+.publishedBackground {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #243AA7;
+}
+
+.unpublishedBackground {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #FF4A4A;
+}
+
+.pendingBackground{
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), #FECB32;
+}
+ion-chip{
+    border: 0.5px solid var(  --ion-color-medium-tint);
+}
+.preOrder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1vh;
+    .text {
+        margin-top: 10px;
+        width: 125%;
+        font-size: 10px;
+    }
+}
+
+ion-accordion.accordion-expanding,
+ion-accordion.accordion-expanded {
+    margin: 16px auto;
+}
+
+ion-accordion.accordion-collapsing ion-item[slot="header"],
+ion-accordion.accordion-collapsed ion-item[slot="header"] {
+    --background: var(--ion-color-light);
+    --color: var(--ion-color-light-contrast);
+}
+
+ion-accordion.accordion-expanding ion-item[slot="header"],
+ion-accordion.accordion-expanded ion-item[slot="header"] {
+    box-shadow: 1px -1px 4px 2px #a9a9a9;
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+}
+
+.DeliveryDayPreference-component-css #background-content {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+// below lines added by KUndan 
+.rowscard {
+    width: 100%;
+    min-height : 25px;
+}
+
+.chipadd {
+    margin-top: 10%;
+    height: 24px;
+    margin-right: 15px;
+    color: var( --ion-color-dark-tint);
+}
+
+.textalign {
+    margin-left: auto;
+    color: var(--ion-color-warning)
+}
+
+.textalign1 {
+    margin-left: auto;
+}
+
+.textalign-item-count {
+    margin-left: 10px;
+}

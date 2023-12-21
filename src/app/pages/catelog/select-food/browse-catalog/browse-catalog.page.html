@@ -1,0 +1,31 @@
+<div class="CrossIcon" (click)="cancel()">
+  <ion-icon name="close-outline"></ion-icon>
+</div>
+<ion-content>
+  <div class="contents">
+    <ion-title>{{'BrowseCatalog' | language : 'Browse Catalog'}}</ion-title>
+    <div class="content">
+      <!-- <img [src]="product?.image" alt="fruit" />
+      <ion-label>{{product?.name}}</ion-label> -->
+    </div>
+    <div class="soldby">
+      <!-- <ion-label class="label">Sold By</ion-label> -->
+      <div class="chipsold">
+
+
+      </div>
+    </div>
+
+   <!-- <ion-chip color="primary" mode="ios" outline="true" class="chipadd">
+      <ion-icon name="remove-circle-outline" color="danger" (click)="changePrice('dec')"></ion-icon> <span
+        class="prodCurr">&#x20B9;</span>
+      <ion-input min="0" class="price" type="number" placeholder="0" [(ngModel)]="product.price"></ion-input> <span
+        class="prodQty">{{product?.soldBy ? '/'+product?.soldBy:''}}</span>
+      <ion-icon name="add-circle-outline" (click)="changePrice('inc')" color="success"></ion-icon>
+    </ion-chip> -->
+  </div>
+  <div class="btn-div">
+    <ion-button class="brws-btn-yes" color="primary" expand="block" shape="round" fill="solid" (click)="saveProduct()">{{'yes' | language : 'Yes'}}</ion-button>
+    <ion-button class="brws-btn-no" color="primary" expand="block" shape="round" fill="solid" (click)="skipProduct()">{{'no' | language : 'No'}}</ion-button>
+  </div>
+</ion-content>

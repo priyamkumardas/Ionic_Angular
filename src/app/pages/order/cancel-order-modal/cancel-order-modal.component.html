@@ -1,0 +1,82 @@
+<div class="container" *ngIf="!isOrder">
+  <div class="img">
+    <img *ngIf="orderType == 'Rejected' || orderType == 'Cancelled' || orderType == 'No_show'"
+      src="assets/images/cancel-reject_icon.svg" alt="sadFaceIcon">
+  </div>
+  <div class="confirmation">
+    <p *ngIf="orderType == 'Accepted'" class="display-conf">
+      <span class="display-conf-span"><b>{{'acceptorder'|language:'Accept Order'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'Rejected'" class="display-conf">
+      <span class="display-conf-span"><b></b></span>
+      {{'DoyouwanttoRejecttheorder'|language:'Do You Want to Reject the order'}}
+    </p>
+    <p *ngIf="orderType == 'Processing'" class="display-conf">
+      <span class="display-conf-span"><b>{{'ProcessOrder'|language:'Process Order'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'Cancelled'" class="display-conf">
+      <span class="display-conf-span"><b></b></span>
+      {{'Doyouwanttocanceltheorder'|language:'Do you want to Cancel the Order?'}}
+    </p>
+    <p *ngIf="orderType == 'Ready'" class="display-conf">
+      <span class="display-conf-span"><b>{{'Orderready'|language:'Order Ready'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'No_show'" class="display-conf">
+      <span class="display-conf-span"><b></b></span>
+      {{'DoyouwanttoNo-Showtheorder '|language:'Do you want to No-Show the order ?'}}
+    </p>
+    <p *ngIf="orderType == 'Delivery'" class="display-conf">
+      <span class="display-conf-span"><b>{{'CustomerPickedup'|language:'Customer Picked up'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'Delivered'" class="display-conf">
+      <span class="display-conf-span"><b>{{'Delivered '|language:'Delivered '}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'Received'" class="display-conf">
+      <span class="display-conf-span"><b>{{'PaymentReceived?'|language:'Payment Received?'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'Dispatch'" class="display-conf">
+      <span class="display-conf-span"><b>{{'DispatchOrder'|language:'Dispatch Order'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'Pickedup'" class="display-conf">
+      <span class="display-conf-span"><b>{{'StartDelivery'|language:'Start Delivery'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'In_transit'" class="display-conf">
+      <span class="display-conf-span"><b>{{'ReachedDeliveryLocation'|language:'Reached Delivery Location'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <p *ngIf="orderType == 'Reached_delivery_location'" class="display-conf">
+      <span class="display-conf-span"><b>{{'ReachedDeliveryLocation'|language:'Reached Delivery Location'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+  </div>
+  <div class="btns">
+    <ion-button fill="clear" expand="full" class="no" (click)="viewNo()">
+      <ion-icon slot="start" src="assets/icon/thumbs-down.svg"></ion-icon>{{'no' | language : 'No'}}</ion-button>
+    <ion-button fill="clear" expand="full" class="yes" (click)="viewYes()">
+      <ion-icon slot="start" src="assets/icon/thumbs-up.svg"></ion-icon>{{'yes' | language : 'Yes'}}</ion-button>
+  </div>
+</div>
+
+<div class="container1" *ngIf="isOrder">
+  <div>
+    <app-scan-qrcode [isOrder]="true"></app-scan-qrcode>
+    <p *ngIf="orderType == 'Payment_pending' || orderType == 'Received'" class="display-conf ion-text-center">
+      <span class="display-conf-span"><b>{{'Paymentof'|language:'Payment of'}} {{amount | currency:'INR':'symbol':'0.0-2'}} {{'received'|language:'Received'}}</b></span>
+      {{'areYouSure' | language : 'Are you sure.'}}
+    </p>
+    <div class="btns">
+      <ion-button fill="clear" expand="full" class="no" (click)="viewNo()">
+        <ion-icon slot="start" src="assets/icon/thumbs-down.svg"></ion-icon>{{'no' | language : 'No'}}</ion-button>
+      <ion-button fill="clear" expand="full" class="yes" (click)="viewYes()">
+        <ion-icon slot="start" src="assets/icon/thumbs-up.svg"></ion-icon>{{'yes' | language : 'Yes'}}</ion-button>
+    </div>
+  </div>
+</div>

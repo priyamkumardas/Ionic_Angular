@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ion-datetime {
+  --background: white;
+  color: var(--ion-color-base) !important;
+}
+
+ion-footer {
+  bottom: 0px;
+  position: absolute;
+  width: -webkit-fill-available;
+  background: transparent !important;
+}
+
+.dates-header {
+  background: white;
+  border-radius: 20px 21px 0px 0px;
+  width: -webkit-fill-available;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #4F5052;
+  padding: 20px;
+  text-align: center;
+}
+
+.CrossIcon {
+  height: 48px;
+  width: 48px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  border-radius: 100%;
+  background: #FBFBFB;
+}
+
+ion-col{
+  padding: 10px;
+}

@@ -1,0 +1,31 @@
+<div class="modal">
+  <div class="CrossIcon" (click)="closeGstModal()">
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <p *ngIf="!this.isModal">{{'updategstin' | language : 'Update GSTIN'}}</p>
+      <p *ngIf="this.isModal">{{'entergstin' | language : 'Enter GSTIN'}}</p>
+    </div>
+    <div class="inputBox">
+      <ion-item class="ion-margin" fill="outline" shape="round" mode="md">
+        <ion-label position="floating">{{'GST Number' | language : 'GST Number'}}</ion-label>
+
+        <ion-input placeholder="{{'15digitalphanumericnumber'|language:'15-digit Alpha Numeric Number'}}"  id="gstNo" minlength="15" maxlength="15" (keypress)="numberOnly($event)"
+
+
+          [(ngModel)]="gstNo" ></ion-input>
+      </ion-item>
+    </div>
+    <ion-row [ngClass]="isModal ? ' ': 'active'">
+      <ion-col size="6" *ngIf="isModal">
+        <ion-button fill="outline" shape="round" expand="block" (click)="skipped()">{{'skip'|language:'Skip'}}</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button fill="solid" shape="round" expand="full" (click)="ConfirmGstNumber()" *ngIf="!isModal">{{'save'|language:'Save'}}</ion-button>
+        <ion-button fill="solid" shape="round" expand="full" (click)="ConfirmGstNumber()" *ngIf="isModal">{{'continue'|language:'Continue'}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

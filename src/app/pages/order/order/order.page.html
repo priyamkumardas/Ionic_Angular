@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'orders' | language : 'Orders'}}</ion-title>
+    <ion-buttons slot="end">
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openHelpVideo()">
+        <ion-icon color="primary" name="help-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [scrollable]="true" mode="md" value="{{selectedSegment | lowercase}}"
+    (ionChange)="changeSegment($event)">
+    <ion-segment-button *ngFor="let tab of tabs" value="{{ OrderStatus[tab] | lowercase }}">
+      <ion-label>{{tab | titlecase | removeUnderscore}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Filter's for order's -->
+  <ng-container>
+    <div class="day-navbar"
+      *ngIf="selectedSegment === OrderStatus.NEW || OrderStatus.ACCEPTED || selectedSegment === OrderStatus.PROCESSING">
+      <p class="dayFilter" (click)="activeDay('All')" [ngClass]="{'filterActive': activeNav==='All'}">
+        {{'all' | language : 'All'}}</p>
+      <p class="dayFilter" (click)="activeDay('Today')" [ngClass]="{'filterActive': activeNav==='Today'}">
+        {{'today' | language : 'Today'}}</p>
+      <p class="dayFilter" (click)="activeDay('Tomorrow')" [ngClass]="{'filterActive': activeNav==='Tomorrow'}">
+        {{'tomorrow' | language : 'tomorrow'}}
+      </p>
+      <div [ngClass]="{'dateFilterActive': isDateFilterActive(),'dateFilter': isDateFilter()}" id="dateFil">
+        <p *ngIf="activeNav == 'All' || activeNav == 'Today' || activeNav == 'Tomorrow'; else other"><u>{{todayDate | date:'dd MMM yyyy'}}</u></p>
+          <ng-template #other><u>{{deliveryDate | date:'dd MMM yyyy'}}</u></ng-template>
+        <ion-modal trigger="dateFil" handleBehavior="cycle" show-backdrop="false" side="end">
+          <ng-template>
+            <app-date-time-picker [date_format]="format" (datePickerValue)="activeDay($event)" color="none"></app-date-time-picker>
+          </ng-template>
+        </ion-modal>
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="timing">
+      <p class="day" *ngIf="activeNav == 'All' || activeNav == 'Today' || activeNav == 'Tomorrow'; else other">{{activeNav}}</p>
+      <ng-template class="day" #other>{{deliveryDate | date:'dd MMM yyyy'}}</ng-template>
+    </div>
+  </ng-container>
+
+  <!-- if there are order's in user's account -->
+  <ng-container *ngIf="orders?.length != 0;">
+    <app-order-container (orderStateChange)="changeTab($event)" [order]="allOrders"
+      [selected-tab]="selectedSegment"></app-order-container>
+    <!-- infinite scroll with api pagination -->
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content loadingText="Getting new orders..."
+        loadingSpinner="bubbles"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ng-container>
+
+  <!-- if there are no order's -->
+  <ng-container *ngIf="!this.isLoading && orders?.length === 0">
+    <app-empty-list></app-empty-list>
+  </ng-container>
+
+  <!-- Floating button for refreshing order's -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="pullToRefresh($event)">
+      <ion-icon name="reload-outline" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<!-- Bottom tab bar -->
+<ion-footer class="ion-no-border footer">
+  <app-bottom-tab-view [tabsTextAvailable]="false"></app-bottom-tab-view>
+</ion-footer>

@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "134890018866",
+    "project_id": "sarvm-ai",
+    "storage_bucket": "sarvm-ai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134890018866:android:fddb9bdfcd9eb30013442b",
+        "android_client_info": {
+          "package_name": "com.sarvm.biz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134890018866-0g5o151ns73sn4cja859c35rqjtp3j7e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtnIwEFiFNru_Bow-wRhlhsRJl8aeLwYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134890018866-0g5o151ns73sn4cja859c35rqjtp3j7e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "134890018866-3ll6s6m64gevp7tp76l9houvr94o9b0v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sarvm.hh"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134890018866:android:f9e8ff1629592f5213442b",
+        "android_client_info": {
+          "package_name": "com.sarvm.hh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134890018866-0g5o151ns73sn4cja859c35rqjtp3j7e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtnIwEFiFNru_Bow-wRhlhsRJl8aeLwYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134890018866-0g5o151ns73sn4cja859c35rqjtp3j7e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "134890018866-3ll6s6m64gevp7tp76l9houvr94o9b0v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sarvm.hh"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

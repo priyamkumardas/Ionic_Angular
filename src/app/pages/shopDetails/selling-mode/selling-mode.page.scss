@@ -1,0 +1,34 @@
+ion-card {
+    display: flex;
+    //flex-direction: row;
+    flex-direction: column;
+    //padding: 10%;
+    padding: 4%;
+    width: 100%;
+    text-align: center;
+}
+
+.myshop {
+    text-align: center;
+    width: 100%;
+    padding: 10%;
+}
+
+.hawker {
+    margin: 3%;
+}
+
+.setxt {
+    font-size: 18px;
+    line-height: 21px;
+    /* Primary text */
+    color: #222222;
+}
+
+.sm-back-btn {
+    display: block !important; 
+}
+
+.sm-row {
+    width: 100%;
+}

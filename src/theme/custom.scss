@@ -1,0 +1,15 @@
+// @Siddhesh
+ion-footer.bottom-fixed {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+
+    ion-toolbar {
+        --background: #fff;
+        --border-width: 0px !important;
+
+        ion-button {
+            margin: 4px 16px;
+        }
+    }
+}

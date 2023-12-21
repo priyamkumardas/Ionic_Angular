@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      <ion-title>{{'Employeemanagement ' | language : 'Employee Management'}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="page">
+  <div class="searchBar">
+    <div class="searchArea">
+      <input type="text" placeholder="Search">
+      <ion-icon name="search-outline"></ion-icon>
+    </div>
+    <ion-icon name="add-circle" id="plus"></ion-icon>
+  </div>
+  <div class="filters">
+    <div id="filter1" class="filter">
+      <p>{{'empId' | language : 'Emp ID'}}</p>
+    </div>
+    <div id="filter2" class="filter">
+      <p>{{'name ' | language : 'Name'}}</p>
+    </div>
+    <div id="filter3" class="filter" (click)="openModal()">
+      <p>{{'roles' | language : 'Roles'}}</p>
+      <ion-icon name="caret-down-outline"></ion-icon>
+    </div>
+  </div>
+  <div class="list" *ngFor="let employee of employees">
+    <div class="profile">
+      <img src="assets/images/profilePic.jpg" alt="profile picture">
+      <ion-icon name="ellipse"></ion-icon>
+    </div>
+    <div class="info">
+      <p>{{'empId' | language : 'Emp ID'}} : SLS-BAN-021</p>
+      <p>{{employee.n}}</p>
+      <p class="role">{{employee.r}}</p>
+    </div>
+  </div>
+</div>
+</ion-content>

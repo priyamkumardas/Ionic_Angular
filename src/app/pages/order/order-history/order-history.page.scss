@@ -1,0 +1,204 @@
+ion-toolbar {
+    display: flex;
+
+    ion-title {
+        font-size: 16px;
+    }
+
+    ion-icon {
+        margin: auto 0;
+        font-size: 6vw;
+        padding: 0 0 0 3vw;
+        color: var(--ion-color-dark-tint);
+    }
+}
+
+ion-modal {
+    --background: #0000003b !important;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+.container1::-webkit-scrollbar {
+    display: none;
+}
+
+.chiptab {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+
+    img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+}
+
+.cards {
+    margin: 2px;
+}
+
+.bg1 {
+    border-radius: 10px;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.bg2 {
+    border-radius: 10px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.bg3 {
+    border-radius: 10px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.bg4 {
+    border-radius: 10px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.bg5 {
+    border-radius: 6px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.top-view {
+    height: 40px;
+    flex: 1;
+    display: flex;
+    overflow: auto;
+}
+
+.container1 {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    gap: 2%;
+}
+
+ion-fab-button {
+    width: 40px;
+    height: 40px;
+
+    ion-icon {
+        font-size: 22px;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    position: relative;
+    justify-self: center;
+    text-align: center;
+    margin: 0 10px;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+ion-card {
+    margin: 12px;
+    border-radius: 10px;
+}
+
+ion-searchbar {
+    padding: 0px;
+    --box-shadow: var(--background);
+    --border-radius: 30px;
+    margin-left: 10px;
+    padding-right: 20px;
+    height: 60px;
+}
+
+ion-segment-button {
+    --indicator-color: var(--ion-color-primary);
+}
+
+/* Material Design styles */
+ion-segment-button.md {
+    --color: var(--ion-color-dark);
+    --color-checked: var(--ion-color-primary);
+    --indicator-height: 4px;
+}
+
+/* iOS styles */
+ion-segment-button.ios {
+    --color: var(--ion-color-primary);
+    --color-checked: var(--ion-color-primary-contrast);
+    --border-radius: 20px;
+}
+
+.day-navbar {
+    margin-top: 10px;
+    background: var(--ion-color-primary-contrast);
+    font-size: 4.5vw;
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    height: 35px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.dayFilter {
+    color: var(--ion-color-dark-tint);
+    padding: 3vw;
+    margin: 0px;
+    padding: 3px 10px;
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 25px;
+    width: auto;
+    font-size: 16px;
+    // margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dateFilter {
+    display: flex;
+    color: var(--ion-color-dark-tint);
+    background: var(--ion-color-primary-contrast);
+    border-radius: 10px;
+
+    p {
+        margin-right: 10px;
+    }
+
+    ion-icon {
+        color: var(--ion-color-primary-tint);
+        font-size: 27px;
+        margin-top: 4px;
+    }
+}
+
+.filterActive {
+    color: var(--ion-color-primary-contrast);
+    background: var(--ion-color-primary);
+}
+
+.filterNotActive {
+    background: var(--ion-color-light);
+    border-radius: 7px;
+}
+
+.footer {
+    display: block;
+    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
+    bottom: 0px;
+    background-image: none;
+    box-shadow: 0px 1px 10px 1px rgba(2, 27, 26, 0.1);
+}

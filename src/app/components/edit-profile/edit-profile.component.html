@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" slot="start" text="" defaultHref="/profile" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'editProfile'|language:'Edit Profile'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="profile">
+    <img src="{{form.basicInformation?.personalDetails?.profileImage ? form.basicInformation?.personalDetails?.profileImage : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}}" class="profile_img" alt=""/>
+    <div class="camera" (click)="presentActionSheet()">
+        <ion-icon color="light" name="camera-outline"></ion-icon>
+    </div>
+  </div>
+  <!-- forms for entering details -->
+  <form (ngSubmit)="f.valid && addUserDetails()" #f="ngForm">
+    <ion-item fill="outline" mode="md" shape="round">
+      <ion-label position="floating">{{'name'|language:'Name'}}</ion-label>
+      <ion-input type="text" [(ngModel)]="form.basicInformation.personalDetails.firstName" #fullName="ngModel" name="fullName" required></ion-input>
+      <ion-note slot="error" *ngIf="f.submitted && fullName.invalid">{{'invalidName'|language:'Invalid Name'}}</ion-note>
+    </ion-item>
+    <ion-item fill="outline" mode="md" disabled shape="round">
+      <ion-label position="floating">{{'mobileNumber'|language:'Mobile Number'}}</ion-label>
+      <ion-input pattern="^[0-9]{10}$" maxlength="10" type="tel" [(ngModel)]="form.basicInformation.personalDetails.mobileNumber"  #mobileNumber="ngModel" name="mobileNumber" required></ion-input>
+    </ion-item>
+    <ion-item fill="outline" mode="md" shape="round">
+      <ion-label position="floating">{{'AlternateMobileNumber' | language:'Alternate Mobile Number'}}</ion-label>
+      <ion-input pattern="^[0-9]{10}$" maxlength="10" type="tel" [(ngModel)]="form.basicInformation.personalDetails.secondaryMobileNumber" #altMobileNumber="ngModel" name="altMobileNumber"></ion-input>
+      <ion-note slot="error" *ngIf="f.submitted && altMobileNumber.invalid">{{'invalidNumber'|language:'Invalid Number'}}</ion-note>
+    </ion-item>
+    <ion-item fill="outline" mode="md" shape="round">
+      <ion-label position="floating">{{'AboutMe'|language:'About Me'}}</ion-label>
+      <ion-textarea [(ngModel)]="form.basicInformation.personalDetails.aboutUs" #aboutUs="ngModel" name="About"></ion-textarea>
+    </ion-item>
+    <div class="clear"></div>
+    <ion-footer mode="ios" class="bottom-fixed">
+      <ion-toolbar>
+        <ion-button type="submit" shape="round" color="primary" expand="block" mode="ios">{{'saveChanges'|language:'Save Changes'}}</ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+</ion-content>  

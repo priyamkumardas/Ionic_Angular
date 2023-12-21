@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'usermanagement' | language : 'User Management '}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/add-user',0]">
+        <ion-icon size="large" name="add-circle" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="ion-padding">
+    <ion-searchbar [debounce]="500" show-clear-button="focus" mode="ios" id="myInput" #search
+      placeholder="{{'search' | language : 'Search'}}">
+    </ion-searchbar>
+    <div *ngFor="let user of associated">
+      <ion-card class="ordercard"
+        *ngIf="search.value ? user?.user?.personalDetails?.firstName?.toLowerCase().includes(search?.value?.toLowerCase()) : true">
+        <div class="container" [routerLink]="['/la-user-profile',user.userId]">
+          <img class="farm-img" [src]="user?.user?.personalDetails?.profileImage"
+            onerror=" this.onerror = null ;this.src ='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"
+            alt="order" />
+          <div class="middletext">
+            <p class="userName">{{user?.user?.personalDetails?.firstName | titlecase}}</p>
+            <p class="userRole">{{ 'Delivery Person' | titlecase}}</p>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </ion-grid>
+  <ng-container *ngIf="this.associated == 0">
+    <div class="noUser">
+      <div class="noUserImage">
+        <img [routerLink]="['/add-user',0]" src="assets/images/noUser.svg" alt="">
+        <ion-text color="medium">
+          <h3>No Users Created Yet</h3>
+        </ion-text>
+      </div>
+    </div>
+  </ng-container>
+</ion-content>

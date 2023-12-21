@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-img slot="start" src="assets/images/homeImg/Rectangle 518.svg" (click)="gotToQrScanPage(0)"></ion-img>
+    <ion-buttons slot="end" (click)="gotoMyQr()">
+      <ion-button size="large">
+        <img class="wallet" src="assets/icon/scanMyShop.svg" alt="">
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="refferalservice.startWalletActivity()">
+      <img class="wallet" src="assets/images/homeImg/Retailer.svg" srcset="" alt="" />
+    </ion-buttons>
+    <ion-buttons slot="end" routerLink="/profile">
+      <ion-icon size="large" color="primary" name="person-circle-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-img src="assets/images/Refer&Earn .svg" alt="" (click)="refferalModule()" id="banner"></ion-img>
+        <!-- <img src="assets/images/Refer&Earn .svg" (click)="refferalModule()" id="banner" alt=""> -->
+      </ion-col>
+    </ion-row>
+  
+    <ion-row >
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <!-- <ion-card color="light" class="ion-text-center"  routerLink ="/select-category"> -->
+        <ion-card color="light" class="ion-text-center active-card" (click)="goToCatalog()">
+          <img src="assets/images/homeImg/catalog-1.svg" alt="cpm_img" />
+        <ion-text color="tertiary">
+              {{'catalogmanagement ' | textTruncate:20 | language : 'Catalog Management' }}</ion-text
+            >
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1" (click)="refferalModule()">
+        <ion-card color="light" class="ion-text-center active-card">
+          <img src="assets/images/homeImg/referral-1.svg" alt="cpm_img" />
+          <ion-text color="tertiary">
+            {{"referralmanagement" | slice:0:25 | language : 'Referral Management'}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1" (click)="checkSubscriptionStatus()">
+        <ion-card color="light" class="ion-text-center active-card">
+          <img src="assets/images/homeImg/subscription-1.svg" alt="cpm_img" />
+          <ion-text color="tertiary">{{"subscription" | slice:0:15 | language : 'Subscription'}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center active-card" routerLink="/order">
+          <img src="assets/images/homeImg/sent-1.svg" alt="cpm_img" />
+          <ion-text color="tertiary"> {{"OrderManagement " | slice:0:25 | language : 'Order Management '}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center active-card" routerLink="/order-aggregation">
+          <img src="assets/images/homeImg/credit-card.svg" alt="cpm_img" />
+          <ion-text color="tertiary">
+            {{"ProcurementManagement" | slice:0:25 | language :"Procurement Management"}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center active-card" (click)="crmOpen()">
+          <img src="assets/images/homeImg/crm 1.svg" alt="cpm_img" />
+          <ion-text color="medium"> {{"crm" | slice:0:14 | language :'CRM'}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center active-card" (click)="goToUserManagement()">
+          <img src="assets/images/homeImg/users.svg" alt="cpm_img" />
+          <ion-text color="medium">{{"usermanagement" | slice:0:25 | language :'User Management'}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center active-card" (click)="commonservice.featureNotAvailable()">
+          <img src="assets/images/homeImg/truck-1.svg" alt="cpm_img" />
+          <ion-text color="medium">
+            {{"DeliveryManagement " | slice:0:25 | language : 'Delivery Management '}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center deactive-card" (click)="commonservice.featureNotAvailable()">
+          <img src="assets/images/homeImg/Group (1).svg" alt="cpm_img" />
+          <ion-text color="medium">
+            {{"CustomerService " | slice:0:25 | language :'Customer Service '}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center deactive-card" (click)="commonservice.featureNotAvailable()">
+          <img src="assets/images/homeImg/Group (2).svg" alt="cpm_img" />
+          <ion-text color="medium">
+            {{"b2bBuy" | slice:0:14 | language :'B2B Buy'}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center deactive-card" (click)="commonservice.featureNotAvailable()">
+          <img src="assets/images/homeImg/megaphone 1.svg" alt="cpm_img" />
+          <ion-text color="medium">
+            {{"promote" | slice:0:14 | language :'Promote'}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center deactive-card" (click)="commonservice.featureNotAvailable()">
+          <img src="assets/images/homeImg/loss-icon-7 1.svg" alt="cpm_img" />
+          <ion-text color="medium">
+            {{"P&L" | slice:0:30 | language :'P & L'}}</ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center deactive-card" (click)="commonservice.featureNotAvailable()">
+          <img src="assets/images/homeImg/expense (1) 1.svg" alt="cpm_img" />
+          <ion-text color="medium">
+              {{"ExpensesManagement " | slice:0:25 | language :'Expenses Management '}}</ion-text
+            >
+        </ion-card>
+      </ion-col>
+      <ion-col size="3" size-sm="2" size-md="2" size-lg="1">
+        <ion-card color="light" class="ion-text-center deactive-card" (click)="commonservice.featureNotAvailable()">
+          <img src="assets/images/homeImg/inventory-_1_ 1.svg" alt="cpm_img" />
+
+            <ion-text color="medium" ion-text-center>
+              {{"InventoryManagement " | slice:0:25 | language :'Inventory Management '}}</ion-text
+            >
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border footer">
+  <app-bottom-tab-view [tabsTextAvailable]="false"></app-bottom-tab-view>
+</ion-footer>

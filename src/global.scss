@@ -1,0 +1,338 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+// Custom CSS @Siddhesh
+@import "./theme/custom.scss";
+
+.swiper-wrapper {
+    display: inherit;
+}
+
+.my-model-component-css {
+    --width: 100%;
+    --height: 200px;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.DeliveryDayPreference-component-css {
+    --width: 100%;
+    --height: 95%;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+        // --border-radius: 20px 20px 0px 0px;
+    }
+}
+
+.gst-modal-css {
+    --width: 100%;
+    --height: 100%;
+
+    &::part(content) {
+        background-color: transparent !important;
+        // position: absolute;
+        // bottom: 0;
+    }
+}
+
+.referral-rating-modal-css {
+  --width: 100%;
+  --height: 85%;
+  
+  --backdrop-opacity: var(--ion-backdrop-opacity, 0.4) !important;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+      
+    }
+}
+
+
+.schedule-time-component-css {
+    --width: 100%;
+    --height: 34%;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.schedule-calendar-component-css {
+    --width: 100%;
+    --height: 70%;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.schedule-date-component-css {
+    --width: 100%;
+    --height: 45%;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.full-screen-notification {
+    --width: 90%;
+    --height: 98%;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.date-time-picker {
+    --background: transparent !important;
+
+    &::part(content) {
+        background-color: transparent !important;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.cancel-modal-component-css {
+    --width: 340px;
+    --min-width: 320px;
+    --height: fit-content;
+    --border-radius: 6px;
+}
+
+// Catalog Popup using Ion Action Sheet
+
+$color_1: #cbcbcd;
+$color_2: #10bab2;
+$color_3: #cccccc;
+$color_4: #333333;
+
+ion-action-sheet.catalog-popup {
+    .action-sheet-container {
+        -webkit-padding-start: 0px !important;
+        padding-inline-start: 0px !important;
+        -webkit-padding-end: 0px !important;
+        padding-inline-end: 0px !important;
+
+    }
+
+    .action-sheet-group {
+        display: flex !important;
+        // padding-top: 35px;
+        // padding-bottom: 35px;
+        margin-bottom: 0px !important;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        justify-content: center;
+        align-items: center;
+        height: 140px;
+    }
+
+    .action-sheet-button {
+        margin-top: 20%;
+        margin: 8px;
+        outline: auto !important;
+        padding: 45px 40px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 8px;
+        height: 95px;
+        width: 100px;
+        color: $color_1 !important;
+        border: 1px solid $color_1;
+
+        .action-sheet-button-inner {
+            color: $color_2 !important;
+            padding-top: 15px;
+            font-size: 12px;
+            line-height: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            .action-sheet-icon {
+                position: absolute;
+                -webkit-margin-end: 0em;
+                margin-inline-end: 0em;
+                top: -30px;
+                font-size: 25px;
+                color: $color_2 !important;
+            }
+        }
+
+        &:nth-child(3) {
+            .action-sheet-button-inner {
+                color: $color_3 !important;
+                text-align: center;
+                font-size: 12px;
+                line-height: 14px;
+
+                .action-sheet-icon {
+                    position: absolute;
+                    -webkit-margin-end: 0em;
+                    margin-inline-end: 0em;
+                    color: $color_3 !important;
+                }
+            }
+        }
+    }
+
+    .action-sheet-group-cancel {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        // top: 57%;
+        left: 50%;
+        bottom: 140px;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        background: #fff;
+    }
+
+    .action-sheet-cancel {
+        outline: none !important;
+        height: 38px;
+        width: 40px;
+        // margin: auto !important;
+        // margin: 2px 6px;
+        padding: unset !important;
+        text-align: center;
+        border: 0 !important;
+
+        .action-sheet-button-inner {
+
+            .action-sheet-icon {
+                top: 6px;
+                color: $color_4 !important;
+            }
+        }
+    }
+}
+
+.cancel-order-modal {
+    --width: 100%;
+    --background: transparent
+}
+
+// crm/customer
+ion-action-sheet.catalog-popup.customer-modal .action-sheet-button .action-sheet-button-inner,
+ion-action-sheet.catalog-popup.customer-modal .action-sheet-button:nth-child(3) .action-sheet-button-inner .action-sheet-icon {
+    color: var(--ion-color-primary) !important;
+}
+
+.bottomModal {
+ 
+    --width: 100%;
+    --height: 100%;
+
+    &::part(content) {
+        background-color: transparent !important;
+    }
+   
+}
+
+.delete-qr {
+    --width: 100%;
+    --height: 100%;
+
+    &::part(content) {
+        background-color: transparent !important;
+    }
+}
+
+ion-action-sheet.order-popup {
+
+    .action-sheet-wrapper {
+        flex-direction: column-reverse;
+        display: flex;
+        width: 95%;
+
+        .action-sheet-container {
+            display: contents;
+            .action-sheet-group-cancel {
+                margin: 0 auto;                
+                border-radius: 50%;
+            }
+        
+            .action-sheet-cancel {
+                outline: none !important;
+                height: 50px;
+                width: 50px;
+                padding: unset !important;
+                text-align: center;
+        
+                .action-sheet-button-inner {
+                    .action-sheet-icon {
+                        color: $color_2 !important;
+                        margin-inline-end: 0;
+                    }
+                }
+        
+                &::after {
+                    background: transparent !important;
+                }
+            }
+        }
+    }
+
+}
+
+ion-toast.iontoast{
+    --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+    height: calc(100% - 12%);
+    text-align: center;
+    --width: 75%;
+}

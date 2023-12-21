@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+        icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">{{'OrderAggregation'|language:'Order Aggregation'}}</ion-title>
+  </ion-toolbar>
+  <ion-progress-bar type="indeterminate" color="primary" mode="ios" *ngIf="commonService.isLoading"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+  <div class="dateContainer">
+    <div class="singleDate" *ngFor="let data of arrayOfDates">
+      <div class="ion-text-center" (click)="getData(data.toJSON().split('T')[0])">
+        <!-- <p>{{arrayOfDays[data.getDay()]}}</p> -->
+        <p [ngClass]="selectedDate == data.toJSON().split('T')[0] ? 'date active' : 'date'">
+          {{data.toJSON().split('T')[0] | slice:8:10}}</p>
+      </div>
+    </div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-margin-horizontal">
+        <!-- Checking if today's date is equal to selected date then we'll display text 'Items to be delivered'
+          else if
+            today's date is lesser than selected date (past dates) then we'll display 'Items delivered on'
+             else for (future dates) 'Items to be delivered on'-->
+             <p class="text1">{{((selectedDate > today.split('T')[0]) ? 'Itemstobedeliveredon' : 'Itemstobedelivered') |language:((selectedDate > today.split('T')[0]) ? 'Items to be delivered on' : 'Items to be delivered')}}<ion-text color="primary">
+              {{(selectedDate == today.split('T')[0]) ? 'Today' : selectedDate | date : 'EEEE, dd MMM yyy'}}</ion-text>
+            </p>
+            
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start" class="avtar">
+            <img alt="" src="/assets/icon/1.svg" />
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text class="ion-no-margin" *ngIf="!apiResponse" [animated]="true"></ion-skeleton-text>
+              <ion-text class="text-bold" color="primary" *ngIf="apiResponse">{{totalItems}}</ion-text>
+            </h3>
+            <p>{{'TotalItems'|language:'Total Items'}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start" class="avtar">
+            <img alt="" src="/assets/icon/1053.svg" />
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text class="ion-no-margin" *ngIf="!apiResponse" [animated]="true"></ion-skeleton-text>
+              <ion-text class="text-bold" *ngIf="apiResponse" color="primary">{{totalWeight}}</ion-text>
+            </h3>
+            <p>{{'TotalWeight'|language:'Total Weight'}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start" class="avtar">
+            <img alt="" src="/assets/icon/litres.svg" />
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text class="ion-no-margin" *ngIf="!apiResponse" [animated]="true"></ion-skeleton-text>
+              <ion-text class="text-bold" *ngIf="apiResponse" color="primary">{{totalLiter}}</ion-text>
+            </h3>
+            <p>{{'TotalLitres'|language:'Total Litres'}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start" class="avtar">
+            <img alt="" src="/assets/icon/pieces.svg" />
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text class="ion-no-margin" *ngIf="!apiResponse" [animated]="true"></ion-skeleton-text>
+              <ion-text class="text-bold" *ngIf="apiResponse" color="primary">{{totalPieces}}</ion-text>
+            </h3>
+            <p>{{'TotalPieces'|language:'Total Pieces'}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start" class="avtar">
+            <img alt="" src="/assets/icon/plates.svg" />
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text class="ion-no-margin" *ngIf="!apiResponse" [animated]="true"></ion-skeleton-text>
+              <ion-text class="text-bold" *ngIf="apiResponse" color="primary">{{totalPlates}}</ion-text>
+            </h3>
+            <p>{{'TotalPlates'|language:'Total Plates'}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-card *ngFor="let order of ordersList">
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="2" class="ion-align-self-center">
+          <div>
+            <img alt="" class="images" src="{{order.productImage}}" />
+          </div>
+        </ion-col>
+        <ion-col size="8" class="ion-align-self-start">
+          <div>
+            <p class="textCorrection ion-text-left"><ion-text color="dark">{{order.productName}}</ion-text></p>
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="ion-text-center">
+            <p> <ion-text color="primary">{{order.totalQuantity | number:'0.0-5'}} {{order.soldBy}}</ion-text></p>
+          </div>
+        </ion-col>
+        <!-- <ion-col size="2">
+          <div class="ion-text-center">
+            <p><ion-text color="medium">{{order.totalPrice | currency:'INR':true :'0.0-2' }}</ion-text></p>
+          </div>
+        </ion-col> -->
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>
